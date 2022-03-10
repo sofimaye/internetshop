@@ -1,0 +1,15 @@
+footer{
+    position: relative;
+    width:100%;
+    padding: 40px 10vw 80px;
+    background: #000;
+}
+
+.footer-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.footer-content .logo{
+    height: 150px;
+}

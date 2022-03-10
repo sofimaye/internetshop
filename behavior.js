@@ -37,7 +37,7 @@ const createCard = function ({discount, image, brand, shortDescription, actualPr
         <div class="product-image">
             <span class="discount-tag">${discount}</span>
             <img src=${image} class="product-thumb">
-                <button class="card-btn"> add to wishlist</button>
+                <button class="card-btn">add to wishlist</button>
         </div>
         <div class="product-info">
             <h2 class="product-brand">${brand}</h2>
@@ -118,4 +118,33 @@ productContainers.forEach((item, i) => {
         item.scrollLeft -= containerWidth;
     })
 })
+
+const createCollection = function({image, category}){
+    let collectionCont = document.querySelector('.collection-container');
+
+    let collectionCard = document.createElement('a');
+    collectionCard.className = 'collection';
+    collectionCard.href = "#";
+    collectionCard.innerHTML = ` <img src=${image} alt="new collection">
+            <p class="collection-title">${category}<br>apparels</p> `
+
+    collectionCont.appendChild(collectionCard)
+}
+
+createCollection({
+    image: 'images/dressandflowers.jpg',
+    category: 'women'
+})
+
+createCollection({
+    image: 'images/menstyle.jpg',
+    category: 'men'
+})
+
+createCollection({
+    image: 'images/bagscollection.jpg',
+    category: 'bags'
+})
+
+
 
