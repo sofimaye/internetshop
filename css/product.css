@@ -1,0 +1,10 @@
+.product-container-assortment {
+    padding: 0 10vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.product-container-assortment::-webkit-scrollbar {
+    display: none;
+}

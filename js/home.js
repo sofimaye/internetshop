@@ -1,33 +1,3 @@
-const createNav = () => {
-    let nav = document.querySelector('.navbar');
-
-    nav.innerHTML = `
-     <div class="nav">
-        <img src="./images/logo.png" class="brand-logo" alt="logo">
-        <div class="nav-items">
-            <div class="search">
-                <input type="text" class="search-box" placeholder="search brand, product">
-                <button class="search-btn">search</button>
-            </div>
-            <a href="#"><img src="./images/user-90.png" alt="user"></a>
-            <a href="#"><img src="./images/heart-90.png" alt="wishlist"></a>
-            <a href="#"><img src="./images/shopping-cart-64%20(1).png" alt="cart"></a>
-
-        </div>
-    </div>
-    <ul class="links-container">
-        <li class="link-item"><a href="#" class="link">home</a></li>
-        <li class="link-item"><a href="#" class="link">new</a></li>
-        <li class="link-item"><a href="#" class="link">bags</a></li>
-        <li class="link-item"><a href="#" class="link">shoes</a></li>
-        <li class="link-item"><a href="#" class="link">clothes</a></li>
-        <li class="link-item"><a href="#" class="link">sale</a></li>
-    </ul>
-    `
-}
-
-createNav();
-
 const createCard = function ({discount, image, brand, shortDescription, actualPrice, previousPrice}) {
     let prodContainer = document.querySelector('.product-container');
 
@@ -36,7 +6,7 @@ const createCard = function ({discount, image, brand, shortDescription, actualPr
     prodCard.innerHTML = `
         <div class="product-image">
             <span class="discount-tag">${discount}</span>
-            <img src=${image} class="product-thumb">
+            <img src=${image} class="product-thumb" alt="">
                 <button class="card-btn">add to wishlist</button>
         </div>
         <div class="product-info">
@@ -119,13 +89,15 @@ productContainers.forEach((item, i) => {
     })
 })
 
-const createCollection = function({image, category}){
+
+//creating collections
+const createCollection = function ({image, category}) {
     let collectionCont = document.querySelector('.collection-container');
 
     let collectionCard = document.createElement('a');
     collectionCard.className = 'collection';
     collectionCard.href = "#";
-    collectionCard.innerHTML = ` <img src=${image} alt="new collection">
+    collectionCard.innerHTML = `<img src=${image} alt="new collection">
             <p class="collection-title">${category}<br>apparels</p> `
 
     collectionCont.appendChild(collectionCard)
@@ -145,6 +117,4 @@ createCollection({
     image: 'images/bagscollection.jpg',
     category: 'bags'
 })
-
-
 

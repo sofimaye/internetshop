@@ -56,3 +56,30 @@ footer {
     margin-top: 80px;
     color: #ffffff;
 }
+
+.footer-social-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social-link{
+    color: #ffffff;
+    margin-left: 20px;
+    text-transfrom: capitalize;
+}
+
+.social-link:nth-child(1){
+    margin-left: 0;
+}
+
+.footer-credit{
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    color: #ffffff;
+    background: rgba(0,0,0,0.2);
+}
