@@ -27,7 +27,7 @@ function createCategorySection(categoryName, products) {
     let nextBtn = document.createElement("button");
     nextBtn.className = "nxt-btn";
 
-    let buttonNextImg = document.createElement("button");
+    let buttonNextImg = document.createElement("img");
     buttonNextImg.src = "images/right%20arrow.png";
     buttonNextImg.alt = "";
 
