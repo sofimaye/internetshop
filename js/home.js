@@ -47,10 +47,7 @@ function createCategorySection(categoryName, products) {
 }
 
 
-const createCard = function (containerId, {
-    discount, image, brand, shortDescription, actualPrice,
-    previousPrice = "the same price"
-}) {
+const createCard = function (containerId, {discount, image, brand, shortDescription, actualPrice, previousPrice}) {
     let prodContainer = document.querySelector(`#${containerId}.product-container`);
 
     let prodCard = document.createElement('div');
@@ -66,27 +63,25 @@ const createCard = function (containerId, {
             <span class="price">${actualPrice}</span>
         </div>`
 
-        if (`${discount}`) {
-            let prodImgCont = document.querySelector(".product-image");
-            let newSaleSpan = document.createElement('span');
-            newSaleSpan.className = "discount-tag";
-            newSaleSpan.innerHTML = `${discount}`;
+    if (discount) {
+        let prodImgCont = prodCard.querySelector(".product-image");
+        let newSaleSpan = document.createElement('span');
+        newSaleSpan.className = "discount-tag";
+        newSaleSpan.innerHTML = discount;
 
-            prodImgCont.appendChild(newSaleSpan)
-        }
+        prodImgCont.appendChild(newSaleSpan)
+    }
 
-        if (`${previousPrice}`) {
-            let prodInfo = document.querySelector(".product-info");
-            let newInfoSpan = document.createElement('span');
-            newInfoSpan.className = "actual-price";
-            newInfoSpan.innerHTML = `${previousPrice}`;
+    if (previousPrice) {
+        let prodInfo = prodCard.querySelector(".product-info");
+        let newInfoSpan = document.createElement('span');
+        newInfoSpan.className = "actual-price";
+        newInfoSpan.innerHTML = `${previousPrice}`;
 
 
-            prodInfo.appendChild(newInfoSpan)
-        }
-
+        prodInfo.appendChild(newInfoSpan)
+    }
     prodContainer.appendChild(prodCard);
-
 }
 
 // <span className="actual-price">${previousPrice}</span>
