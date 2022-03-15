@@ -149,4 +149,10 @@ const getAllCategories = () => {
     return Promise.resolve(categories)
 }
 
-export {getProductsByCategory, getAllCategories}
+const getCategoryById = ({id}) => {
+    return new Promise((resolve) => {
+        resolve(categories.find(c => c.id === id))
+    })
+}
+
+export {getProductsByCategory, getAllCategories, getCategoryById}
