@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/product.css">
     <script type="module" src="js/products.js"></script>
+    <script defer src="./js/sliderForProduct.js"></script>
 </head>
 <body>
 
@@ -15,8 +16,54 @@
     <script src="js/navbar.js"></script>
 </nav>
 
+<section class="product-details">
+    <div class="image-slider">
+        <div class="product-images">
+            <img src="images/dressparosh2.jpg" class="active" alt="">
+            <img src="images/dressdavidkoma.jpg" alt="">
+            <img src="images/dressdavidkoma2.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="details">
+        <h2 class="product-brand">David Koma</h2>
+        <p class="product-short-description">Short black dress</p>
+        <span class="product-price">$100</span>
+        <span class="product-actual-price">$200</span>
+        <span class="product-discount">(50% off)</span>
+
+        <p class="product-sub-heading">select size</p>
+
+
+        <input type="radio" name="size" value="xs" checked hidden id="xs-size">
+        <label for="xs-size" class="size-radio-btn check">xs</label>
+
+        <input type="radio" name="size" value="s" hidden id="s-size">
+        <label for="s-size" class="size-radio-btn">s</label>
+
+        <input type="radio" name="size" value="m" hidden id="m-size">
+        <label for="m-size" class="size-radio-btn">m</label>
+
+        <input type="radio" name="size" value="l" hidden id="l-size">
+        <label for="l-size" class="size-radio-btn">l</label>
+
+        <input type="radio" name="size" value="xl" hidden id="xl-size">
+        <label for="xl-size" class="size-radio-btn">xl</label>
+
+        <button class="btn card-add-btn">add to cart</button>
+        <button class="btn">add to wishlist</button>
+
+    </div>
+</section>
+
+
+<section class="detail-des">
+    <h2 class="heading">description</h2>
+    <p class="des">short dress by david koma in black colour</p>
+</section>
+
 <section class="main-products-container">
-<!--    <script src="js/products.js"></script>-->
+    <!--    <script src="js/products.js"></script>-->
 </section>
 
 

@@ -8,3 +8,4 @@ getAllCategories()
                 .then((products) => createCategorySection(category.name, products))
         }
     });
+

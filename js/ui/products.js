@@ -90,3 +90,5 @@ export const createCard = function (containerId, {discount, image, brand, shortD
     }
     prodContainer.appendChild(prodCard);
 }
+
+
