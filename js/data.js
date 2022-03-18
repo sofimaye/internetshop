@@ -155,4 +155,10 @@ const getCategoryById = ({id}) => {
     })
 }
 
-export {getProductsByCategory, getAllCategories, getCategoryById}
+const searchCategoriesByName = ({name}) => {
+    return new Promise((resolve) => {
+        resolve(categories.filter(c => c.name.toUpperCase().includes(name.toUpperCase())))
+    })
+}
+
+export {getProductsByCategory, getAllCategories, getCategoryById, searchCategoriesByName}
