@@ -1,4 +1,5 @@
-//Navbar
+//navbar
+
 const createNav = () => {
     let nav = document.querySelector('.navbar');
 
@@ -17,8 +18,8 @@ const createNav = () => {
         </div>
     </div>
     <ul class="links-container">
-        <li class="link-item"><a href="#" id="home-page" class="link">home</a></li>
-        <li class="link-item"><a href="#" id="new-page" class="link">new</a></li>
+        <li class="link-item"><a href="./home.html" id="home-page" class="link">home</a></li>
+        <li class="link-item"><a href="./products.html" id="new-page" class="link">new</a></li>
         <li class="link-item"><a href="#" class="link">bags</a></li>
         <li class="link-item"><a href="#" class="link">shoes</a></li>
         <li class="link-item"><a href="#" class="link">clothes</a></li>
@@ -30,14 +31,11 @@ const createNav = () => {
 createNav();
 
 
-// navbar pages
-let homePage = document.querySelector("#home-page");
-homePage.addEventListener("click", () => {
-    homePage.href = "./home.html";
-});
+let searchPage = document.querySelector(".search-btn");
 
-let newPage = document.querySelector("#new-page");
 
-newPage.addEventListener("click", () => {
-    newPage.href = "./products.html";
-});
+searchPage.addEventListener('click', () => {
+    let searchInput = document.querySelector('.search-box');
+    let input = searchInput.value;
+    window.location.href = `search.html?search=${input}`;
+})
