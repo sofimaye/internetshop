@@ -54,7 +54,15 @@ export function createCategorySection(categoryName, products) {
 }
 
 
-export const createCard = function (containerId, {discount, image, brand, shortDescription, actualPrice, previousPrice}) {
+export const createCard = function (containerId, {
+    id,
+    discount,
+    image,
+    brand,
+    shortDescription,
+    actualPrice,
+    previousPrice
+}) {
     let prodContainer = document.querySelector(`#${containerId}.product-container`);
 
     let prodCard = document.createElement('div');
@@ -88,7 +96,10 @@ export const createCard = function (containerId, {discount, image, brand, shortD
 
         prodInfo.appendChild(newInfoSpan)
     }
+
+    prodCard.addEventListener("click", () => {
+        prodCard.id = id;
+        window.location.href = `product.html?productId=${id}`;
+    })
     prodContainer.appendChild(prodCard);
 }
-
-

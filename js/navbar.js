@@ -19,7 +19,7 @@ const createNav = () => {
     </div>
     <ul class="links-container">
         <li class="link-item"><a href="./home.html" id="home-page" class="link">home</a></li>
-        <li class="link-item"><a href="./products.html" id="new-page" class="link">new</a></li>
+        <li class="link-item"><a href="./new.html" id="new-page" class="link">new</a></li>
         <li class="link-item"><a href="#" class="link">bags</a></li>
         <li class="link-item"><a href="#" class="link">shoes</a></li>
         <li class="link-item"><a href="#" class="link">clothes</a></li>

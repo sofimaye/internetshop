@@ -145,6 +145,12 @@ const getProductsByCategory = ({categoryId}) => {
     })
 }
 
+const getProductById = ({id}) => {
+    return new Promise((resolve) => {
+        resolve(products.find(p => p.id === id))
+    })
+}
+
 const getAllCategories = () => {
     return Promise.resolve(categories)
 }
@@ -161,4 +167,4 @@ const searchCategoriesByName = ({name}) => {
     })
 }
 
-export {getProductsByCategory, getAllCategories, getCategoryById, searchCategoriesByName}
+export {getProductsByCategory, getAllCategories, getCategoryById, searchCategoriesByName, getProductById}
