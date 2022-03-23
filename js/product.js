@@ -2,9 +2,15 @@ import {getProductById} from "./data.js";
 
 
 let productId = parseInt(new URLSearchParams(window.location.search).get("productId"));
+if (!productId) {
+    window.location.href = "404.html";
+}
 
 
 getProductById({id: productId}).then((product) => {
+    if (!product) {
+        window.location.href = "404.html";
+    }
 
     let prodSection = document.querySelector(".product-details");
     let prodDescription = document.querySelector(".detail-des");
@@ -59,8 +65,9 @@ getProductById({id: productId}).then((product) => {
     let actualPrice = document.querySelector(".product-actual-price");
     if (product.discount) {
         discount.innerHTML = `${product.discount}`;
-       actualPrice.innerHTML = `${product.actualPrice}`;
+        actualPrice.innerHTML = `${product.actualPrice}`;
     }
+
 
     let prodBackgroundImage = document.querySelector(".image-slider");
     prodBackgroundImage.style.backgroundImage = `url('${product.image}')`;
@@ -69,15 +76,5 @@ getProductById({id: productId}).then((product) => {
     <h2 class="heading">description</h2>
     <p class="des">${product.shortDescription}</p>`;
 
-    let zoomImage = document.querySelector(".product-images img");
-
-    zoomImage.addEventListener("click", () => {
-        zoomImage.style.transform = "scale(5.5)";
-        zoomImage.style.transition = "transform 0.25s ease";
-    })
-
-    zoomImage.addEventListener("mouseout", () => {
-        zoomImage.style.transform = "scale(1)";
-    })
 
 })
