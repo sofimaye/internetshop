@@ -77,4 +77,30 @@ getProductById({id: productId}).then((product) => {
     <p class="des">${product.shortDescription}</p>`;
 
 
+    let gallery = document.querySelector(".image-slider img");
+
+    gallery.addEventListener("click", () => {
+        let pswpElement = document.querySelector('.pswp');
+
+        let items = [
+            {
+                src: product.image,
+                w: 400,
+                h: 600
+            }
+        ];
+
+        let options = {
+            index: 0, // start at first slide
+            allowPanToNext: true,
+            loop: true,
+            pinchToClose: true,
+            closeOnScroll: true,
+        };
+
+// Initializes and opens PhotoSwipe
+        let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+    })
+
 })
