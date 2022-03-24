@@ -15,11 +15,9 @@ getProductById({id: productId}).then((product) => {
     let prodSection = document.querySelector(".product-details");
     let prodDescription = document.querySelector(".detail-des");
 
-
     prodSection.innerHTML = `<div class="image-slider">
         <div class="product-images">
-            <img src="${product.image}" class="active" alt="">
-            <img src="${product.image}" alt="">
+<!--             <img src="" alt="">-->
 <!--            <img src="images/dressdavidkoma2.jpg" alt="">-->
         </div>
     </div>
@@ -54,6 +52,17 @@ getProductById({id: productId}).then((product) => {
 
     </div>`;
 
+    let imagesProdContainer = document.querySelector(".product-images");
+
+    //array of objects
+    for(let image of product.images) {
+        let newImage = document.createElement('img');
+        newImage.src = image.url;
+        newImage.alt = "";
+        imagesProdContainer.appendChild(newImage)
+    }
+
+
     let price = document.querySelector(".product-price");
     if (product.previousPrice) {
         price.innerHTML = `${product.previousPrice}`
@@ -70,7 +79,7 @@ getProductById({id: productId}).then((product) => {
 
 
     let prodBackgroundImage = document.querySelector(".image-slider");
-    prodBackgroundImage.style.backgroundImage = `url('${product.image}')`;
+    prodBackgroundImage.style.backgroundImage = `url('${product.images[0]?.url || 'images/000-404.png'}')`;
 
     prodDescription.innerHTML = `
     <h2 class="heading">description</h2>
@@ -82,13 +91,7 @@ getProductById({id: productId}).then((product) => {
     gallery.addEventListener("click", () => {
         let pswpElement = document.querySelector('.pswp');
 
-        let items = [
-            {
-                src: product.image,
-                w: 400,
-                h: 600
-            }
-        ];
+        let items = product.images.map((image) => ({ src: image.url, w: 400, h:600}));
 
         let options = {
             index: 0, // start at first slide

@@ -17,16 +17,33 @@ const products = [{
     id: 1,
     categoryId: 1,
     discount: '-50%',
-    image: "images/guccimarmount.jpg",
+    images: [
+        {
+            url: "images/guccimarmount.jpg"
+        },
+        {
+            url: "images/guccimarmount2.jpg"
+        },
+        {
+            url: "images/guccimarmount3.jpg"
+        },
+    ],
     brand: "gucci",
-    shortDescription: "saffiano marmount leather bag",
+    shortDescription: "saffiano marmount light-pink leather bag",
     actualPrice: "$1000",
     previousPrice: "$2000"
 }, {
     id: 2,
     categoryId: 1,
     discount: '-50%',
-    image: "images/dressfaithfull.jpg",
+    images: [
+        {
+            url: "images/dressfaithfull.jpg"
+        },
+        {
+            url: "images/dressfaithful2.jpg"
+        },
+    ],
     brand: "faithfull",
     shortDescription: "short black linen dress",
     actualPrice: "$500",
@@ -35,16 +52,34 @@ const products = [{
     id: 3,
     categoryId: 1,
     discount: '-50%',
-    image: "images/guccihorsebit1955.jpg",
+    images: [
+        {
+            url: "images/guccihorsebit1955.jpg"
+        },
+        {
+            url: "images/guccihorsebit1955(2).jpg"
+        },
+        {
+            url: "images/guccihorsebit1955(3).jpg"
+        },
+    ],
     brand: "gucci",
-    shortDescription: "leather bag",
+    shortDescription: "brown gucci leather bag",
     actualPrice: "$1000",
     previousPrice: "$2000"
 }, {
     id: 4,
     categoryId: 1,
     discount: '-50%',
-    image: "images/dressselfportrait.jpg",
+    images: [
+        {
+            url: "images/dressselfportrait.jpg"
+        },
+
+        {
+            url: "images/dressselfportrait2.jpg"
+        },
+    ],
     brand: "selfportrait",
     shortDescription: "short dress",
     actualPrice: "$300",
@@ -53,7 +88,14 @@ const products = [{
     id: 5,
     categoryId: 1,
     discount: '-50%',
-    image: "images/dressparosh.jpg",
+    images: [
+        {
+            url: "images/dressparosh.jpg"
+        },
+        {
+            url: "images/dressparosh2.jpg"
+        },
+    ],
     brand: "parosh",
     shortDescription: "short dress",
     actualPrice: "$300",
@@ -62,7 +104,14 @@ const products = [{
     id: 6,
     categoryId: 1,
     discount: '-50%',
-    image: "images/dressdavidkoma.jpg",
+    images: [
+        {
+            url: "images/dressdavidkoma.jpg"
+        },
+        {
+            url: "images/dressdavidkoma2.jpg"
+        },
+    ],
     brand: "david koma",
     shortDescription: "short dress",
     actualPrice: "$400",
@@ -70,72 +119,169 @@ const products = [{
 }, {
     id: 7,
     categoryId: 2,
-    image: "images/burberry.jpg",
-    brand: "burberry",
-    shortDescription: "brown leather shoes",
-    actualPrice: "$500"
+    images: [
+        {
+            url: "images/guccibrownleatherbag.jpg"
+        },
+        {
+            url: "images/guccibrownleatherbag2.jpg"
+        },
+        {
+            url: "images/guccibrownleatherbag3.jpg"
+        },
+        {
+            url: "images/guccibrownleatherbag4.jpg"
+        },
+        {
+            url: "images/guccibrownleatherbag5.jpg"
+        },
+
+    ],
+    brand: "gucci",
+    shortDescription: "gucci diana brown leather bag",
+    actualPrice: "$3000"
 }, {
     id: 8,
     categoryId: 2,
-    image: "images/guccishoes.jpg",
+    images: [
+        {
+            url: "images/guccibeigeshoes.jpg"
+        },
+
+        {
+            url: "images/guccibeigeshoes2.jpg"
+        },
+
+        {
+            url: "images/guccibeigeshoes3.jpg"
+        },
+
+        {
+            url: "images/guccibeigeshoes4.jpg"
+        },
+    ],
     brand: "gucci",
-    shortDescription: "gucci black leather shoes",
+    shortDescription: "gucci beige leather shoes",
     actualPrice: "$700"
 }, {
     id: 9,
     categoryId: 2,
-    image: "images/louboutin.jpg",
-    brand: "louboutin",
-    shortDescription: "louboutin black shoes",
+    images: [
+        {
+            url: "images/louboutin.jpg"
+        },
+
+        {
+            url: "images/louboutin2.jpg"
+        },
+
+        {
+            url: "images/louboutin3.jpg"
+        },
+
+        {
+            url: "images/louboutin4.jpg"
+        },
+
+        {
+            url: "images/louboutin5.jpg"
+        }
+
+
+    ],
+    brand: "christian louboutin",
+    shortDescription: "christian louboutin black shoes",
     actualPrice: "$1000"
 }, {
     id: 10,
     categoryId: 2,
-    image: "images/burberry2.jpg",
+
+    images: [
+        {
+            url: "images/burberry.jpg"
+        },
+
+        {
+            url: "images/burberry2.jpg"
+        },
+
+    ],
     brand: "burberry",
-    shortDescription: "lether shoes",
+    shortDescription: "leather shoes",
     actualPrice: "$1000"
 }, {
     id: 11,
     categoryId: 2,
-    image: "images/guccishoes2.jpg",
+    images: [
+        {
+            url: "images/guccishoes2.jpg"
+        }
+    ],
     brand: "gucci",
     shortDescription: "saffiano marmount leather bag",
     actualPrice: "$1000"
 }, {
     id: 12,
     categoryId: 3,
-    image: "images/bakhirkajacket.jpg",
+    images: [
+        {
+            url: "images/bakhirkajacket.jpg",
+        }
+    ],
     brand: "bakhirka",
     shortDescription: "jacket",
     actualPrice: "$500"
 }, {
     id: 13,
     categoryId: 3,
-    image: "images/basemntjacket.jpg",
+    images: [
+        {
+            url: "images/basemntjacket.jpg",
+        }
+    ],
     brand: "basemnt",
     shortDescription: "jacket",
     actualPrice: "$800"
 }, {
     id: 14,
     categoryId: 3,
-    image: "images/basemntjacket.jpg",
-    brand: "basemnt",
-    shortDescription: "jacket",
-    actualPrice: "$800"
+    images: [
+        {
+            url: "images/guccihorsebitblue.jpg",
+        },
+
+        {
+            url: "images/guccihorsebitblue(2).jpg",
+        },
+        {
+            url: "images/guccihorsebitblue(3).jpg",
+        },
+
+    ],
+    brand: "gucci",
+    shortDescription: "gucci blue leather bag",
+    actualPrice: "$1500"
 }, {
     id: 15,
     categoryId: 3,
-    image: "images/basemntjacket.jpg",
+    images: [
+        {
+            url: "images/basemntjacket.jpg",
+        }
+    ],
     brand: "basemnt",
     shortDescription: "jacket",
     actualPrice: "$800"
 }, {
     id: 16,
     categoryId: 3,
-    image: "images/basemntjacket.jpg",
-    brand: "basemnt",
-    shortDescription: "jacket",
+    images: [
+        {
+            url: "images/guccishoes2.jpg",
+        }
+    ],
+    brand: "gucci",
+    shortDescription: "beige loafers",
     actualPrice: "$800"
 }]
 

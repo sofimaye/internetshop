@@ -57,7 +57,7 @@ export function createCategorySection(categoryName, products) {
 export const createCard = function (containerId, {
     id,
     discount,
-    image,
+    images,
     brand,
     shortDescription,
     actualPrice,
@@ -69,7 +69,7 @@ export const createCard = function (containerId, {
     prodCard.className = "product-card";
     prodCard.innerHTML = `
         <div class="product-image">
-            <img src=${image} class="product-thumb" alt="">
+            <img src=${images[0]?.url || 'images/000-404.png'} class="product-thumb" alt="">
                 <button class="card-btn">add to wishlist</button>
         </div>
         <div class="product-info">
