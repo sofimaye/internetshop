@@ -55,7 +55,7 @@ getProductById({id: productId}).then((product) => {
     let imagesProdContainer = document.querySelector(".product-images");
 
     //array of objects
-    for(let image of product.images) {
+    for (let image of product.images) {
         let newImage = document.createElement('img');
         newImage.src = image.url;
         newImage.alt = "";
@@ -91,7 +91,7 @@ getProductById({id: productId}).then((product) => {
     gallery.addEventListener("click", () => {
         let pswpElement = document.querySelector('.pswp');
 
-        let items = product.images.map((image) => ({ src: image.url, w: 400, h:600}));
+        let items = product.images.map((image) => ({src: image.url, w: 400, h: 600}));
 
         let options = {
             index: 0, // start at first slide
@@ -110,7 +110,6 @@ getProductById({id: productId}).then((product) => {
     let addToCartButton = document.querySelector(".btn.card-add-btn");
 
 
-
     addToCartButton.addEventListener('click', () => {
         // window.location.href = `cart.html?cart=${product.id}`;
 
@@ -125,7 +124,9 @@ getProductById({id: productId}).then((product) => {
 
 
         let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");  // [1]
-        cartBusket.push(product.id);
+        if (!cartBusket.includes(product.id)) {
+            cartBusket.push(product.id)
+        }
         localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
 
     })
