@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="css/home.css">
+    <!--    <script type="module" src="js/product.js"></script>-->
+</head>
+
+
+<body>
+
+<nav class="navbar">
+    <script src="js/navbar.js"></script>
+</nav>
+
+
+<section class="cart">
+    <script type="module">
+
+        import {getProductById} from "./js/data.js";
+
+        // по value із url знайти потрібні поля продукта
+        let cartSection = document.querySelector(".cart");
+
+        let cartProd = JSON.parse(localStorage.getItem("cart"));
+
+        for(let productId of cartProd) {
+            getProductById({id: productId}).then((product) => {
+                // подумати над тим як зберігати стан !!!
+                // localStorage.setItem(id, product.id); розібратися із localstorage and localsession
+
+                // let cartSection = document.querySelector(".cart");
+                let cartProdContainer = document.createElement("div");
+                cartProdContainer.className = "cart-product-container";
+                cartSection.appendChild(cartProdContainer);
+
+                let productCartPrice = document.createElement("h2");
+
+                productCartPrice.innerHTML = `${product.actualPrice}`;
+                cartSection.appendChild(productCartPrice);
+
+                let prodCartImage = document.createElement("img");
+                prodCartImage.src = product.images[0].url;
+                cartSection.appendChild(prodCartImage);
+
+
+            })
+        }
+
+    </script>
+</section>
+
+
+<footer>
+    <script src="js/footer.js"></script>
+</footer>
+
+
+</body>
+</html>

@@ -106,4 +106,28 @@ getProductById({id: productId}).then((product) => {
         gallery.init();
     })
 
+
+    let addToCartButton = document.querySelector(".btn.card-add-btn");
+
+
+
+    addToCartButton.addEventListener('click', () => {
+        // window.location.href = `cart.html?cart=${product.id}`;
+
+
+        //add to array product.id
+        // повертає let cart = 2
+
+
+        //Коли ви використовуєте setItem, він перезаписує елемент, який був до нього.
+        // Вам потрібно використовувати getItem, щоб отримати старий список, додати до нього,
+        // а потім зберегти його назад у localStorage
+
+
+        let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");  // [1]
+        cartBusket.push(product.id);
+        localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
+
+    })
+
 })
