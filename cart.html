@@ -31,7 +31,7 @@
 
         let cartProd = JSON.parse(localStorage.getItem("cart"));
 
-        for(let productId of cartProd) {
+        for(let {productId, quantity} of cartProd) {
             getProductById({id: productId}).then((product) => {
 
                 let prodWrapper = document.createElement("div");
@@ -50,7 +50,6 @@
                 buttonsDeleteAndLike.appendChild(deleteButton);
                 buttonsDeleteAndLike.appendChild(likeButton);
 
-
                 let prodCartImageWrapper = document.createElement("div");
                 prodCartImageWrapper.className = "image-for-prod-at-cart";
 
@@ -61,7 +60,6 @@
                 //adding to the div
                 prodCartImageWrapper.appendChild(prodCartImage);
                 prodWrapper.appendChild(prodCartImageWrapper);
-
 
                 let descriptionOfCartProduct = document.createElement("div");
                 descriptionOfCartProduct.className = "short-description";
@@ -95,7 +93,7 @@
                 inputCartItem.className = "input-text";
                 inputCartItem.type = "text";
                 inputCartItem.name = "name";
-                inputCartItem.value = "1";
+                inputCartItem.value = `${quantity}`;
 
                 let minusBtn = document.createElement("button");
                 minusBtn.className = "minus-btn";
@@ -128,27 +126,8 @@
 
                 prodWrapper.appendChild(priceOfCartProd);
                 cartSection.appendChild(prodWrapper);
-
             });
         }
-
-
-        let addProduct = document.querySelector(".plus-btn");
-
-        let deleteProduct = document.querySelector("minus-btn");
-
-        addProduct.addEventListener("click", () => {
-            let inputText = document.querySelector(".input-text");
-            inputText.value++
-
-        })
-
-        deleteProduct.addEventListener("click", () => {
-            let inputText = document.querySelector(".input-text");
-            inputText.value--
-        })
-
-
     </script>
 </section>
 

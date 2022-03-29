@@ -118,17 +118,23 @@ getProductById({id: productId}).then((product) => {
         // повертає let cart = 2
 
 
-        //Коли ви використовуєте setItem, він перезаписує елемент, який був до нього.
-        // Вам потрібно використовувати getItem, щоб отримати старий список, додати до нього,
+        //Коли використовувати setItem, він перезаписує елемент, який був до нього.
+        // потрібно використовувати getItem, щоб отримати старий список, додати до нього,
         // а потім зберегти його назад у localStorage
 
 
         let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");  // [1]
-        if (!cartBusket.includes(product.id)) {
-            cartBusket.push(product.id)
-        }
-        localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
+        // type of data [{productId: 1, quantity: 1}]
+        //find якщо є то поміняти quantity, якщо немає то поміняти з quantity: 1
 
+        let cartItem = cartBusket.find(prod => prod.productId === product.id);
+        if(!cartItem) {
+            cartBusket.push({productId: product.id, quantity: 1})
+        } else {
+            cartItem.quantity++
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
     })
 
 })
