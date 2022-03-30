@@ -48,7 +48,7 @@ getProductById({id: productId}).then((product) => {
         <label for="xl-size" class="size-radio-btn">xl</label>
 
         <button class="btn card-add-btn">add to cart</button>
-        <button class="btn">add to wishlist</button>
+        <button class="btn wishlist-btn">add to wishlist</button>
 
     </div>`;
 
@@ -111,17 +111,9 @@ getProductById({id: productId}).then((product) => {
 
 
     addToCartButton.addEventListener('click', () => {
-        // window.location.href = `cart.html?cart=${product.id}`;
-
-
-        //add to array product.id
-        // повертає let cart = 2
-
-
         //Коли використовувати setItem, він перезаписує елемент, який був до нього.
         // потрібно використовувати getItem, щоб отримати старий список, додати до нього,
         // а потім зберегти його назад у localStorage
-
 
         let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");  // [1]
         // type of data [{productId: 1, quantity: 1}]
@@ -135,6 +127,10 @@ getProductById({id: productId}).then((product) => {
         }
 
         localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
+
+        let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+        quantityOfCardInTheNavbar.innerHTML = `${cartItem?.quantity || 1}`;
+
     })
 
 })

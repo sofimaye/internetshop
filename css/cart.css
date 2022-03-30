@@ -40,27 +40,26 @@
     margin-right: 60px;
 }
 
-.delete-btn,
-.like-btn {
+.delete-btn {
     display: inline-block;
     Cursor: pointer;
 }
 
 .delete-btn {
-    width: 18px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
     background: url("../images/delete.svg") no-repeat center;
 }
 
-.like-btn {
-    position: absolute;
-    top: 9px;
-    left: 15px;
-    width: 50px;
-    height: 50px;
-    background-size: 100%;
-    background: url('../images/heart.svg') no-repeat;
-}
+/*.like-btn {*/
+/*    position: absolute;*/
+/*    top: 9px;*/
+/*    left: 15px;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    background-size: 100%;*/
+/*    background: url('../images/heart.svg') no-repeat;*/
+/*}*/
 
 .image-for-prod-at-cart img{
     max-width: 50%;
@@ -115,7 +114,7 @@
     font-weight: 300;
 }
 
-button[class*=btn] {
+button.plus-btn, button.minus-btn{
     width: 30px;
     height: 30px;
     background-color: #E1E8EE;

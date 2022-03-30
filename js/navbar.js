@@ -13,8 +13,7 @@ const createNav = () => {
             </div>
             <a href="#"><img src="./images/user-90.png" alt="user"></a>
             <a href="#"><img src="./images/heart-90.png" alt="wishlist"></a>
-            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"></a>
-
+            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number">0</span></a>
         </div>
     </div>
     <ul class="links-container">
@@ -26,6 +25,13 @@ const createNav = () => {
         <li class="link-item"><a href="#" class="link">sale</a></li>
     </ul>
     `
+    let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+    let cartBusket = JSON.parse(localStorage.getItem("cart")); //[{}, {}];
+    let number = 0;
+    for(let elem of cartBusket){
+        number += elem.quantity;
+    }
+    quantityOfCardInTheNavbar.innerHTML = `${number}`;
 }
 
 createNav();

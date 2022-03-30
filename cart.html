@@ -139,6 +139,13 @@
                     inputCartItem.value = newQuantity.toString();
 
                     localStorage.setItem("cart", JSON.stringify(cartBusket));
+                    let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                    let number = 0;
+                    for(let elem of cartBusket){
+                        number += elem.quantity;
+                    }
+                    quantityOfCardInTheNavbar.innerHTML = `${number}`;
+
                 })
 
                 minusBtn.addEventListener("click", () => {
@@ -156,7 +163,38 @@
                         prodWrapper.remove();
                     }
                     localStorage.setItem("cart", JSON.stringify(cartBusket));
+
+                    let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                    let number = 0;
+                    for(let elem of cartBusket){
+                        number += elem.quantity;
+                    }
+                    quantityOfCardInTheNavbar.innerHTML = `${number}`;
+
                 });
+
+                //додати видалення за допомогою кнопки видалення товару
+                deleteButton.addEventListener("click", () => {
+                    //[{}, {}]
+                    let cartBusket = JSON.parse(localStorage.getItem("cart"));
+                    let cartItem = cartBusket.find(prod => prod.productId === product.id);
+
+                    let index = cartBusket.indexOf(cartItem);
+                    cartBusket.splice(index, 1);
+                    prodWrapper.remove();
+
+                    localStorage.setItem("cart", JSON.stringify(cartBusket));
+
+                    let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                    let number = 0;
+                    for(let elem of cartBusket){
+                        number += elem.quantity;
+                    }
+                    quantityOfCardInTheNavbar.innerHTML = `${number}`;
+
+                });
+
+
             });
         }
     </script>
