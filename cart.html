@@ -29,11 +29,13 @@
         // по value із url знайти потрібні поля продукта
         let cartSection = document.querySelector(".cart");
 
+        //дістали із локального сховища value of key (у форматі string) та
+        // перетворили в обєкт з ключами та значеннями
+        // {productId: 1, quantity: 4}
         let cartProd = JSON.parse(localStorage.getItem("cart"));
 
-        for(let {productId, quantity} of cartProd) {
+        for (let {productId, quantity} of cartProd) {
             getProductById({id: productId}).then((product) => {
-
                 let prodWrapper = document.createElement("div");
                 prodWrapper.className = "item";
 
@@ -44,11 +46,11 @@
                 let deleteButton = document.createElement("span");
                 deleteButton.className = "delete-btn";
 
-                let likeButton = document.createElement("span");
-                likeButton.className="like-btn";
+                // let likeButton = document.createElement("span");
+                // likeButton.className = "like-btn";
 
                 buttonsDeleteAndLike.appendChild(deleteButton);
-                buttonsDeleteAndLike.appendChild(likeButton);
+                // buttonsDeleteAndLike.appendChild(likeButton);
 
                 let prodCartImageWrapper = document.createElement("div");
                 prodCartImageWrapper.className = "image-for-prod-at-cart";
@@ -82,6 +84,7 @@
                 plusBtn.type = "button";
                 plusBtn.name = "button";
 
+
                 let plusBtnImage = document.createElement("img");
                 plusBtnImage.src = "images/plus.svg";
                 plusBtnImage.alt = "";
@@ -93,7 +96,7 @@
                 inputCartItem.className = "input-text";
                 inputCartItem.type = "text";
                 inputCartItem.name = "name";
-                inputCartItem.value = `${quantity}`;
+                inputCartItem.value = quantity;
 
                 let minusBtn = document.createElement("button");
                 minusBtn.className = "minus-btn";
@@ -107,12 +110,10 @@
 
                 minusBtn.appendChild(minusBtnImage);
 
-
                 // adding to the div
                 quantityOfProd.appendChild(plusBtn);
                 quantityOfProd.appendChild(inputCartItem);
                 quantityOfProd.appendChild(minusBtn);
-
                 prodWrapper.appendChild(quantityOfProd);
 
 
@@ -126,6 +127,36 @@
 
                 prodWrapper.appendChild(priceOfCartProd);
                 cartSection.appendChild(prodWrapper);
+
+
+                plusBtn.addEventListener("click", () => {
+                    let cartBusket = JSON.parse(localStorage.getItem("cart"));  // [{}]
+                    // type of data [{productId: 1, quantity: 1}]
+                    //find якщо є то поміняти quantity, якщо немає то поміняти з quantity: 1
+
+                    let cartItem = cartBusket.find(prod => prod.productId === product.id);
+                    let newQuantity = ++cartItem.quantity;
+                    inputCartItem.value = newQuantity.toString();
+
+                    localStorage.setItem("cart", JSON.stringify(cartBusket));
+                })
+
+                minusBtn.addEventListener("click", () => {
+                    //[{}, {}]
+                    let cartBusket = JSON.parse(localStorage.getItem("cart"));
+                    let cartItem = cartBusket.find(prod => prod.productId === product.id);
+                    let newQuantity = --cartItem.quantity;
+
+                    if (newQuantity > 0) {
+                        inputCartItem.value = newQuantity.toString();
+                    } else {
+                        inputCartItem.value = newQuantity.toString();
+                        let index = cartBusket.indexOf(cartItem);
+                        cartBusket.splice(index, 1);
+                        prodWrapper.remove();
+                    }
+                    localStorage.setItem("cart", JSON.stringify(cartBusket));
+                });
             });
         }
     </script>
