@@ -129,7 +129,11 @@ getProductById({id: productId}).then((product) => {
         localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
 
         let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-        quantityOfCardInTheNavbar.innerHTML = `${cartItem?.quantity || 1}`;
+        let number = 0;
+        for(let elem of cartBusket){
+            number += elem.quantity;
+        }
+        quantityOfCardInTheNavbar.innerHTML = `${number}`;
 
     })
 
