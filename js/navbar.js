@@ -1,4 +1,5 @@
 //navbar
+import {countCartItems} from "./data.js";
 
 const createNav = () => {
     let nav = document.querySelector('.navbar');
@@ -25,13 +26,11 @@ const createNav = () => {
         <li class="link-item"><a href="#" class="link">sale</a></li>
     </ul>
     `
-    let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-    let cartBusket = JSON.parse(localStorage.getItem("cart")); //[{}, {}];
-    let number = 0;
-    for(let elem of cartBusket){
-        number += elem.quantity;
-    }
-    quantityOfCardInTheNavbar.innerHTML = `${number}`;
+
+    countCartItems().then((number) => {
+        let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+        quantityOfCardInTheNavbar.innerHTML = `${number}`;
+    })
 }
 
 createNav();

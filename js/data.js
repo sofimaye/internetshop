@@ -313,11 +313,17 @@ const searchCategoriesByName = ({name}) => {
     })
 }
 
+const getCart = () => {
+    return new Promise((resolve) => {
+        resolve(JSON.parse(localStorage.getItem("cart")));
+    });
+}
+
 const countCartItems = () => {
     return new Promise((resolve) => {
         const cart = JSON.parse(localStorage.getItem("cart"));
         let number = 0;
-        for(let elem of cart){
+        for (let elem of cart) {
             number += elem.quantity;
         }
         resolve(number)
@@ -329,16 +335,54 @@ const countCartItems = () => {
 // а потім зберегти його назад у localStorage
 const addProductToCart = ({id}) => {
     return new Promise((resolve) => {
-        let cartBusket = JSON.parse(localStorage.getItem("cart"));
+        let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");
         let cartItem = cartBusket.find(prod => prod.productId === id);
-        if(!cartItem) {
-            cartBusket.push({productId: id, quantity: 1})
+
+        if (!cartItem) {
+            cartItem = {productId: id, quantity: 1};
+            cartBusket.push(cartItem)
         } else {
             cartItem.quantity++
         }
         localStorage.setItem("cart", JSON.stringify(cartBusket))
+        resolve({newQuantity: cartItem.quantity})
+    })
+}
+const decreaseProductQuantityInCart = ({id}) => {
+    return new Promise((resolve) => {
+        let cartBusket = JSON.parse(localStorage.getItem("cart"));
+        let cartItem = cartBusket.find(prod => prod.productId === id);
+        --cartItem.quantity;
+        let removed = false
+        if (cartItem.quantity <= 0) {
+            let index = cartBusket.indexOf(cartItem);
+            cartBusket.splice(index, 1);
+            removed = true
+        }
+        localStorage.setItem("cart", JSON.stringify(cartBusket));
+        resolve({removed: removed, newQuantity: cartItem.quantity})
+    })
+}
+const deleteProductFromCart = ({id}) => {
+    return new Promise((resolve) => {
+        let cartBusket = JSON.parse(localStorage.getItem("cart"));
+        let index = cartBusket.findIndex(prod => prod.productId === id);
+        cartBusket.splice(index, 1);
+
+        localStorage.setItem("cart", JSON.stringify(cartBusket));
         resolve()
     })
 }
 
-export {getProductsByCategory, getAllCategories, getCategoryById, searchCategoriesByName, getProductById, countCartItems, addProductToCart}
+export {
+    getProductsByCategory,
+    getAllCategories,
+    getCategoryById,
+    searchCategoriesByName,
+    getProductById,
+    countCartItems,
+    addProductToCart,
+    deleteProductFromCart,
+    decreaseProductQuantityInCart,
+    getCart
+}
