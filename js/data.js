@@ -315,13 +315,13 @@ const searchCategoriesByName = ({name}) => {
 
 const getCart = () => {
     return new Promise((resolve) => {
-        resolve(JSON.parse(localStorage.getItem("cart")));
+        resolve(JSON.parse(localStorage.getItem("cart") || "[]"));
     });
 }
 
 const countCartItems = () => {
     return new Promise((resolve) => {
-        const cart = JSON.parse(localStorage.getItem("cart"));
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
         let number = 0;
         for (let elem of cart) {
             number += elem.quantity;
