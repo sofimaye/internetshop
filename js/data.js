@@ -313,4 +313,32 @@ const searchCategoriesByName = ({name}) => {
     })
 }
 
-export {getProductsByCategory, getAllCategories, getCategoryById, searchCategoriesByName, getProductById}
+const countCartItems = () => {
+    return new Promise((resolve) => {
+        const cart = JSON.parse(localStorage.getItem("cart"));
+        let number = 0;
+        for(let elem of cart){
+            number += elem.quantity;
+        }
+        resolve(number)
+    });
+}
+
+//Коли використовувати setItem, він перезаписує елемент, який був до нього.
+// потрібно використовувати getItem, щоб отримати старий список, додати до нього,
+// а потім зберегти його назад у localStorage
+const addProductToCart = ({id}) => {
+    return new Promise((resolve) => {
+        let cartBusket = JSON.parse(localStorage.getItem("cart"));
+        let cartItem = cartBusket.find(prod => prod.productId === id);
+        if(!cartItem) {
+            cartBusket.push({productId: id, quantity: 1})
+        } else {
+            cartItem.quantity++
+        }
+        localStorage.setItem("cart", JSON.stringify(cartBusket))
+        resolve()
+    })
+}
+
+export {getProductsByCategory, getAllCategories, getCategoryById, searchCategoriesByName, getProductById, countCartItems, addProductToCart}

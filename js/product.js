@@ -1,4 +1,4 @@
-import {getProductById} from "./data.js";
+import {addProductToCart, countCartItems, getProductById} from "./data.js";
 
 
 let productId = parseInt(new URLSearchParams(window.location.search).get("productId"));
@@ -17,8 +17,6 @@ getProductById({id: productId}).then((product) => {
 
     prodSection.innerHTML = `<div class="image-slider">
         <div class="product-images">
-<!--             <img src="" alt="">-->
-<!--            <img src="images/dressdavidkoma2.jpg" alt="">-->
         </div>
     </div>
 
@@ -111,30 +109,11 @@ getProductById({id: productId}).then((product) => {
 
 
     addToCartButton.addEventListener('click', () => {
-        //Коли використовувати setItem, він перезаписує елемент, який був до нього.
-        // потрібно використовувати getItem, щоб отримати старий список, додати до нього,
-        // а потім зберегти його назад у localStorage
-
-        let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");  // [1]
-        // type of data [{productId: 1, quantity: 1}]
-        //find якщо є то поміняти quantity, якщо немає то поміняти з quantity: 1
-
-        let cartItem = cartBusket.find(prod => prod.productId === product.id);
-        if(!cartItem) {
-            cartBusket.push({productId: product.id, quantity: 1})
-        } else {
-            cartItem.quantity++
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cartBusket)); //`[1,2]`
-
-        let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-        let number = 0;
-        for(let elem of cartBusket){
-            number += elem.quantity;
-        }
-        quantityOfCardInTheNavbar.innerHTML = `${number}`;
-
+        addProductToCart({id: product.id}).then(() => {
+            countCartItems().then((number) => {
+                let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                quantityOfCardInTheNavbar.innerHTML = `${number}`;
+            })
+        })
     })
-
 })
