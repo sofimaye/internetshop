@@ -30,8 +30,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "saffiano marmount light-pink leather bag",
-    actualPrice: "$1000",
-    previousPrice: "$2000"
+    actualPrice: 1000,
+    previousPrice: 2000
 }, {
     id: 2,
     categoryId: 1,
@@ -46,8 +46,8 @@ const products = [{
     ],
     brand: "faithfull",
     shortDescription: "short black linen dress",
-    actualPrice: "$500",
-    previousPrice: "$250"
+    actualPrice: 500,
+    previousPrice: 1000
 }, {
     id: 3,
     categoryId: 1,
@@ -65,8 +65,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "brown gucci leather bag",
-    actualPrice: "$1000",
-    previousPrice: "$2000"
+    actualPrice: 1000,
+    previousPrice: 2000
 }, {
     id: 4,
     categoryId: 1,
@@ -82,8 +82,8 @@ const products = [{
     ],
     brand: "selfportrait",
     shortDescription: "short dress",
-    actualPrice: "$300",
-    previousPrice: "$600"
+    actualPrice: 300,
+    previousPrice: 600
 }, {
     id: 5,
     categoryId: 1,
@@ -98,8 +98,8 @@ const products = [{
     ],
     brand: "parosh",
     shortDescription: "short dress",
-    actualPrice: "$300",
-    previousPrice: "$600"
+    actualPrice: 300,
+    previousPrice: 600
 }, {
     id: 6,
     categoryId: 1,
@@ -114,8 +114,8 @@ const products = [{
     ],
     brand: "david koma",
     shortDescription: "short dress",
-    actualPrice: "$400",
-    previousPrice: "$800"
+    actualPrice: 400,
+    previousPrice: 800
 }, {
     id: 7,
     categoryId: 2,
@@ -139,7 +139,7 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "gucci diana brown leather bag",
-    actualPrice: "$3000"
+    actualPrice: 3000
 }, {
     id: 8,
     categoryId: 2,
@@ -162,7 +162,7 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "gucci beige leather shoes",
-    actualPrice: "$700"
+    actualPrice: 700
 }, {
     id: 9,
     categoryId: 2,
@@ -191,7 +191,7 @@ const products = [{
     ],
     brand: "christian louboutin",
     shortDescription: "christian louboutin black shoes",
-    actualPrice: "$1000"
+    actualPrice: 1000
 }, {
     id: 10,
     categoryId: 2,
@@ -208,7 +208,7 @@ const products = [{
     ],
     brand: "burberry",
     shortDescription: "leather shoes",
-    actualPrice: "$1000"
+    actualPrice: 1000
 }, {
     id: 11,
     categoryId: 2,
@@ -219,7 +219,7 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "saffiano marmount leather bag",
-    actualPrice: "$1000"
+    actualPrice: 1000
 }, {
     id: 12,
     categoryId: 3,
@@ -230,7 +230,7 @@ const products = [{
     ],
     brand: "bakhirka",
     shortDescription: "jacket",
-    actualPrice: "$500"
+    actualPrice: 500
 }, {
     id: 13,
     categoryId: 3,
@@ -241,7 +241,7 @@ const products = [{
     ],
     brand: "basemnt",
     shortDescription: "jacket",
-    actualPrice: "$800"
+    actualPrice: 800
 }, {
     id: 14,
     categoryId: 3,
@@ -260,7 +260,7 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "gucci blue leather bag",
-    actualPrice: "$1500"
+    actualPrice: 1500
 }, {
     id: 15,
     categoryId: 3,
@@ -271,7 +271,7 @@ const products = [{
     ],
     brand: "basemnt",
     shortDescription: "jacket",
-    actualPrice: "$800"
+    actualPrice: 800
 }, {
     id: 16,
     categoryId: 3,
@@ -282,7 +282,7 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "beige loafers",
-    actualPrice: "$800"
+    actualPrice: 800
 }]
 
 const getProductsByCategory = ({categoryId}) => {

@@ -63,9 +63,9 @@ getProductById({id: productId}).then((product) => {
 
     let price = document.querySelector(".product-price");
     if (product.previousPrice) {
-        price.innerHTML = `${product.previousPrice}`
+        price.innerHTML = `$${product.previousPrice}`
     } else {
-        price.innerHTML = `${product.actualPrice}`
+        price.innerHTML = `$${product.actualPrice}`
     }
 
     let discount = document.querySelector(".product-discount");

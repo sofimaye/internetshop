@@ -98,18 +98,27 @@ getCart().then((cartProd) => {
 
             let priceOfCartProd = document.createElement("div");
             priceOfCartProd.className = "total-price";
-            if (`${product.previousPrice}`) {
-                priceOfCartProd.innerHTML = `${product.previousPrice}`
+            if (product.actualPrice) {
+                priceOfCartProd.innerHTML = `$${product.actualPrice*quantity}`
             } else {
-                priceOfCartProd.innerHTML = `${product.actualPrice}`
+                priceOfCartProd.innerHTML = `$${product.previousPrice*quantity}`
             }
             prodWrapper.appendChild(priceOfCartProd);
             cartSection.appendChild(prodWrapper);
 
 
+
+
+            let priceOfCartItem = 0;
             plusBtn.addEventListener("click", () => {
                 addProductToCart({id: productId}).then(({newQuantity}) => {
+                    // inputCartItem.value = newQuantity.toString();
+
+                    // priceOfCartItem+=product.actualPrice*newQuantity;
                     inputCartItem.value = newQuantity.toString();
+
+                    priceOfCartProd.innerHTML = `$${product.actualPrice*newQuantity}`;
+
                     countCartItems().then((number) => {
                         let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
                         quantityOfCardInTheNavbar.innerHTML = `${number}`;
@@ -117,13 +126,15 @@ getCart().then((cartProd) => {
                 })
             })
 
-
             minusBtn.addEventListener("click", () => {
                 decreaseProductQuantityInCart({id: productId}).then(({removed, newQuantity}) => {
                     if (removed) {
                         prodWrapper.remove();
                     }
+                    // priceOfCartItem-=product.actualPrice*newQuantity;
                     inputCartItem.value = newQuantity.toString();
+                    priceOfCartProd.innerHTML = `$${product.actualPrice*newQuantity}`;
+
                     countCartItems().then((number) => {
                         let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
                         quantityOfCardInTheNavbar.innerHTML = `${number}`;
@@ -140,6 +151,15 @@ getCart().then((cartProd) => {
                     })
                 })
             })
+
+            //total price for all products
+            // let totalPrice = document.createElement("div");
+            // totalPrice.className = "total-price-of-all-products";
+            //
+            // let priceOfAllProducts = document.createElement("span");
+            // priceOfAllProducts.innerHTML = `${priceOfCartItem}`
+            // totalPrice.appendChild(priceOfAllProducts);
+
         });
     }
 })

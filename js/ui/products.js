@@ -75,7 +75,7 @@ export const createCard = function (containerId, {
         <div class="product-info">
             <h2 class="product-brand">${brand}</h2>
             <p class="product-short-description">${shortDescription}</p>
-            <span class="price">${actualPrice}</span>
+            <span class="price">$${actualPrice}</span>
         </div>`
 
     if (discount) {
@@ -91,7 +91,7 @@ export const createCard = function (containerId, {
         let prodInfo = prodCard.querySelector(".product-info");
         let newInfoSpan = document.createElement('span');
         newInfoSpan.className = "actual-price";
-        newInfoSpan.innerHTML = `${previousPrice}`;
+        newInfoSpan.innerHTML = `$${previousPrice}`;
 
 
         prodInfo.appendChild(newInfoSpan)
