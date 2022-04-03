@@ -12,154 +12,164 @@ let cartSection = document.querySelector(".cart");
 // перетворили в обєкт з ключами та значеннями
 // {productId: 1, quantity: 4}
 
-
 getCart().then((cartProd) => {
-    for (let {productId, quantity} of cartProd) {
-        getProductById({id: productId}).then((product) => {
-            let prodWrapper = document.createElement("div");
-            prodWrapper.className = "item";
+    Promise.all(
+        cartProd.map(({productId, quantity}) =>
+            getProductById({id: productId})
+                .then((product) => ({product: product, quantity: quantity}))
+        )
+    ).then((productsWithQuantity) => {
+        //access to all products
+        console.log(productsWithQuantity);
 
-            let buttonsDeleteAndLike = document.createElement('div');
-            buttonsDeleteAndLike.className = "buttons";
-            prodWrapper.appendChild(buttonsDeleteAndLike);
+        let totalPrice = 0;
 
-            let deleteButton = document.createElement("span");
-            deleteButton.className = "delete-btn";
+        for (let {product, quantity} of productsWithQuantity) {
+            showProduct({product: product, quantity: quantity});
+            // виконується 1 раз
+            // для того щоб виконувати кілька разів потрубно додати в eventListener
+            totalPrice += product.actualPrice*quantity;
+        }
 
-            // let likeButton = document.createElement("span");
-            // likeButton.className = "like-btn";
+        let total = document.createElement("div");
+        total.className = "total-price-of-all-products";
 
-            buttonsDeleteAndLike.appendChild(deleteButton);
-            // buttonsDeleteAndLike.appendChild(likeButton);
-
-            let prodCartImageWrapper = document.createElement("div");
-            prodCartImageWrapper.className = "image-for-prod-at-cart";
-
-            let prodCartImage = document.createElement("img");
-            prodCartImage.src = product.images[0].url;
-            prodCartImage.alt = "";
-
-            //adding to the div
-            prodCartImageWrapper.appendChild(prodCartImage);
-            prodWrapper.appendChild(prodCartImageWrapper);
-
-            let descriptionOfCartProduct = document.createElement("div");
-            descriptionOfCartProduct.className = "short-description";
-            let prodName = document.createElement("span");
-            prodName.innerHTML = `${product.brand}`;
-            let prodDescription = document.createElement("span");
-            prodDescription.innerHTML = `${product.shortDescription}`;
-
-            //adding to the div
-            descriptionOfCartProduct.appendChild(prodName);
-            descriptionOfCartProduct.appendChild(prodDescription);
-            prodWrapper.appendChild(descriptionOfCartProduct);
-
-
-            let quantityOfProd = document.createElement("div");
-            quantityOfProd.className = "quantity";
-
-            let plusBtn = document.createElement("button");
-            plusBtn.className = "plus-btn";
-            plusBtn.type = "button";
-            plusBtn.name = "button";
-
-
-            let plusBtnImage = document.createElement("img");
-            plusBtnImage.src = "images/plus.svg";
-            plusBtnImage.alt = "";
-
-
-            plusBtn.appendChild(plusBtnImage);
-
-            let inputCartItem = document.createElement("input");
-            inputCartItem.className = "input-text";
-            inputCartItem.type = "text";
-            inputCartItem.name = "name";
-            inputCartItem.value = quantity;
-
-            let minusBtn = document.createElement("button");
-            minusBtn.className = "minus-btn";
-            minusBtn.type = "button";
-            minusBtn.name = "button";
-
-            let minusBtnImage = document.createElement("img");
-            minusBtnImage.src = "images/minus.svg";
-            minusBtnImage.alt = "";
-
-
-            minusBtn.appendChild(minusBtnImage);
-
-            // adding to the div
-            quantityOfProd.appendChild(plusBtn);
-            quantityOfProd.appendChild(inputCartItem);
-            quantityOfProd.appendChild(minusBtn);
-            prodWrapper.appendChild(quantityOfProd);
-
-            let priceOfCartProd = document.createElement("div");
-            priceOfCartProd.className = "total-price";
-            if (product.actualPrice) {
-                priceOfCartProd.innerHTML = `$${product.actualPrice*quantity}`
-            } else {
-                priceOfCartProd.innerHTML = `$${product.previousPrice*quantity}`
-            }
-            prodWrapper.appendChild(priceOfCartProd);
-            cartSection.appendChild(prodWrapper);
-
-
-
-
-            let priceOfCartItem = 0;
-            plusBtn.addEventListener("click", () => {
-                addProductToCart({id: productId}).then(({newQuantity}) => {
-                    // inputCartItem.value = newQuantity.toString();
-
-                    // priceOfCartItem+=product.actualPrice*newQuantity;
-                    inputCartItem.value = newQuantity.toString();
-
-                    priceOfCartProd.innerHTML = `$${product.actualPrice*newQuantity}`;
-
-                    countCartItems().then((number) => {
-                        let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-                        quantityOfCardInTheNavbar.innerHTML = `${number}`;
-                    })
-                })
-            })
-
-            minusBtn.addEventListener("click", () => {
-                decreaseProductQuantityInCart({id: productId}).then(({removed, newQuantity}) => {
-                    if (removed) {
-                        prodWrapper.remove();
-                    }
-                    // priceOfCartItem-=product.actualPrice*newQuantity;
-                    inputCartItem.value = newQuantity.toString();
-                    priceOfCartProd.innerHTML = `$${product.actualPrice*newQuantity}`;
-
-                    countCartItems().then((number) => {
-                        let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-                        quantityOfCardInTheNavbar.innerHTML = `${number}`;
-                    })
-                })
-            });
-
-            deleteButton.addEventListener("click", () => {
-                deleteProductFromCart({id: productId}).then(() => {
-                    prodWrapper.remove();
-                    countCartItems().then((number) => {
-                        let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-                        quantityOfCardInTheNavbar.innerHTML = `${number}`;
-                    })
-                })
-            })
-
-            //total price for all products
-            // let totalPrice = document.createElement("div");
-            // totalPrice.className = "total-price-of-all-products";
-            //
-            // let priceOfAllProducts = document.createElement("span");
-            // priceOfAllProducts.innerHTML = `${priceOfCartItem}`
-            // totalPrice.appendChild(priceOfAllProducts);
-
-        });
-    }
+        let priceOfAllProducts = document.createElement("span");
+        priceOfAllProducts.innerHTML = "Total price $" + totalPrice.toString()
+        total.appendChild(priceOfAllProducts);
+        cartSection.appendChild(total);
+    })
 })
+
+const showProduct = ({product, quantity}) => {
+    let prodWrapper = document.createElement("div");
+    prodWrapper.className = "item";
+
+    let buttonsDeleteAndLike = document.createElement('div');
+    buttonsDeleteAndLike.className = "buttons";
+    prodWrapper.appendChild(buttonsDeleteAndLike);
+
+    let deleteButton = document.createElement("span");
+    deleteButton.className = "delete-btn";
+
+    buttonsDeleteAndLike.appendChild(deleteButton);
+
+    let prodCartImageWrapper = document.createElement("div");
+    prodCartImageWrapper.className = "image-for-prod-at-cart";
+
+    let prodCartImage = document.createElement("img");
+    prodCartImage.src = product.images[0].url;
+    prodCartImage.alt = "";
+
+    //adding to the div
+    prodCartImageWrapper.appendChild(prodCartImage);
+    prodWrapper.appendChild(prodCartImageWrapper);
+
+    let descriptionOfCartProduct = document.createElement("div");
+    descriptionOfCartProduct.className = "short-description";
+    let prodName = document.createElement("span");
+    prodName.innerHTML = `${product.brand}`;
+    let prodDescription = document.createElement("span");
+    prodDescription.innerHTML = `${product.shortDescription}`;
+
+    //adding to the div
+    descriptionOfCartProduct.appendChild(prodName);
+    descriptionOfCartProduct.appendChild(prodDescription);
+    prodWrapper.appendChild(descriptionOfCartProduct);
+
+    let quantityOfProd = document.createElement("div");
+    quantityOfProd.className = "quantity";
+
+    let plusBtn = document.createElement("button");
+    plusBtn.className = "plus-btn";
+    plusBtn.type = "button";
+    plusBtn.name = "button";
+
+    let plusBtnImage = document.createElement("img");
+    plusBtnImage.src = "images/plus.svg";
+    plusBtnImage.alt = "";
+
+    plusBtn.appendChild(plusBtnImage);
+
+    let inputCartItem = document.createElement("input");
+    inputCartItem.className = "input-text";
+    inputCartItem.type = "text";
+    inputCartItem.name = "name";
+    inputCartItem.value = quantity;
+
+    let minusBtn = document.createElement("button");
+    minusBtn.className = "minus-btn";
+    minusBtn.type = "button";
+    minusBtn.name = "button";
+
+    let minusBtnImage = document.createElement("img");
+    minusBtnImage.src = "images/minus.svg";
+    minusBtnImage.alt = "";
+
+
+    minusBtn.appendChild(minusBtnImage);
+
+    // adding to the div
+    quantityOfProd.appendChild(plusBtn);
+    quantityOfProd.appendChild(inputCartItem);
+    quantityOfProd.appendChild(minusBtn);
+    prodWrapper.appendChild(quantityOfProd);
+
+    let priceOfCartProd = document.createElement("div");
+    priceOfCartProd.className = "total-price";
+
+
+    //total price of one product cart
+    let allPricesOfItems = product.actualPrice * quantity;
+    // console.log(allPricesOfItems);
+
+    priceOfCartProd.innerHTML = "$" + allPricesOfItems.toString();
+
+    prodWrapper.appendChild(priceOfCartProd);
+    cartSection.appendChild(prodWrapper);
+
+
+    plusBtn.addEventListener("click", () => {
+        addProductToCart({id: product.id}).then(({newQuantity}) => {
+
+            inputCartItem.value = newQuantity.toString();
+            let costsPlus = product.actualPrice * newQuantity;
+
+            priceOfCartProd.innerHTML = "$" + costsPlus.toString();
+
+            countCartItems().then((number) => {
+                let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                quantityOfCardInTheNavbar.innerHTML = `${number}`;
+            })
+        })
+    })
+
+    minusBtn.addEventListener("click", () => {
+        decreaseProductQuantityInCart({id: product.id}).then(({removed, newQuantity}) => {
+            if (removed) {
+                prodWrapper.remove();
+            }
+
+            inputCartItem.value = newQuantity.toString();
+            let costsMinus = product.actualPrice * newQuantity;
+
+            priceOfCartProd.innerHTML = "$" + costsMinus.toString()
+
+            countCartItems().then((number) => {
+                let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                quantityOfCardInTheNavbar.innerHTML = `${number}`;
+            })
+        })
+    });
+
+    deleteButton.addEventListener("click", () => {
+        deleteProductFromCart({id: product.id}).then(() => {
+            prodWrapper.remove();
+            countCartItems().then((number) => {
+                let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                quantityOfCardInTheNavbar.innerHTML = `${number}`;
+            })
+        })
+    })
+
+}

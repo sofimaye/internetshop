@@ -290,10 +290,13 @@ const getProductsByCategory = ({categoryId}) => {
         resolve(products.filter(p => p.categoryId === categoryId))
     })
 }
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
 const getProductById = ({id}) => {
     return new Promise((resolve) => {
-        resolve(products.find(p => p.id === id))
+        setTimeout(() => resolve(products.find(p => p.id === id)), getRandomArbitrary(400, 1200))
     })
 }
 

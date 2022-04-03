@@ -7,12 +7,13 @@
     height: auto;
     margin: 50px auto;
     background: #FFFFFF;
-    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
 }
+
 .title {
     height: 60px;
     border-bottom: 1px solid #E1E8EE;
@@ -61,7 +62,7 @@
 /*    background: url('../images/heart.svg') no-repeat;*/
 /*}*/
 
-.image-for-prod-at-cart img{
+.image-for-prod-at-cart img {
     max-width: 50%;
     height: auto;
     margin: auto;
@@ -70,7 +71,7 @@
 
 /*some basic style for the product description*/
 
-.short-description{
+.short-description {
     /*display: flex;*/
     /*align-items: center;*/
     padding-top: 10px;
@@ -79,18 +80,18 @@
 
 }
 
-.short-description span{
+.short-description span {
     margin-left: 10px;
     font-size: 14px;
     color: #43484D;
     font-weight: 400;
 }
 
-.short-description span:first-child{
+.short-description span:first-child {
     margin-bottom: 5px;
 }
 
-.short-description span:last-child{
+.short-description span:last-child {
     font-weight: 300;
     margin-top: 8px;
     color: #86939E;
@@ -104,6 +105,7 @@
     /*padding-top: 20px;*/
     /*margin-right: 60px;*/
 }
+
 .quantity input {
     -webkit-appearance: none;
     border: none;
@@ -114,7 +116,7 @@
     font-weight: 300;
 }
 
-button.plus-btn, button.minus-btn{
+button.plus-btn, button.minus-btn {
     width: 30px;
     height: 30px;
     background-color: #E1E8EE;
@@ -122,6 +124,7 @@ button.plus-btn, button.minus-btn{
     border: none;
     cursor: pointer;
 }
+
 .minus-btn img {
     max-width: 100%;
     height: auto;
@@ -136,7 +139,7 @@ button.plus-btn, button.minus-btn{
 
 button:focus,
 input:focus {
-    outline:0;
+    outline: 0;
 }
 
 .total-price {
@@ -154,6 +157,7 @@ input:focus {
         height: auto;
         overflow: hidden;
     }
+
     .item {
         height: auto;
         flex-wrap: wrap;
@@ -163,6 +167,7 @@ input:focus {
     .image-for-prod-at-cart img {
         width: 50%;
     }
+
     .image-for-prod-at-cart,
     .quantity,
     .short-description {
@@ -170,10 +175,22 @@ input:focus {
         text-align: center;
         margin: 6px 0;
     }
+
     .buttons {
         margin-right: 20px;
     }
 }
+
+.total-price-of-all-products {
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+
+span.total-price-of-all{
+
+}
+
 
 
 
