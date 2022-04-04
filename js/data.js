@@ -1,9 +1,5 @@
 const categories = [
     {
-        id: 1,
-        name: "Sale"
-    },
-    {
         id: 2,
         name: "Shoes"
     },
@@ -308,10 +304,21 @@ const getAllCategories = () => {
     return Promise.resolve(categories)
 }
 
+const getAllProducts = () => {
+    return Promise.resolve(products)
+}
+
+
 const getCategoryById = ({id}) => {
     return new Promise((resolve) => {
         resolve(categories.find(c => c.id === id))
     })
+}
+
+const getProductsWithDiscount = () =>{
+   return new Promise((resolve) =>{
+       resolve(products.filter(p => p.discount))
+   })
 }
 
 const searchCategoriesByName = ({name}) => {
@@ -392,5 +399,7 @@ export {
     addProductToCart,
     deleteProductFromCart,
     decreaseProductQuantityInCart,
-    getCart
+    getCart,
+    getAllProducts,
+    getProductsWithDiscount
 }

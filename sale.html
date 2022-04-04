@@ -15,12 +15,17 @@
 
 <section class="main-products-container">
     <script type="module">
-        import{getProductsByCategory, getCategoryById} from "./js/data.js";
+        import {getProductsWithDiscount, getCategoryById} from "./js/data.js";
         import {createCategorySection} from "./js/ui/products.js";
 
-        getCategoryById({id: 1}).then((category) => {
-            getProductsByCategory({categoryId: category.id}).then((products)=>{
-                createCategorySection(category.name, products)
+        // список продуктів з різними категоріями але з наявним полем "discount"
+        getProductsWithDiscount().then((productsWithSales) => {
+            const categoryIds = [...new Set(productsWithSales.map((p) => p.categoryId))]
+            Promise.all(categoryIds.map(id => getCategoryById({id: id}))).then(categories => {
+                for (let category of categories){
+                    let newProducts = productsWithSales.filter(p => p.categoryId === category.id);
+                    createCategorySection(category.name, newProducts);
+                }
             })
         })
 
