@@ -10,12 +10,20 @@ const categories = [
     {
         id: 3,
         name: "Jackets"
+    },
+    {
+        id: 4,
+        name: "Bags"
+    },
+    {
+        id: 5,
+        name: "Dresses"
     }
 ]
 
 const products = [{
     id: 1,
-    categoryId: 1,
+    categoryId: 4,
     discount: '-50%',
     images: [
         {
@@ -34,7 +42,7 @@ const products = [{
     previousPrice: 2000
 }, {
     id: 2,
-    categoryId: 1,
+    categoryId: 5,
     discount: '-50%',
     images: [
         {
@@ -50,7 +58,7 @@ const products = [{
     previousPrice: 1000
 }, {
     id: 3,
-    categoryId: 1,
+    categoryId: 4,
     discount: '-50%',
     images: [
         {
@@ -69,7 +77,7 @@ const products = [{
     previousPrice: 2000
 }, {
     id: 4,
-    categoryId: 1,
+    categoryId: 5,
     discount: '-50%',
     images: [
         {
@@ -86,7 +94,7 @@ const products = [{
     previousPrice: 600
 }, {
     id: 5,
-    categoryId: 1,
+    categoryId: 5,
     discount: '-50%',
     images: [
         {
@@ -102,7 +110,7 @@ const products = [{
     previousPrice: 600
 }, {
     id: 6,
-    categoryId: 1,
+    categoryId: 5,
     discount: '-50%',
     images: [
         {
@@ -118,7 +126,7 @@ const products = [{
     previousPrice: 800
 }, {
     id: 7,
-    categoryId: 2,
+    categoryId: 4,
     images: [
         {
             url: "images/guccibrownleatherbag.jpg"
@@ -187,8 +195,7 @@ const products = [{
             url: "images/louboutin5.jpg"
         }
 
-
-    ],
+        ],
     brand: "christian louboutin",
     shortDescription: "christian louboutin black shoes",
     actualPrice: 1000
@@ -218,7 +225,7 @@ const products = [{
         }
     ],
     brand: "gucci",
-    shortDescription: "saffiano marmount leather bag",
+    shortDescription: "saffiano leather light-pink shoes",
     actualPrice: 1000
 }, {
     id: 12,
@@ -244,7 +251,7 @@ const products = [{
     actualPrice: 800
 }, {
     id: 14,
-    categoryId: 3,
+    categoryId: 4,
     images: [
         {
             url: "images/guccihorsebitblue.jpg",
@@ -274,14 +281,14 @@ const products = [{
     actualPrice: 800
 }, {
     id: 16,
-    categoryId: 3,
+    categoryId: 2,
     images: [
         {
             url: "images/guccishoes2.jpg",
         }
     ],
     brand: "gucci",
-    shortDescription: "beige loafers",
+    shortDescription: "beige shoes",
     actualPrice: 800
 }]
 
@@ -290,13 +297,10 @@ const getProductsByCategory = ({categoryId}) => {
         resolve(products.filter(p => p.categoryId === categoryId))
     })
 }
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-}
 
 const getProductById = ({id}) => {
     return new Promise((resolve) => {
-        setTimeout(() => resolve(products.find(p => p.id === id)), getRandomArbitrary(400, 1200))
+        resolve(products.find(p => p.id === id));
     })
 }
 
@@ -351,6 +355,7 @@ const addProductToCart = ({id}) => {
         resolve({newQuantity: cartItem.quantity})
     })
 }
+
 const decreaseProductQuantityInCart = ({id}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart"));

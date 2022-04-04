@@ -106,6 +106,17 @@ getProductById({id: productId}).then((product) => {
 
 
     let addToCartButton = document.querySelector(".btn.card-add-btn");
+    let addToWishlist = document.querySelector(".btn.wishlist-btn");
+
+
+    addToWishlist.addEventListener("click", () => {
+        addProductToCart({id: product.id}).then(() => {
+            countCartItems().then((number) => {
+                let quantityOfCardInTheNavbar = document.querySelector(".wishlist-number");
+                quantityOfCardInTheNavbar.innerHTML = `${number}`;
+            })
+        })
+    })
 
 
     addToCartButton.addEventListener('click', () => {

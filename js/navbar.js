@@ -13,17 +13,17 @@ const createNav = () => {
                 <button class="search-btn">search</button>
             </div>
             <a href="#"><img src="./images/user-90.png" alt="user"></a>
-            <a href="#"><img src="./images/heart-90.png" alt="wishlist"></a>
-            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number">0</span></a>
+            <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"><span class="wishlist-number"></span></a>
+            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>
         </div>
     </div>
     <ul class="links-container">
         <li class="link-item"><a href="./home.html" id="home-page" class="link">home</a></li>
         <li class="link-item"><a href="./new.html" id="new-page" class="link">new</a></li>
-        <li class="link-item"><a href="#" class="link">bags</a></li>
-        <li class="link-item"><a href="#" class="link">shoes</a></li>
-        <li class="link-item"><a href="#" class="link">clothes</a></li>
-        <li class="link-item"><a href="#" class="link">sale</a></li>
+        <li class="link-item"><a href="./bags.html" class="link">bags</a></li>
+        <li class="link-item"><a href="./shoes.html" class="link">shoes</a></li>
+        <li class="link-item"><a href="./dresses.html" class="link">dresses</a></li>
+        <li class="link-item"><a href="./sale.html" class="link">sale</a></li>
     </ul>
     `
 
