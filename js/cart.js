@@ -27,13 +27,24 @@ getCart().then((cartProd) => {
             totalPrice += product.actualPrice*quantity;
         }
 
-        let total = document.createElement("div");
+        const total = document.createElement("div");
         total.className = "total-price-of-all-products";
 
-        let priceOfAllProducts = document.createElement("span");
-        priceOfAllProducts.innerHTML = "Total price $" + totalPrice.toString()
+
+
+        const buyBtn = document.createElement("button");
+        buyBtn.className = "buy";
+        buyBtn.innerHTML = "buy";
+
+        const priceOfAllProducts = document.createElement("p");
+        priceOfAllProducts.className = "price-of-all";
+        priceOfAllProducts.innerHTML = "Total price $" + totalPrice.toString();
+
+
+        total.appendChild(buyBtn);
         total.appendChild(priceOfAllProducts);
         cartSection.appendChild(total);
+
     })
 })
 

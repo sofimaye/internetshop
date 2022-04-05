@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.cart {
+.cart, .wishlist {
     max-width: 100%;
     height: auto;
     margin: 50px auto;
@@ -63,23 +63,23 @@
 /*some basic style for the product description*/
 
 .short-description {
-    /*display: flex;*/
-    /*align-items: center;*/
+    display: flex;
+    align-items: center;
     padding-top: 10px;
     margin-right: 60px;
     width: 115px;
-
 }
 
 .short-description span {
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 20px;
     color: #43484D;
     font-weight: 400;
 }
 
 .short-description span:first-child {
     margin-bottom: 5px;
+    text-transform: capitalize;
 }
 
 .short-description span:last-child {
@@ -93,8 +93,6 @@
     padding: inherit;
     display: flex;
     align-items: center;
-    /*padding-top: 20px;*/
-    /*margin-right: 60px;*/
 }
 
 .quantity input {
@@ -102,7 +100,7 @@
     border: none;
     text-align: center;
     width: auto;
-    font-size: 16px;
+    font-size: 20px;
     color: #43484D;
     font-weight: 300;
 }
@@ -132,12 +130,13 @@ input:focus {
 }
 
 .total-price {
+    display: flex;
+    align-items: center;
     width: 83px;
-    padding-top: 27px;
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     color: #43484D;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 @media (max-width: 800px) {
@@ -168,19 +167,34 @@ input:focus {
     .buttons {
         margin-right: 20px;
     }
+
+    .total-price-of-all-products {
+        display: flex;
+        justify-content: center;
+    }
+    .price-of-all{
+       align-items: center;
+    }
 }
 
 .total-price-of-all-products {
     width: 100%;
-    height: auto;
-    align-items: center;
+    line-height: 100px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
-span.total-price-of-all{
-
+.price-of-all {
+    float: right;
+    margin-right: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 button.options{
+}
+
+button.options, button.buy {
     height: 30%;
     width: 30%;
     padding: 20px;
@@ -196,12 +210,18 @@ button.options{
     color: #ffffff;
 }
 
-.options:hover {
+.options:hover, .buy:hover {
     background: #FFFFFF;
     color: #000000;
     -moz-box-shadow: 0 0 0 1px #000000;
     transform: translate(0, 0.25em);
 }
+
+.buy {
+    float: right;
+}
+
+
 
 
 
