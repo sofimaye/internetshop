@@ -191,7 +191,7 @@ const products = [{
             url: "images/louboutin5.jpg"
         }
 
-        ],
+    ],
     brand: "christian louboutin",
     shortDescription: "christian louboutin black shoes",
     actualPrice: 1000
@@ -304,21 +304,16 @@ const getAllCategories = () => {
     return Promise.resolve(categories)
 }
 
-const getAllProducts = () => {
-    return Promise.resolve(products)
-}
-
-
 const getCategoryById = ({id}) => {
     return new Promise((resolve) => {
         resolve(categories.find(c => c.id === id))
     })
 }
 
-const getProductsWithDiscount = () =>{
-   return new Promise((resolve) =>{
-       resolve(products.filter(p => p.discount))
-   })
+const getProductsWithDiscount = () => {
+    return new Promise((resolve) => {
+        resolve(products.filter(p => p.discount))
+    })
 }
 
 const searchCategoriesByName = ({name}) => {
@@ -331,6 +326,12 @@ const getCart = () => {
     return new Promise((resolve) => {
         resolve(JSON.parse(localStorage.getItem("cart") || "[]"));
     });
+}
+
+const getWishlist = () => {
+    return new Promise((resolve) => {
+        resolve(JSON.parse(localStorage.getItem("wishlist") || "[]"))
+    })
 }
 
 const countCartItems = () => {
@@ -347,6 +348,7 @@ const countCartItems = () => {
 //Коли використовувати setItem, він перезаписує елемент, який був до нього.
 // потрібно використовувати getItem, щоб отримати старий список, додати до нього,
 // а потім зберегти його назад у localStorage
+
 const addProductToCart = ({id}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -363,6 +365,20 @@ const addProductToCart = ({id}) => {
     })
 }
 
+const addProductToWishlist = ({id}) => new Promise((resolve) => {
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    let wishItem = wishlist.find(prod => prod.productId === id);
+
+    if (!wishItem) {
+        wishItem = {productId: id};
+        wishlist.push(wishItem)
+    }
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist))
+    resolve()
+})
+
 const decreaseProductQuantityInCart = ({id}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart"));
@@ -378,6 +394,8 @@ const decreaseProductQuantityInCart = ({id}) => {
         resolve({removed: removed, newQuantity: cartItem.quantity})
     })
 }
+
+
 const deleteProductFromCart = ({id}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart"));
@@ -385,6 +403,17 @@ const deleteProductFromCart = ({id}) => {
         cartBusket.splice(index, 1);
 
         localStorage.setItem("cart", JSON.stringify(cartBusket));
+        resolve()
+    })
+}
+
+const deleteProductFromWishList = ({id}) => {
+    return new Promise((resolve) => {
+        let wishlist = JSON.parse(localStorage.getItem("wishlist"));
+        let index = wishlist.findIndex(prod => prod.productId === id);
+        wishlist.splice(index, 1);
+
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
         resolve()
     })
 }
@@ -400,6 +429,8 @@ export {
     deleteProductFromCart,
     decreaseProductQuantityInCart,
     getCart,
-    getAllProducts,
-    getProductsWithDiscount
+    getProductsWithDiscount,
+    addProductToWishlist,
+    getWishlist,
+    deleteProductFromWishList
 }

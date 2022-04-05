@@ -13,7 +13,7 @@ const createNav = () => {
                 <button class="search-btn">search</button>
             </div>
             <a href="#"><img src="./images/user-90.png" alt="user"></a>
-            <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"><span class="wishlist-number"></span></a>
+            <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"></a>
             <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>
         </div>
     </div>

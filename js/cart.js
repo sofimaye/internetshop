@@ -8,10 +8,6 @@ import {
 // по value із url знайти потрібні поля продукта
 let cartSection = document.querySelector(".cart");
 
-//дістали із локального сховища value of key (у форматі string) та
-// перетворили в обєкт з ключами та значеннями
-// {productId: 1, quantity: 4}
-
 getCart().then((cartProd) => {
     Promise.all(
         cartProd.map(({productId, quantity}) =>

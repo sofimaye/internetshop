@@ -7,7 +7,7 @@
     height: auto;
     margin: 50px auto;
     background: #FFFFFF;
-    box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.10);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -52,15 +52,6 @@
     background: url("../images/delete.svg") no-repeat center;
 }
 
-/*.like-btn {*/
-/*    position: absolute;*/
-/*    top: 9px;*/
-/*    left: 15px;*/
-/*    width: 50px;*/
-/*    height: 50px;*/
-/*    background-size: 100%;*/
-/*    background: url('../images/heart.svg') no-repeat;*/
-/*}*/
 
 .image-for-prod-at-cart img {
     max-width: 50%;
@@ -97,7 +88,7 @@
     color: #86939E;
 }
 
-/*quantity*/
+
 .quantity {
     padding: inherit;
     display: flex;
@@ -128,13 +119,11 @@ button.plus-btn, button.minus-btn {
 .minus-btn img {
     max-width: 100%;
     height: auto;
-    /*margin-bottom: 3px;*/
 }
 
 .plus-btn img {
     max-width: 100%;
     height: auto;
-    /*margin-top: 2px;*/
 }
 
 button:focus,
@@ -190,6 +179,31 @@ input:focus {
 span.total-price-of-all{
 
 }
+
+button.options{
+    height: 30%;
+    width: 30%;
+    padding: 20px;
+    border-radius: 5px;
+    background: none;
+    border: 1px solid #383838;
+    font-size: 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+    align-items: center;
+    margin: 20px 2% 20px 0;
+    background: #383838;
+    color: #ffffff;
+}
+
+.options:hover {
+    background: #FFFFFF;
+    color: #000000;
+    -moz-box-shadow: 0 0 0 1px #000000;
+    transform: translate(0, 0.25em);
+}
+
+
 
 
 

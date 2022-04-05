@@ -1,5 +1,4 @@
-import {addProductToCart, countCartItems, getProductById} from "./data.js";
-
+import {addProductToCart, addProductToWishlist, countCartItems, getProductById} from "./data.js";
 
 let productId = parseInt(new URLSearchParams(window.location.search).get("productId"));
 if (!productId) {
@@ -62,6 +61,7 @@ getProductById({id: productId}).then((product) => {
 
 
     let price = document.querySelector(".product-price");
+    
     if (product.previousPrice) {
         price.innerHTML = `$${product.previousPrice}`
     } else {
@@ -99,7 +99,7 @@ getProductById({id: productId}).then((product) => {
             closeOnScroll: true,
         };
 
-// Initializes and opens PhotoSwipe
+        // Initializes and opens PhotoSwipe
         let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
         gallery.init();
     })
@@ -110,11 +110,9 @@ getProductById({id: productId}).then((product) => {
 
 
     addToWishlist.addEventListener("click", () => {
-        addProductToCart({id: product.id}).then(() => {
-            countCartItems().then((number) => {
-                let quantityOfCardInTheNavbar = document.querySelector(".wishlist-number");
-                quantityOfCardInTheNavbar.innerHTML = `${number}`;
-            })
+        alert("added to wishlist!");
+        addProductToWishlist({id: product.id}).then(() => {
+
         })
     })
 
