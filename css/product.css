@@ -52,11 +52,11 @@
     height: auto;
     margin: 15px 0 30px;
 }
-.product-price{
+.product-actual-price{
     font-weight: 700;
     font-size: 30px;
 }
-.product-actual-price{
+.product-previous-price{
     font-size: 30px;
     opacity: 0.5;
     text-decoration: line-through;

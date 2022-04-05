@@ -22,8 +22,8 @@ getProductById({id: productId}).then((product) => {
     <div class="details">
         <h2 class="product-brand">${product.brand}</h2>
         <p class="product-short-description">${product.shortDescription}</p>
-        <span class="product-price"></span>
         <span class="product-actual-price"></span>
+        <span class="product-previous-price"></span>
         <span class="product-discount"></span>
 
         <p class="product-sub-heading">select size</p>
@@ -60,19 +60,19 @@ getProductById({id: productId}).then((product) => {
     }
 
 
-    let price = document.querySelector(".product-price");
-    
+    let price = document.querySelector(".product-actual-price");
     if (product.previousPrice) {
-        price.innerHTML = `$${product.previousPrice}`
-    } else {
         price.innerHTML = `$${product.actualPrice}`
+    } else {
+        price.innerHTML = `$${product.previousPrice}`
     }
 
     let discount = document.querySelector(".product-discount");
-    let actualPrice = document.querySelector(".product-actual-price");
+    let previous = document.querySelector(".product-previous-price");
+
     if (product.discount) {
         discount.innerHTML = `${product.discount}`;
-        actualPrice.innerHTML = `${product.actualPrice}`;
+        previous.innerHTML = `${product.previousPrice}`;
     }
 
 

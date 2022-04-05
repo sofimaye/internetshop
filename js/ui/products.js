@@ -102,4 +102,5 @@ export const createCard = function (containerId, {
         window.location.href = `product.html?productId=${id}`;
     })
     prodContainer.appendChild(prodCard);
+
 }
