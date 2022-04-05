@@ -191,12 +191,18 @@ input:focus {
     font-weight: 800;
 }
 
-button.options{
+.button-options-wrapper{
+    display: flex;
+    align-items: center;
 }
+
+.button-options{
+    width: 100%;
+}
+
 
 button.options, button.buy {
     height: 30%;
-    width: 30%;
     padding: 20px;
     border-radius: 5px;
     background: none;
@@ -219,6 +225,7 @@ button.options, button.buy {
 
 .buy {
     float: right;
+    width: 20%;
 }
 
 

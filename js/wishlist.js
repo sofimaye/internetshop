@@ -55,8 +55,12 @@ getWishlist().then((wishlist) => {
                     window.location.href = `product.html?productId=${product.id}`;
                 })
 
+                let buttonOptionsWrapper = document.createElement("div");
+                buttonOptionsWrapper.className = "button-options-wrapper";
+
+                buttonOptionsWrapper.appendChild(chooseTheOptionsButton)
                 prodWrapper.appendChild(priceOfCartProd);
-                prodWrapper.appendChild(chooseTheOptionsButton);
+                prodWrapper.appendChild(buttonOptionsWrapper);
                 wishlistSection.appendChild(prodWrapper);
 
                 deleteButton.addEventListener("click", () => {
