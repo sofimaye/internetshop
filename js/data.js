@@ -1,19 +1,23 @@
 const categories = [
     {
         id: 2,
-        name: "Shoes"
+        name: "Shoes",
+        sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41]
     },
     {
         id: 3,
-        name: "Jackets"
+        name: "Jackets",
+        sizes: ["xs", "s", "m", "l", "xl"]
     },
     {
         id: 4,
-        name: "Bags"
+        name: "Bags",
+        sizes: ["small", "medium", "large"]
     },
     {
         id: 5,
-        name: "Dresses"
+        name: "Dresses",
+        sizes: ["xs", "s", "m", "l", "xl"]
     }
 ]
 
@@ -35,7 +39,8 @@ const products = [{
     brand: "gucci",
     shortDescription: "saffiano marmount light-pink leather bag",
     actualPrice: 1000,
-    previousPrice: 2000
+    previousPrice: 2000,
+    sizes: ["small", "medium"]
 }, {
     id: 2,
     categoryId: 5,
@@ -51,7 +56,8 @@ const products = [{
     brand: "faithfull",
     shortDescription: "short black linen dress",
     actualPrice: 500,
-    previousPrice: 1000
+    previousPrice: 1000,
+    sizes: ["xs", "s", "m", "l", "xl"]
 }, {
     id: 3,
     categoryId: 4,
@@ -70,7 +76,8 @@ const products = [{
     brand: "gucci",
     shortDescription: "brown gucci leather bag",
     actualPrice: 1000,
-    previousPrice: 2000
+    previousPrice: 2000,
+    sizes: ["large"]
 }, {
     id: 4,
     categoryId: 5,
@@ -87,7 +94,8 @@ const products = [{
     brand: "selfportrait",
     shortDescription: "short dress",
     actualPrice: 300,
-    previousPrice: 600
+    previousPrice: 600,
+    sizes: ["xs", "s", "m"]
 }, {
     id: 5,
     categoryId: 5,
@@ -103,7 +111,8 @@ const products = [{
     brand: "parosh",
     shortDescription: "short dress",
     actualPrice: 300,
-    previousPrice: 600
+    previousPrice: 600,
+    sizes: ["xs", "s"]
 }, {
     id: 6,
     categoryId: 5,
@@ -119,7 +128,8 @@ const products = [{
     brand: "david koma",
     shortDescription: "short dress",
     actualPrice: 400,
-    previousPrice: 800
+    previousPrice: 800,
+    sizes: ["xs", "s", "m", "l", "xl"]
 }, {
     id: 7,
     categoryId: 4,
@@ -143,7 +153,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "gucci diana brown leather bag",
-    actualPrice: 3000
+    actualPrice: 3000,
+    sizes: ["medium", "large"]
 }, {
     id: 8,
     categoryId: 2,
@@ -166,7 +177,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "gucci beige leather shoes",
-    actualPrice: 700
+    actualPrice: 700,
+    sizes: [38, 39]
 }, {
     id: 9,
     categoryId: 2,
@@ -194,7 +206,8 @@ const products = [{
     ],
     brand: "christian louboutin",
     shortDescription: "christian louboutin black shoes",
-    actualPrice: 1000
+    actualPrice: 1000,
+    sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41]
 }, {
     id: 10,
     categoryId: 2,
@@ -211,7 +224,8 @@ const products = [{
     ],
     brand: "burberry",
     shortDescription: "leather shoes",
-    actualPrice: 1000
+    actualPrice: 1000,
+    sizes: [37,37.5,38,38.5]
 }, {
     id: 11,
     categoryId: 2,
@@ -222,7 +236,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "saffiano leather light-pink shoes",
-    actualPrice: 1000
+    actualPrice: 1000,
+    sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41]
 }, {
     id: 12,
     categoryId: 3,
@@ -233,7 +248,8 @@ const products = [{
     ],
     brand: "bakhirka",
     shortDescription: "jacket",
-    actualPrice: 500
+    actualPrice: 500,
+    sizes: ["xs", "s"]
 }, {
     id: 13,
     categoryId: 3,
@@ -244,7 +260,8 @@ const products = [{
     ],
     brand: "basemnt",
     shortDescription: "jacket",
-    actualPrice: 800
+    actualPrice: 800,
+    sizes: ["xs", "s", "m"]
 }, {
     id: 14,
     categoryId: 4,
@@ -263,7 +280,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "gucci blue leather bag",
-    actualPrice: 1500
+    actualPrice: 1500,
+    sizes: ["small", "medium"]
 }, {
     id: 15,
     categoryId: 3,
@@ -274,7 +292,8 @@ const products = [{
     ],
     brand: "basemnt",
     shortDescription: "jacket",
-    actualPrice: 800
+    actualPrice: 800,
+    sizes: ["xs", "s", "m"]
 }, {
     id: 16,
     categoryId: 2,
@@ -285,7 +304,8 @@ const products = [{
     ],
     brand: "gucci",
     shortDescription: "beige shoes",
-    actualPrice: 800
+    actualPrice: 800,
+    sizes: [36, 36.5, 37, 38, 39, 39.5]
 }]
 
 const getProductsByCategory = ({categoryId}) => {

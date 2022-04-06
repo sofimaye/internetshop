@@ -16,8 +16,6 @@ getCart().then((cartProd) => {
         )
     ).then((productsWithQuantity) => {
         //access to all products
-        console.log(productsWithQuantity);
-
         let totalPrice = 0;
 
         for (let {product, quantity} of productsWithQuantity) {
@@ -26,6 +24,7 @@ getCart().then((cartProd) => {
             // для того щоб виконувати кілька разів потрубно додати в eventListener
             totalPrice += product.actualPrice*quantity;
         }
+
 
         const total = document.createElement("div");
         total.className = "total-price-of-all-products";
@@ -78,10 +77,14 @@ const showProduct = ({product, quantity}) => {
     prodName.innerHTML = `${product.brand}`;
     let prodDescription = document.createElement("span");
     prodDescription.innerHTML = `${product.shortDescription}`;
+    let productSize = document.createElement("span");
+    productSize.innerHTML = `${product.sizes}`;
+
 
     //adding to the div
     descriptionOfCartProduct.appendChild(prodName);
     descriptionOfCartProduct.appendChild(prodDescription);
+    descriptionOfCartProduct.appendChild(productSize)
     prodWrapper.appendChild(descriptionOfCartProduct);
 
     let quantityOfProd = document.createElement("div");
@@ -113,8 +116,8 @@ const showProduct = ({product, quantity}) => {
     minusBtnImage.src = "images/minus.svg";
     minusBtnImage.alt = "";
 
-
     minusBtn.appendChild(minusBtnImage);
+
 
     // adding to the div
     quantityOfProd.appendChild(plusBtn);
