@@ -17,6 +17,7 @@ getProductById({id: productId}).then((product) => {
     if (!product) {
         window.location.href = "404.html";
     }
+    let selectedProductSize;
 
     let prodSection = document.querySelector(".product-details");
     let prodDescription = document.querySelector(".detail-des");
@@ -36,9 +37,13 @@ getProductById({id: productId}).then((product) => {
         <p class="product-sub-heading">select size</p>
 
 
-       <form action="cart.html" method="post" class="sizes-container">
+<!--       <form action="cart.html" method="post" class="sizes-container">-->
 
-       </form>
+<!--       </form>-->
+
+        <div class="sizes-container">
+        
+        </div>
        
        <button class="btn card-add-btn">add to cart</button>
        <button class="btn wishlist-btn">add to wishlist</button>
@@ -48,33 +53,25 @@ getProductById({id: productId}).then((product) => {
 
     let sizesContainer = document.querySelector(".sizes-container");
 
+
     getCategoryById({id: product.categoryId}).then((category) => {
         for (let size of category.sizes) {
-            let sizesOfProduct = product.sizes.find(s => s === size);
-            if (size === sizesOfProduct){
+            let sizeOfProduct = product.sizes.find(s => s === size);
+            if (size === sizeOfProduct){
 
-                let inputSize = document.createElement("input");
-                inputSize.type = "radio";
-                inputSize.name = "size"
-                inputSize.id = `${size}-size`;
-                inputSize.value = `${size}`;
+                let buttonSize = document.createElement("button");
+                buttonSize.addEventListener("click", () => {
+                    buttonSize.className = "size-radio-btn check";
+                    selectedProductSize = size;
+                })
+                buttonSize.className = "size-radio-btn";
+                buttonSize.innerHTML = `${size}`;
 
-                sizesContainer.appendChild(inputSize)
-
-                let labelSize = document.createElement("label");
-                labelSize.for = `${size}-size`;
-                if (category.sizes.indexOf(size) === 0) {
-                    labelSize.className = "size-radio-btn check";
-                } else {
-                    labelSize.className = "size-radio-btn";
-                }
-                labelSize.innerHTML = `${size}`;
-                sizesContainer.appendChild(labelSize)
+                sizesContainer.appendChild(buttonSize)
             }
-
         }
-
     })
+
 
     let imagesProdContainer = document.querySelector(".product-images");
 
@@ -141,20 +138,18 @@ getProductById({id: productId}).then((product) => {
         })
     })
 
-    // let currentSize = document.querySelector(".sizes-container").children;
-    // console.log(currentSize)
-    // for (let size of currentSize){
-    //     if (size.toString() === "label.size-radio-btn.check"){
-    //     }
-    // }
 
     addToCartButton.addEventListener('click', () => {
-        addProductToCart({id: product.id}).then(() => {
-            countCartItems().then((number) => {
-                let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-                quantityOfCardInTheNavbar.innerHTML = `${number}`;
+        if (!selectedProductSize) {
+            alert("Select size!")
+        } else {
+            addProductToCart({id: product.id, size: selectedProductSize}).then(() => {
+                countCartItems().then((number) => {
+                    let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+                    quantityOfCardInTheNavbar.innerHTML = `${number}`;
+                })
             })
-        })
+        }
     })
 })
 

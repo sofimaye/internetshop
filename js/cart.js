@@ -10,26 +10,25 @@ let cartSection = document.querySelector(".cart");
 
 getCart().then((cartProd) => {
     Promise.all(
-        cartProd.map(({productId, quantity}) =>
+        cartProd.map(({productId, quantity, size}) =>
             getProductById({id: productId})
-                .then((product) => ({product: product, quantity: quantity}))
+                .then((product) => ({product: product, quantity: quantity, size: size}))
         )
     ).then((productsWithQuantity) => {
         //access to all products
         let totalPrice = 0;
 
-        for (let {product, quantity} of productsWithQuantity) {
-            showProduct({product: product, quantity: quantity});
+        for (let {product, quantity, size} of productsWithQuantity) {
+            showProduct({product: product, quantity: quantity, size: size});
+
+            console.log(productsWithQuantity)
             // виконується 1 раз
             // для того щоб виконувати кілька разів потрубно додати в eventListener
             totalPrice += product.actualPrice*quantity;
         }
 
-
         const total = document.createElement("div");
         total.className = "total-price-of-all-products";
-
-
 
         const buyBtn = document.createElement("button");
         buyBtn.className = "buy";
@@ -39,7 +38,6 @@ getCart().then((cartProd) => {
         priceOfAllProducts.className = "price-of-all";
         priceOfAllProducts.innerHTML = "Total price $" + totalPrice.toString();
 
-
         total.appendChild(buyBtn);
         total.appendChild(priceOfAllProducts);
         cartSection.appendChild(total);
@@ -47,7 +45,7 @@ getCart().then((cartProd) => {
     })
 })
 
-const showProduct = ({product, quantity}) => {
+const showProduct = ({product, quantity, size}) => {
     let prodWrapper = document.createElement("div");
     prodWrapper.className = "item";
 
@@ -75,10 +73,12 @@ const showProduct = ({product, quantity}) => {
     descriptionOfCartProduct.className = "short-description";
     let prodName = document.createElement("span");
     prodName.innerHTML = `${product.brand}`;
+
     let prodDescription = document.createElement("span");
     prodDescription.innerHTML = `${product.shortDescription}`;
+
     let productSize = document.createElement("span");
-    productSize.innerHTML = `${product.sizes}`;
+    productSize.innerHTML = size;
 
 
     //adding to the div
@@ -140,7 +140,7 @@ const showProduct = ({product, quantity}) => {
 
 
     plusBtn.addEventListener("click", () => {
-        addProductToCart({id: product.id}).then(({newQuantity}) => {
+        addProductToCart({id: product.id, size: size}).then(({newQuantity}) => {
 
             inputCartItem.value = newQuantity.toString();
             let costsPlus = product.actualPrice * newQuantity;
@@ -155,7 +155,7 @@ const showProduct = ({product, quantity}) => {
     })
 
     minusBtn.addEventListener("click", () => {
-        decreaseProductQuantityInCart({id: product.id}).then(({removed, newQuantity}) => {
+        decreaseProductQuantityInCart({id: product.id, size: size}).then(({removed, newQuantity}) => {
             if (removed) {
                 prodWrapper.remove();
             }
@@ -173,7 +173,7 @@ const showProduct = ({product, quantity}) => {
     });
 
     deleteButton.addEventListener("click", () => {
-        deleteProductFromCart({id: product.id}).then(() => {
+        deleteProductFromCart({id: product.id, size: size}).then(() => {
             prodWrapper.remove();
             countCartItems().then((number) => {
                 let quantityOfCardInTheNavbar = document.querySelector(".cart-number");

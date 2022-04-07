@@ -52,8 +52,12 @@
     background: url("../images/delete.svg") no-repeat center;
 }
 
+div.image-for-prod-at-cart{
+    width: fit-content;
+}
 
-.image-for-prod-at-cart img {
+
+.image-for-prod-at-cart img{
     max-width: 50%;
     height: auto;
     margin: auto;
@@ -66,8 +70,8 @@
     display: flex;
     align-items: center;
     padding-top: 10px;
-    margin-right: 60px;
-    width: 115px;
+    /*margin-right: 80px;*/
+    width: 200px;
 }
 
 .short-description span {
@@ -75,16 +79,18 @@
     font-size: 20px;
     color: #43484D;
     font-weight: 400;
+    justify-content: center;
 }
 
 .short-description span:first-child {
-    margin-bottom: 5px;
+    width: 30%;
+    color: #86939E;
     text-transform: capitalize;
 }
 
 .short-description span:last-child {
+    width: 20%;
     font-weight: 300;
-    margin-top: 8px;
     color: #86939E;
 }
 

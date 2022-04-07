@@ -40,7 +40,7 @@ const products = [{
     shortDescription: "saffiano marmount light-pink leather bag",
     actualPrice: 1000,
     previousPrice: 2000,
-    sizes: ["small", "medium"]
+    sizes: ["small", "medium"],
 }, {
     id: 2,
     categoryId: 5,
@@ -57,7 +57,7 @@ const products = [{
     shortDescription: "short black linen dress",
     actualPrice: 500,
     previousPrice: 1000,
-    sizes: ["xs", "s", "m", "l", "xl"]
+    sizes: ["xs", "s", "m", "l", "xl"],
 }, {
     id: 3,
     categoryId: 4,
@@ -77,7 +77,7 @@ const products = [{
     shortDescription: "brown gucci leather bag",
     actualPrice: 1000,
     previousPrice: 2000,
-    sizes: ["large"]
+    sizes: ["large"],
 }, {
     id: 4,
     categoryId: 5,
@@ -95,7 +95,7 @@ const products = [{
     shortDescription: "short dress",
     actualPrice: 300,
     previousPrice: 600,
-    sizes: ["xs", "s", "m"]
+    sizes: ["xs", "s", "m"],
 }, {
     id: 5,
     categoryId: 5,
@@ -112,7 +112,7 @@ const products = [{
     shortDescription: "short dress",
     actualPrice: 300,
     previousPrice: 600,
-    sizes: ["xs", "s"]
+    sizes: ["xs", "s"],
 }, {
     id: 6,
     categoryId: 5,
@@ -129,7 +129,7 @@ const products = [{
     shortDescription: "short dress",
     actualPrice: 400,
     previousPrice: 800,
-    sizes: ["xs", "s", "m", "l", "xl"]
+    sizes: ["xs", "s", "m", "l", "xl"],
 }, {
     id: 7,
     categoryId: 4,
@@ -154,7 +154,7 @@ const products = [{
     brand: "gucci",
     shortDescription: "gucci diana brown leather bag",
     actualPrice: 3000,
-    sizes: ["medium", "large"]
+    sizes: ["medium", "large"],
 }, {
     id: 8,
     categoryId: 2,
@@ -178,7 +178,7 @@ const products = [{
     brand: "gucci",
     shortDescription: "gucci beige leather shoes",
     actualPrice: 700,
-    sizes: [38, 39]
+    sizes: [38, 39],
 }, {
     id: 9,
     categoryId: 2,
@@ -207,7 +207,7 @@ const products = [{
     brand: "christian louboutin",
     shortDescription: "christian louboutin black shoes",
     actualPrice: 1000,
-    sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41]
+    sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41],
 }, {
     id: 10,
     categoryId: 2,
@@ -225,7 +225,7 @@ const products = [{
     brand: "burberry",
     shortDescription: "leather shoes",
     actualPrice: 1000,
-    sizes: [37,37.5,38,38.5]
+    sizes: [37,37.5,38,38.5],
 }, {
     id: 11,
     categoryId: 2,
@@ -237,7 +237,7 @@ const products = [{
     brand: "gucci",
     shortDescription: "saffiano leather light-pink shoes",
     actualPrice: 1000,
-    sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41]
+    sizes: [36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41],
 }, {
     id: 12,
     categoryId: 3,
@@ -249,7 +249,7 @@ const products = [{
     brand: "bakhirka",
     shortDescription: "jacket",
     actualPrice: 500,
-    sizes: ["xs", "s"]
+    sizes: ["xs", "s"],
 }, {
     id: 13,
     categoryId: 3,
@@ -261,7 +261,7 @@ const products = [{
     brand: "basemnt",
     shortDescription: "jacket",
     actualPrice: 800,
-    sizes: ["xs", "s", "m"]
+    sizes: ["xs", "s", "m"],
 }, {
     id: 14,
     categoryId: 4,
@@ -281,7 +281,7 @@ const products = [{
     brand: "gucci",
     shortDescription: "gucci blue leather bag",
     actualPrice: 1500,
-    sizes: ["small", "medium"]
+    sizes: ["small", "medium"],
 }, {
     id: 15,
     categoryId: 3,
@@ -293,7 +293,7 @@ const products = [{
     brand: "basemnt",
     shortDescription: "jacket",
     actualPrice: 800,
-    sizes: ["xs", "s", "m"]
+    sizes: ["xs", "s", "m"],
 }, {
     id: 16,
     categoryId: 2,
@@ -305,7 +305,7 @@ const products = [{
     brand: "gucci",
     shortDescription: "beige shoes",
     actualPrice: 800,
-    sizes: [36, 36.5, 37, 38, 39, 39.5]
+    sizes: [36, 36.5, 37, 38, 39, 39.5],
 }]
 
 const getProductsByCategory = ({categoryId}) => {
@@ -369,20 +369,21 @@ const countCartItems = () => {
 // потрібно використовувати getItem, щоб отримати старий список, додати до нього,
 // а потім зберегти його назад у localStorage
 
-const addProductToCart = ({id}) => {
+const addProductToCart = ({id, size}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");
-        let cartItem = cartBusket.find(prod => prod.productId === id);
+        let cartItem = cartBusket.find(prod => prod.productId === id && prod.size === size);
 
+        // треба прописати якщо є ще один такий товар, але розмір інший то додаємо в localstorage, якщо ні
         if (!cartItem) {
-            cartItem = {productId: id, quantity: 1};
+            cartItem = {productId: id, quantity: 1, size: size};
             cartBusket.push(cartItem)
         } else {
             cartItem.quantity++
         }
         localStorage.setItem("cart", JSON.stringify(cartBusket))
         resolve({newQuantity: cartItem.quantity})
-    })
+    });
 }
 
 const addProductToWishlist = ({id}) => new Promise((resolve) => {
@@ -399,10 +400,10 @@ const addProductToWishlist = ({id}) => new Promise((resolve) => {
     resolve()
 })
 
-const decreaseProductQuantityInCart = ({id}) => {
+const decreaseProductQuantityInCart = ({id, size}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart"));
-        let cartItem = cartBusket.find(prod => prod.productId === id);
+        let cartItem = cartBusket.find(prod => prod.productId === id && prod.size === size);
         --cartItem.quantity;
         let removed = false
         if (cartItem.quantity <= 0) {
@@ -416,10 +417,10 @@ const decreaseProductQuantityInCart = ({id}) => {
 }
 
 
-const deleteProductFromCart = ({id}) => {
+const deleteProductFromCart = ({id, size}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart"));
-        let index = cartBusket.findIndex(prod => prod.productId === id);
+        let index = cartBusket.findIndex(prod => prod.productId === id && prod.size === size);
         cartBusket.splice(index, 1);
 
         localStorage.setItem("cart", JSON.stringify(cartBusket));
