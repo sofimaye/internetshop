@@ -3,7 +3,6 @@ import {
     addProductToWishlist,
     countCartItems,
     getProductById,
-    getAllCategories,
     getCategoryById
 } from "./data.js";
 
@@ -11,7 +10,6 @@ let productId = parseInt(new URLSearchParams(window.location.search).get("produc
 if (!productId) {
     window.location.href = "404.html";
 }
-
 
 getProductById({id: productId}).then((product) => {
     if (!product) {
@@ -37,12 +35,7 @@ getProductById({id: productId}).then((product) => {
         <p class="product-sub-heading">select size</p>
 
 
-<!--       <form action="cart.html" method="post" class="sizes-container">-->
-
-<!--       </form>-->
-
         <div class="sizes-container">
-        
         </div>
        
        <button class="btn card-add-btn">add to cart</button>
@@ -86,6 +79,7 @@ getProductById({id: productId}).then((product) => {
     let price = document.querySelector(".product-actual-price");
     let discount = document.querySelector(".product-discount");
     let previous = document.querySelector(".product-previous-price");
+
 
     if (product.discount) {
         if (product.previousPrice) {
