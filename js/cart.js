@@ -8,6 +8,7 @@ import {
 // по value із url знайти потрібні поля продукта
 let cartSection = document.querySelector(".cart");
 
+let totalPrice = 0;
 getCart().then((cartProd) => {
     Promise.all(
         cartProd.map(({productId, quantity, size}) =>
@@ -16,14 +17,8 @@ getCart().then((cartProd) => {
         )
     ).then((productsWithQuantity) => {
         //access to all products
-        let totalPrice = 0;
-
         for (let {product, quantity, size} of productsWithQuantity) {
             showProduct({product: product, quantity: quantity, size: size});
-
-            console.log(productsWithQuantity)
-            // виконується 1 раз
-            // для того щоб виконувати кілька разів потрубно додати в eventListener
             totalPrice += product.actualPrice*quantity;
         }
 
@@ -36,6 +31,8 @@ getCart().then((cartProd) => {
 
         const priceOfAllProducts = document.createElement("p");
         priceOfAllProducts.className = "price-of-all";
+
+        //set total price to storage and then get it;
         priceOfAllProducts.innerHTML = "Total price $" + totalPrice.toString();
 
         total.appendChild(buyBtn);
@@ -128,11 +125,8 @@ const showProduct = ({product, quantity, size}) => {
     let priceOfCartProd = document.createElement("div");
     priceOfCartProd.className = "total-price";
 
-
     //total price of one product cart
     let allPricesOfItems = product.actualPrice * quantity;
-    // console.log(allPricesOfItems);
-
     priceOfCartProd.innerHTML = "$" + allPricesOfItems.toString();
 
     prodWrapper.appendChild(priceOfCartProd);
@@ -145,14 +139,19 @@ const showProduct = ({product, quantity, size}) => {
             inputCartItem.value = newQuantity.toString();
             let costsPlus = product.actualPrice * newQuantity;
 
-            priceOfCartProd.innerHTML = "$" + costsPlus.toString();
+            totalPrice += product.actualPrice;
+            let totalP = document.querySelector(".price-of-all");
+            totalP.innerHTML = "Total price $" + totalPrice.toString()
 
+
+            priceOfCartProd.innerHTML = "$" + costsPlus.toString();
             countCartItems().then((number) => {
                 let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
                 quantityOfCardInTheNavbar.innerHTML = `${number}`;
             })
         })
     })
+
 
     minusBtn.addEventListener("click", () => {
         decreaseProductQuantityInCart({id: product.id, size: size}).then(({removed, newQuantity}) => {
@@ -163,8 +162,11 @@ const showProduct = ({product, quantity, size}) => {
             inputCartItem.value = newQuantity.toString();
             let costsMinus = product.actualPrice * newQuantity;
 
-            priceOfCartProd.innerHTML = "$" + costsMinus.toString()
+            totalPrice -= product.actualPrice;
+            let totalP = document.querySelector(".price-of-all");
+            totalP.innerHTML = "Total price $" + totalPrice.toString()
 
+            priceOfCartProd.innerHTML = "$" + costsMinus.toString()
             countCartItems().then((number) => {
                 let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
                 quantityOfCardInTheNavbar.innerHTML = `${number}`;
@@ -174,12 +176,20 @@ const showProduct = ({product, quantity, size}) => {
 
     deleteButton.addEventListener("click", () => {
         deleteProductFromCart({id: product.id, size: size}).then(() => {
+
+            //отримала суму коштів з видаленого продукту та відняла їх від загальної вартості
+            let costsOfDeletedProduct = inputCartItem.value*product.actualPrice;
+            totalPrice-=costsOfDeletedProduct;
+
+            let totalP = document.querySelector(".price-of-all");
+            totalP.innerHTML = "Total price $" + totalPrice.toString()
+
             prodWrapper.remove();
+
             countCartItems().then((number) => {
                 let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
                 quantityOfCardInTheNavbar.innerHTML = `${number}`;
             })
         })
     })
-
 }
