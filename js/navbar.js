@@ -3,9 +3,8 @@ import {countCartItems} from "./data.js";
 
 const createNav = () => {
     let nav = document.querySelector('.navbar');
-
     nav.innerHTML = `
-     <div class="nav">
+    <div class="nav">
         <img src="./images/logo.png" class="brand-logo" alt="logo">
         <div class="nav-items">
             <div class="search">
@@ -38,9 +37,83 @@ createNav();
 
 let searchPage = document.querySelector(".search-btn");
 
-
 searchPage.addEventListener('click', () => {
     let searchInput = document.querySelector('.search-box');
     let input = searchInput.value;
     window.location.href = `search.html?search=${input}`;
 })
+
+
+const createMobileNav = () => {
+    // контейнер який заповнюється посиланнями на сторінки
+    let navForMob = document.querySelector(".navbarForMobiles");
+    navForMob.innerHTML = `
+        <button class="hamNavButton">
+            <img src="./images/hamburger-menu.svg" alt="">
+        </button>`;
+
+    const hamNavBut = document.querySelector(".hamNavButton");
+
+    hamNavBut.addEventListener("click", () => {
+        let pageItems = document.querySelectorAll(".hero-section,.main-products-container,.collection-container,footer");
+        pageItems.forEach(page => page.style.display = "none");
+        hamNavBut.style.display = "none";
+        navForMob.style.height = "100vh";
+        navForMob.style.width = "100vw";
+        navForMob.style.alignItems = "center";
+
+
+        const closeNav = document.createElement("div");
+        closeNav.className = "closeNav";
+
+        closeNav.innerHTML = `<button class="close"><img src="./images/close.svg" alt=""></button>`
+        navForMob.appendChild(closeNav);
+
+        const navMobileSearchBar = document.createElement("div");
+        navMobileSearchBar.className = "navMobileSearchBar";
+
+        navMobileSearchBar.innerHTML = `
+                <div class="search">
+                <input type="text" class="search-box" placeholder="search brand, product">
+                <button class="search-btn">search</button>
+                </div>
+           `
+        navForMob.appendChild(navMobileSearchBar);
+
+        const linksContainer = document.createElement("ul");
+        const arrayOfPages = ["./home.html","./new.html","./bags.html", "./shoes.html", "./dresses.html", "./sale.html"];
+        const arrayOfCategories = ["home", "new", "bags", "shoes", "dresses", "sale"];
+        let listItem;
+        let link;
+        for(let i=0; i < arrayOfPages.length && i < arrayOfCategories.length; i++){
+            listItem = document.createElement("li");
+            listItem.className = "link-mobile-item";
+            link = document.createElement("a");
+            link.className = "link";
+            link.href = arrayOfPages[i];
+            link.innerHTML= arrayOfCategories[i];
+            listItem.appendChild(link)
+            linksContainer.appendChild(listItem)
+        }
+        navForMob.appendChild(linksContainer);
+
+
+        const navItems = document.createElement("div");
+        navItems.className = "login-wishlist-cart";
+
+        navItems.innerHTML = ` 
+            <a href="#"><img src="./images/user-90.png" alt="user"></a>
+            <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"></a>
+            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>`;
+
+        navForMob.appendChild(navItems);
+
+
+        document.querySelector(".close").addEventListener("click", () => {
+            window.location.href = "home.html";
+        })
+    })
+
+}
+
+createMobileNav()

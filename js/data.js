@@ -381,7 +381,8 @@ const addProductToCart = ({id, size}) => {
         } else {
             cartItem.quantity++
         }
-        localStorage.setItem("cart", JSON.stringify(cartBusket))
+
+        localStorage.setItem("cart", JSON.stringify(cartBusket));
         resolve({newQuantity: cartItem.quantity})
     });
 }
