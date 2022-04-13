@@ -124,13 +124,16 @@ const createMobileNav = () => {
             closeNav.style.display = "none";
             document.querySelector(".hamNavButton").style.display = "flex";
             pageItems.forEach(page => page.style.display = "flex");
+            document.querySelector(".collection-container").style.display = "grid";
+            document.querySelector("footer").style.display = "block";
             document.querySelector(".navbarForMobiles").style.height = "50px";
             document.querySelector(".navbarForMobiles").style.width = "100vw";
             navBarContainerForHiddenItems.style.display = "none";
-        })
-
+        });
     })
-
 }
 createMobileNav();
+
+
+
 

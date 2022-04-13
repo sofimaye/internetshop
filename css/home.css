@@ -197,6 +197,14 @@ a {
     .login-wishlist-cart a img {
         height: 40px;
     }
+    /*.main-products-container, .product{*/
+    /*    width: 100vw;*/
+    /*    height: 30vh;*/
+    /*}*/
+    /*.product-card, .product-card img{*/
+    /*    width: 25vw;*/
+    /*    height: 30vh;*/
+    /*}*/
 }
 
 span.cart-number {

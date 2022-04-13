@@ -83,3 +83,20 @@ footer {
     color: #ffffff;
     background: rgba(0,0,0,0.2);
 }
+
+@media (max-width: 830px){
+    .footer-content{
+        justify-content: flex-start;
+    }
+    .footer-content .logo {
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .footer-ul-container{
+        margin-left: 0;
+    }
+    .footer-ul-container .category{
+        margin-right: 10px;
+    }
+}
