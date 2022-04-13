@@ -47,27 +47,38 @@ searchPage.addEventListener('click', () => {
 const createMobileNav = () => {
     // контейнер який заповнюється посиланнями на сторінки
     let navForMob = document.querySelector(".navbarForMobiles");
-    navForMob.innerHTML = `
+    navForMob.innerHTML =`
         <button class="hamNavButton">
             <img src="./images/hamburger-menu.svg" alt="">
-        </button>`;
+        </button>
+        <div class="closeNav">
+        <button class="close">
+        <img src="./images/close.svg" alt="">
+        </button>
+        </div>`;
+
+    const closeBtn = document.querySelector(".close");
+    closeBtn.style.display = "none";
+    const closeNav = document.querySelector(".closeNav");
+    closeNav.style.display = "none";
 
     const hamNavBut = document.querySelector(".hamNavButton");
 
     hamNavBut.addEventListener("click", () => {
+        let navBarContainerForHiddenItems = document.createElement("div");
+        navBarContainerForHiddenItems.className = "navBarContainerForHiddenItems";
+        navForMob.appendChild(navBarContainerForHiddenItems);
+
         let pageItems = document.querySelectorAll(".hero-section,.main-products-container,.collection-container,footer");
+        pageItems.className = "pageItems";
         pageItems.forEach(page => page.style.display = "none");
         hamNavBut.style.display = "none";
         navForMob.style.height = "100vh";
         navForMob.style.width = "100vw";
         navForMob.style.alignItems = "center";
-
-
-        const closeNav = document.createElement("div");
-        closeNav.className = "closeNav";
-
-        closeNav.innerHTML = `<button class="close"><img src="./images/close.svg" alt=""></button>`
-        navForMob.appendChild(closeNav);
+        //кнопка щоб закрити
+        closeNav.style.display = "block";
+        closeBtn.style.display = "flex";
 
         const navMobileSearchBar = document.createElement("div");
         navMobileSearchBar.className = "navMobileSearchBar";
@@ -78,7 +89,7 @@ const createMobileNav = () => {
                 <button class="search-btn">search</button>
                 </div>
            `
-        navForMob.appendChild(navMobileSearchBar);
+        navBarContainerForHiddenItems.appendChild(navMobileSearchBar);
 
         const linksContainer = document.createElement("ul");
         const arrayOfPages = ["./home.html","./new.html","./bags.html", "./shoes.html", "./dresses.html", "./sale.html"];
@@ -95,7 +106,7 @@ const createMobileNav = () => {
             listItem.appendChild(link)
             linksContainer.appendChild(listItem)
         }
-        navForMob.appendChild(linksContainer);
+        navBarContainerForHiddenItems.appendChild(linksContainer);
 
 
         const navItems = document.createElement("div");
@@ -106,14 +117,20 @@ const createMobileNav = () => {
             <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"></a>
             <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>`;
 
-        navForMob.appendChild(navItems);
+        navBarContainerForHiddenItems.appendChild(navItems);
 
-
-        document.querySelector(".close").addEventListener("click", () => {
-            window.location.href = "home.html";
+        closeBtn.addEventListener("click", () => {
+            closeBtn.style.display = "none";
+            closeNav.style.display = "none";
+            document.querySelector(".hamNavButton").style.display = "flex";
+            pageItems.forEach(page => page.style.display = "flex");
+            document.querySelector(".navbarForMobiles").style.height = "50px";
+            document.querySelector(".navbarForMobiles").style.width = "100vw";
+            navBarContainerForHiddenItems.style.display = "none";
         })
+
     })
 
 }
+createMobileNav();
 
-createMobileNav()

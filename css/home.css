@@ -122,31 +122,27 @@ a {
 
     .navbarForMobiles {
         display: block;
+        margin: 0;
     }
 
     .closeNav {
         background: #FFFFFF;
         width: 100vw;
         height: 100px;
+
     }
 
-    .closeNav > button.close {
-        display: flex;
-    }
-
-    button.close {
-        border: none;
+    .close {
         float: right;
-        margin: 1em;
+        border: none;
         background-color: #FFFFFF;
     }
 
-    button.close img {
+    .close img {
         width: 50px;
         height: 50px;
         border: none;
         margin: 1em;
-        float: right;
     }
 
     .navMobileSearchBar {
@@ -182,7 +178,7 @@ a {
 
     .hamNavButton {
         border: none;
-        margin: 1em;
+        margin: 2em;
         background-color: #FFFFFF;
     }
 
