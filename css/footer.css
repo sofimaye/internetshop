@@ -88,6 +88,7 @@ footer {
     .footer-content{
         justify-content: flex-start;
     }
+
     .footer-content .logo {
         height: 50px;
         margin-right: 10px;

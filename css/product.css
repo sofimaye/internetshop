@@ -127,8 +127,8 @@
 }
 
 .detail-des{
-    padding: 0 10vw;
     text-transform: capitalize;
+    padding: 0 10vw 10vh;
 }
 .heading{
     font-size: 30px;
@@ -137,4 +137,13 @@
 .des{
     color: #383838;
     line-height: 25px;
+}
+
+@media (max-width: 830px){
+    .product-details{
+        flex-wrap: wrap;
+    }
+    .details{
+        width: 100vw;
+    }
 }

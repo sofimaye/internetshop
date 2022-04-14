@@ -34,14 +34,13 @@ const createNav = () => {
 
 createNav();
 
-
-let searchPage = document.querySelector(".search-btn");
-
+const searchPage = document.querySelector(".search-btn");
 searchPage.addEventListener('click', () => {
     let searchInput = document.querySelector('.search-box');
     let input = searchInput.value;
     window.location.href = `search.html?search=${input}`;
 })
+
 
 
 const createMobileNav = () => {
@@ -89,6 +88,14 @@ const createMobileNav = () => {
                 <button class="search-btn">search</button>
                 </div>
            `
+
+        const search = navMobileSearchBar.querySelector(".search-btn");
+        search.addEventListener('click', () => {
+            let searchInput = navMobileSearchBar.querySelector('.search-box');
+            let input = searchInput.value;
+            window.location.href = `search.html?search=${input}`;
+        })
+
         navBarContainerForHiddenItems.appendChild(navMobileSearchBar);
 
         const linksContainer = document.createElement("ul");
@@ -124,15 +131,24 @@ const createMobileNav = () => {
             closeNav.style.display = "none";
             document.querySelector(".hamNavButton").style.display = "flex";
             pageItems.forEach(page => page.style.display = "flex");
-            document.querySelector(".collection-container").style.display = "grid";
+            const collectionContainer =  document.querySelector(".collection-container");
+            if(collectionContainer){
+            collectionContainer.style.display = "grid";
+            }
             document.querySelector("footer").style.display = "block";
             document.querySelector(".navbarForMobiles").style.height = "50px";
             document.querySelector(".navbarForMobiles").style.width = "100vw";
             navBarContainerForHiddenItems.style.display = "none";
         });
+
+        countCartItems().then((number) => {
+            let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
+            quantityOfCardInTheNavbar.innerHTML = `${number}`;
+        })
     })
 }
 createMobileNav();
+
 
 
 

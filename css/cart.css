@@ -29,11 +29,9 @@
     max-width: 100%;
     height: auto;
     display: flex;
-}
-
-.item {
     border-bottom: 1px solid #E1E8EE;
 }
+
 
 .buttons {
     position: relative;
@@ -55,7 +53,6 @@
 div.image-for-prod-at-cart{
     width: fit-content;
 }
-
 
 .image-for-prod-at-cart img{
     max-width: 50%;
@@ -95,7 +92,6 @@ div.image-for-prod-at-cart{
     font-weight: 300;
     color: #86939E;
 }
-
 
 .quantity {
     padding: inherit;
@@ -172,7 +168,6 @@ input:focus {
         justify-content: center;
         width: 100%;
         text-align: center;
-        /*margin: 6px 0;*/
     }
 
     .short-description span:first-child {
@@ -209,6 +204,10 @@ input:focus {
     }
     .price-of-all{
        align-items: center;
+    }
+
+    .button-options-wrapper button.options{
+        height: 100px;
     }
 }
 
