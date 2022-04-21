@@ -299,10 +299,10 @@ const products = [{
     categoryId: 2,
     images: [
         {
-            url: "images/christian_louboutin1",
+            url: "images/christian_louboutin1.jpg",
         },
         {
-            url: "images/christian_louboutin2",
+            url: "images/christian_louboutin2.jpg",
         },
 
     ],
