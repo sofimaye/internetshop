@@ -129,10 +129,12 @@ a {
         background: #FFFFFF;
         width: 100vw;
         height: 100px;
-
+        display: block;
+        overflow: hidden;
     }
 
     .close {
+        display: flex;
         float: right;
         border: none;
         background-color: #FFFFFF;
@@ -223,6 +225,14 @@ a {
         display: none;
     }
 
+    .navBarContainerForHiddenItems{
+        height: 100vh;
+        overflow: hidden;
+    }
+    .navBarContainerForHiddenItems ul li{
+        text-align: center;
+    }
+
 }
 
 span.cart-number {
@@ -232,7 +242,7 @@ span.cart-number {
 .hero-section {
     width: 100%;
     height: calc(100vh - 120px);
-    background-image: url("../images/heroimage (1) (1).jpg");
+    background-image: url("../../public/images/heroimage (1) (1).jpg");
     background-size: cover;
     display: flex;
     justify-content: center;

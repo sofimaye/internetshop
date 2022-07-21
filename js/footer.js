@@ -36,7 +36,7 @@ const createFooter = () => {
     let footer = document.querySelector('footer');
 
     footer.innerHTML = `<div class="footer-content">
-    <img src="../images/logo2.png" class="logo" alt="">
+    <img src="/images/logo2.png" class="logo" alt="">
         <div class="footer-ul-container">
             <ul class="category">
                 <li class="category-title">women</li>

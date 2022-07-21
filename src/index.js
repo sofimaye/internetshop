@@ -1,13 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Homepage from "./home";
+import {Navbar} from "./navbar";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Footer from "./footer";
+import "./css/home.css";
+import "./css/footer.css";
+import "./css/cart.css";
+import "./css/product.css";
+import "./css/404.css";
+import "./css/search.css";
 
+
+//create in folder src all components for pages
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <Navbar/>
+          <Routes>
+              <Route path="/" element={<Homepage/>}/>
+
+              {/*<Route path="dresses" element={<Dresses/>}/>*/}
+              {/*<Route path="bags" element={<Bags/>}/>*/}
+              {/*<Route path="shoes" element={<Shoes/>}/>*/}
+              {/*<Route path="categories/:id" element={<Category/>}/>*/}
+
+
+              {/*<Route path="cart" element={<Cart/>}/>*/}
+              {/*<Route path="new" element={<New/>}/>*/}
+              {/*<Route path="products/:id" element={<Product/>}/>*/}
+              {/*<Route path="sale" element={<Sale/>}/>*/}
+              {/*<Route path="search" element={<Search/>}/>*/}
+              {/*<Route path="wishlist" element={<Wishlist/>}/>*/}
+              {/*<Route path="404" element={<FourOFour/>}/>*/}
+          </Routes>
+          <Footer/>
+      </BrowserRouter>
   </React.StrictMode>
 );
 
