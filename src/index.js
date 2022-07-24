@@ -5,6 +5,7 @@ import Homepage from "./home";
 import {Navbar} from "./navbar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Footer from "./footer";
+import NewPage from "./new";
 import "./css/home.css";
 import "./css/footer.css";
 import "./css/cart.css";
@@ -29,7 +30,7 @@ root.render(
 
 
               {/*<Route path="cart" element={<Cart/>}/>*/}
-              {/*<Route path="new" element={<New/>}/>*/}
+              <Route path="new" element={<NewPage/>}/>
               {/*<Route path="products/:id" element={<Product/>}/>*/}
               {/*<Route path="sale" element={<Sale/>}/>*/}
               {/*<Route path="search" element={<Search/>}/>*/}
