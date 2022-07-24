@@ -8,11 +8,13 @@ function Product({product}) {
             <div className="product-image">
                 <img src={product.images[0].url} className="product-thumb" alt="image"/>
                 <button className="card-btn">add to the wishlist</button>
+                {product.discount ? <span className="discount-tag">{product.discount}</span> : ""}
             </div>
             <div className="product-info">
                 <h2 className="product-brand">{product.brand}</h2>
                 <p className="product-short-description">{product.shortDescription}</p>
-                <span className="price">{product.actualPrice}</span>
+                <span className="price">{"$" + product.actualPrice}</span>
+                <span className="previous-price">{(product.previousPrice) ? "$" + product.previousPrice : ""}</span>
             </div>
         </div>
     )
