@@ -21,22 +21,41 @@ function Product({product}) {
 }
 
 function CategorySection({category}) {
-    const [products, setProducts] = useState()
+    const [products, setProducts] = useState();
 
     useEffect(() => {
         getProductsByCategory({categoryId: category.id}).then(setProducts);
     }, []);
+
+    const scrollToRight = ({categoryId}) => {
+        const containers = document.querySelectorAll(".product-container");
+        for (let container of containers) {
+            if (container.id === categoryId.toString()) {
+                container.scrollLeft += container.getBoundingClientRect().width;
+            }
+        }
+    }
+
+    const scrollToLeft = ({categoryId}) => {
+        const containers = document.querySelectorAll(".product-container");
+        for (let container of containers) {
+            if (container.id === categoryId.toString()) {
+                container.scrollLeft -= container.getBoundingClientRect().width;
+            }
+        }
+    }
 
     if (!products) return <div>Loading products....</div>;
 
     return (
         <section className="product">
             <h2 className="product-category">{category.name}</h2>
-            <button className="pre-btn">
+
+            <button className="pre-btn" onClick={() => scrollToLeft({categoryId: category.id})}>
                 <img src="/images/left%20arrow.png" alt="left arrow"/>
             </button>
 
-            <button className="nxt-btn">
+            <button className="nxt-btn" onClick={() => scrollToRight({categoryId: category.id})}>
                 <img src="/images/right%20arrow.png" alt="right arrow"/>
             </button>
 
@@ -55,6 +74,7 @@ export default function NewPage() {
     }, []);
 
     if (!categories) return <div>Loading categories...</div>;
+
     return (
         <section className="main-products-container">
             {categories.map((category) => <CategorySection key={category.id} category={category}/>)}
