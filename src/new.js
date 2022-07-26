@@ -27,20 +27,15 @@ function CategorySection({category}) {
         getProductsByCategory({categoryId: category.id}).then(setProducts);
     }, []);
 
-    const scrollToRight = () => {
+    const scroll = ({direction}) => {
         const containers = document.querySelectorAll(".product-container");
         for (let container of containers) {
             if (container.id === category.id.toString()) {
-                container.scrollLeft += container.getBoundingClientRect().width;
-            }
-        }
-    }
-
-    const scrollToLeft = () => {
-        const containers = document.querySelectorAll(".product-container");
-        for (let container of containers) {
-            if (container.id === category.id.toString()) {
-                container.scrollLeft -= container.getBoundingClientRect().width;
+                if (direction === "left") {
+                    container.scrollLeft -= container.getBoundingClientRect().width;
+                } else if (direction === "right") {
+                    container.scrollLeft += container.getBoundingClientRect().width;
+                }
             }
         }
     }
@@ -51,11 +46,11 @@ function CategorySection({category}) {
         <section className="product">
             <h2 className="product-category">{category.name}</h2>
 
-            <button className="pre-btn" onClick={scrollToLeft}>
+            <button className="pre-btn" onClick={() => scroll({direction: "left"})}>
                 <img src="/images/left%20arrow.png" alt="left arrow"/>
             </button>
 
-            <button className="nxt-btn" onClick={scrollToRight}>
+            <button className="nxt-btn" onClick={() => scroll({direction: "right"})}>
                 <img src="/images/right%20arrow.png" alt="right arrow"/>
             </button>
 
