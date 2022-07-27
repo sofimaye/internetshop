@@ -12,26 +12,24 @@ import "./css/cart.css";
 import "./css/product.css";
 import "./css/404.css";
 import "./css/search.css";
+import ProductPage from "./product";
 
 
 //create in folder src all components for pages
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
       <BrowserRouter>
           <Navbar/>
           <Routes>
               <Route path="/" element={<Homepage/>}/>
-
               {/*<Route path="dresses" element={<Dresses/>}/>*/}
               {/*<Route path="bags" element={<Bags/>}/>*/}
               {/*<Route path="shoes" element={<Shoes/>}/>*/}
               {/*<Route path="categories/:id" element={<Category/>}/>*/}
-
-
               {/*<Route path="cart" element={<Cart/>}/>*/}
               <Route path="new" element={<NewPage/>}/>
-              {/*<Route path="products/:id" element={<Product/>}/>*/}
+              <Route path="products/:id" element={<ProductPage/>}/>
               {/*<Route path="sale" element={<Sale/>}/>*/}
               {/*<Route path="search" element={<Search/>}/>*/}
               {/*<Route path="wishlist" element={<Wishlist/>}/>*/}
@@ -39,7 +37,7 @@ root.render(
           </Routes>
           <Footer/>
       </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

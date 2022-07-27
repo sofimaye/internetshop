@@ -2,11 +2,18 @@
 import {getProductsByCategory, getAllCategories} from "./data/data.js";
 import {useState, useEffect} from "react";
 
+//при натисканні на фото продукту відкривається картка продукту. Треба поправити url для переходу на сторінку продукту,
+// додати кнопки для сторінки та слайдер зображень при натисканні на фото ще раз відкривається photoswipe gallery
+// створити компонент продукту змінити url
+
 function Product({product}) {
+    const showImage = () => {
+        window.open(`products/${product.id}`);
+    }
     return (
         <div className="product-card">
             <div className="product-image">
-                <img src={product.images[0].url} className="product-thumb" alt="image"/>
+                <img src={product.images[0].url} onClick={showImage} className="product-thumb" alt="image"/>
                 <button className="card-btn">add to the wishlist</button>
                 {product.discount ? <span className="discount-tag">{product.discount}</span> : ""}
             </div>
