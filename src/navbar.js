@@ -98,13 +98,13 @@ export function NavbarForBigScreens() {
     return (
         <nav className="navbar">
             <div className="nav">
-                <img src="./images/logo.png" className="brand-logo" alt="logo"/>
+                <img src="/images/logo.png" className="brand-logo" alt="logo"/>
                 <div className="nav-items">
                     <Searchbox/>
-                    <a href="#"><img src="./images/user-90.png" alt="user"/></a>
-                    <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"/></a>
+                    <a href="#"><img src="/images/user-90.png" alt="user"/></a>
+                    <a href="wishlist.html"><img src="/images/heart-90.png" alt="wishlist"/></a>
                     <a href="cart.html">
-                        <img src="./images/shopping-cart-64%20(1).png" alt="cart"/>
+                        <img src="/images/shopping-cart-64%20(1).png" alt="cart"/>
                         <span className="cart-number">0
                             {/*{countCartItems().then((number) => `${number}`)}*/}
                         </span>
