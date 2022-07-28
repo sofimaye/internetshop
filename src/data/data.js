@@ -27,13 +27,13 @@ const products = [{
     discount: '-50%',
     images: [
         {
-            url: "images/guccimarmount.jpg"
+            url: "/images/guccimarmount.jpg"
         },
         {
-            url: "images/guccimarmount2.jpg"
+            url: "/images/guccimarmount2.jpg"
         },
         {
-            url: "images/guccimarmount3.jpg"
+            url: "/images/guccimarmount3.jpg"
         },
     ],
     brand: "gucci",
@@ -47,10 +47,10 @@ const products = [{
     discount: '-50%',
     images: [
         {
-            url: "images/dressfaithfull.jpg"
+            url: "/images/dressfaithfull.jpg"
         },
         {
-            url: "images/dressfaithful2.jpg"
+            url: "/images/dressfaithful2.jpg"
         },
     ],
     brand: "faithfull",
@@ -64,13 +64,13 @@ const products = [{
     discount: '-50%',
     images: [
         {
-            url: "images/guccihorsebit1955.jpg"
+            url: "/images/guccihorsebit1955.jpg"
         },
         {
-            url: "images/guccihorsebit1955(2).jpg"
+            url: "/images/guccihorsebit1955(2).jpg"
         },
         {
-            url: "images/guccihorsebit1955(3).jpg"
+            url: "/images/guccihorsebit1955(3).jpg"
         },
     ],
     brand: "gucci",
@@ -84,11 +84,11 @@ const products = [{
     discount: '-50%',
     images: [
         {
-            url: "images/dressselfportrait.jpg"
+            url: "/images/dressselfportrait.jpg"
         },
 
         {
-            url: "images/dressselfportrait2.jpg"
+            url: "/images/dressselfportrait2.jpg"
         },
     ],
     brand: "selfportrait",
@@ -102,10 +102,10 @@ const products = [{
     discount: '-50%',
     images: [
         {
-            url: "images/dressparosh.jpg"
+            url: "/images/dressparosh.jpg"
         },
         {
-            url: "images/dressparosh2.jpg"
+            url: "/images/dressparosh2.jpg"
         },
     ],
     brand: "parosh",
@@ -119,10 +119,10 @@ const products = [{
     discount: '-50%',
     images: [
         {
-            url: "images/dressdavidkoma.jpg"
+            url: "/images/dressdavidkoma.jpg"
         },
         {
-            url: "images/dressdavidkoma2.jpg"
+            url: "/images/dressdavidkoma2.jpg"
         },
     ],
     brand: "david koma",
@@ -135,19 +135,19 @@ const products = [{
     categoryId: 4,
     images: [
         {
-            url: "images/guccibrownleatherbag.jpg"
+            url: "/images/guccibrownleatherbag.jpg"
         },
         {
-            url: "images/guccibrownleatherbag2.jpg"
+            url: "/images/guccibrownleatherbag2.jpg"
         },
         {
-            url: "images/guccibrownleatherbag3.jpg"
+            url: "/images/guccibrownleatherbag3.jpg"
         },
         {
-            url: "images/guccibrownleatherbag4.jpg"
+            url: "/images/guccibrownleatherbag4.jpg"
         },
         {
-            url: "images/guccibrownleatherbag5.jpg"
+            url: "/images/guccibrownleatherbag5.jpg"
         },
 
     ],
@@ -160,19 +160,19 @@ const products = [{
     categoryId: 2,
     images: [
         {
-            url: "images/guccibeigeshoes.jpg"
+            url: "/images/guccibeigeshoes.jpg"
         },
 
         {
-            url: "images/guccibeigeshoes2.jpg"
+            url: "/images/guccibeigeshoes2.jpg"
         },
 
         {
-            url: "images/guccibeigeshoes3.jpg"
+            url: "/images/guccibeigeshoes3.jpg"
         },
 
         {
-            url: "images/guccibeigeshoes4.jpg"
+            url: "/images/guccibeigeshoes4.jpg"
         },
     ],
     brand: "gucci",
@@ -184,23 +184,23 @@ const products = [{
     categoryId: 2,
     images: [
         {
-            url: "images/louboutin.jpg"
+            url: "/images/louboutin.jpg"
         },
 
         {
-            url: "images/louboutin2.jpg"
+            url: "/images/louboutin2.jpg"
         },
 
         {
-            url: "images/louboutin3.jpg"
+            url: "/images/louboutin3.jpg"
         },
 
         {
-            url: "images/louboutin4.jpg"
+            url: "/images/louboutin4.jpg"
         },
 
         {
-            url: "images/louboutin5.jpg"
+            url: "/images/louboutin5.jpg"
         }
 
     ],
@@ -214,11 +214,11 @@ const products = [{
 
     images: [
         {
-            url: "images/burberry.jpg"
+            url: "/images/burberry.jpg"
         },
 
         {
-            url: "images/burberry2.jpg"
+            url: "/images/burberry2.jpg"
         },
 
     ],
@@ -231,7 +231,7 @@ const products = [{
     categoryId: 2,
     images: [
         {
-            url: "images/guccishoes2.jpg"
+            url: "/images/guccishoes2.jpg"
         }
     ],
     brand: "gucci",
@@ -243,7 +243,7 @@ const products = [{
     categoryId: 3,
     images: [
         {
-            url: "images/bakhirkajacket.jpg",
+            url: "/images/bakhirkajacket.jpg",
         }
     ],
     brand: "bakhirka",
@@ -255,7 +255,7 @@ const products = [{
     categoryId: 3,
     images: [
         {
-            url: "images/basemntjacket.jpg",
+            url: "/images/basemntjacket.jpg",
         }
     ],
     brand: "basemnt",
@@ -267,14 +267,14 @@ const products = [{
     categoryId: 4,
     images: [
         {
-            url: "images/guccihorsebitblue.jpg",
+            url: "/images/guccihorsebitblue.jpg",
         },
 
         {
-            url: "images/guccihorsebitblue(2).jpg",
+            url: "/images/guccihorsebitblue(2).jpg",
         },
         {
-            url: "images/guccihorsebitblue(3).jpg",
+            url: "/images/guccihorsebitblue(3).jpg",
         },
 
     ],
@@ -287,7 +287,7 @@ const products = [{
     categoryId: 3,
     images: [
         {
-            url: "images/basemntjacket.jpg",
+            url: "/images/basemntjacket.jpg",
         }
     ],
     brand: "basemnt",
@@ -299,10 +299,10 @@ const products = [{
     categoryId: 2,
     images: [
         {
-            url: "images/christian_louboutin1.jpg",
+            url: "/images/christian_louboutin1.jpg",
         },
         {
-            url: "images/christian_louboutin2.jpg",
+            url: "/images/christian_louboutin2.jpg",
         },
 
     ],

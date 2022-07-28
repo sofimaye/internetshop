@@ -2,36 +2,34 @@ import {getProductById} from "./data/data";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-function Sizes() {
-    const addCheckClassToButton = () => {
-        const button = document.querySelector('.size-radio-btn');
-        button.className = "size-radio-btn check";
-    }
-    return (
-        <button className="size-radio-btn" onClick={addCheckClassToButton}></button>
-    )
-}
 
+// download photoswipe for react js
+// add carousel for image swiping
 export default function ProductPage() {
     const [product, setProduct] = useState();
+    const [selectedSize, setSelectedSize] = useState();
     const {id} = useParams();
 
     console.log("Product id:", id)
 
     useEffect(() => {
         getProductById({id: parseInt(id)}).then(setProduct)
-    }, []);
+    }, [product]);
+
+
 
     if (!product) return <div>Loading products....</div>;
-
     console.log("Product:", product)
     return (
         <>
             <section className="product-details">
-                <div className="image-slider">
-                    <div className="product-images">
-                    </div>
+                <div className="image-slider" style={{ backgroundImage: product.images[0]}}></div>
+                <div className="product-images">
+                    {
+                        product.images ? product.images.map((image, index) => <img key={index} src={image.url} alt="product image"/>) : ""
+                    }
                 </div>
+
                 <div className="details">
                     <h2 className="product-brand">{product.brand}</h2>
                     <p className="product-short-description">{product.shortDescription}</p>
@@ -40,7 +38,7 @@ export default function ProductPage() {
                     <span className="product-discount"></span>
                     <p className="product-sub-heading">select size</p>
                     <div className="sizes-container">
-                        <Sizes/>
+                        {product.sizes.map(size => <button key={size} className={selectedSize === size ? "size-radio-btn check" : "size-radio-btn"} onClick={() => setSelectedSize(size)}>{size}</button>)}
                     </div>
                     <button className="btn card-add-btn">add to cart</button>
                     <button className="btn wishlist-btn">add to wishlist</button>
