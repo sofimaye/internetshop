@@ -8,36 +8,36 @@ import Footer from "./footer";
 import {NewPage} from "./new";
 import SalePage from "./sale";
 import ProductPage from "./product";
+import ErrorHandler from "./errorhandler";
 import "./css/home.css";
 import "./css/footer.css";
 import "./css/cart.css";
 import "./css/product.css";
 import "./css/404.css";
 import "./css/search.css";
-import ErrorHandler from "./errorhandler";
 import Category from "./category";
 
+//create in folder src all components for pages
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
       <BrowserRouter>
           <Navbar/>
           <Routes>
               <Route path="/" element={<Homepage/>}/>
-              {/*<Route path="cart" element={<Cart/>}/>*/}
               <Route path="new" element={<NewPage/>}/>
               <Route path="sale" element={<SalePage/>}/>
-              <Route path="products/:id" element={<ProductPage/>}/>
               <Route path="categories/dresses" element={<Category key={5} id={5}/>}/>
               <Route path="categories/shoes" element={<Category key={2} id={2}/>}/>
               <Route path="categories/bags" element={<Category key={4} id={4}/>}/>
+              <Route path="/products/:id" element={<ProductPage/>}/>
+              <Route path="/categories/products/:id" element={<ProductPage/>}/>
+              {/*<Route path="cart" element={<Cart/>}/>*/}
               {/*<Route path="search" element={<Search/>}/>*/}
               {/*<Route path="wishlist" element={<Wishlist/>}/>*/}
               <Route path="*" element={<ErrorHandler/>}/>
           </Routes>
           <Footer/>
       </BrowserRouter>
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
