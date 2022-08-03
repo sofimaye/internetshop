@@ -1,4 +1,3 @@
-//в залежності від категорії сторінки відобразити певну категорію товарів які мають бути на цій сторінці
 import {useEffect, useState} from "react";
 import {getCategoryById} from "./data/data";
 import {CategorySection} from "./new";
@@ -10,14 +9,14 @@ export default function Category({id}){
         let isMounted = true;
         getCategoryById({id: id}).then((category) => {
             if(isMounted){
-                setCategory(category)
+                setCategory(category);
             }
         }
     );
         return () => {
             isMounted = false;
         };
-    }, [category])
+    }, [])
 
     return (
         <section className="main-products-container">

@@ -19,16 +19,16 @@ function MobileNavBarOpen({onClose}) {
                     <Link className="link-mobile-item" to="/">
                         <li className="link">Home</li>
                     </Link>
-                    <Link className="link-mobile-item" to="/new">
+                    <Link className="link-mobile-item" to="new">
                         <li className="link">New</li>
                     </Link>
-                    <Link className="link-mobile-item" to="/categories/:4">
+                    <Link className="link-mobile-item" to="categories/bags">
                         <li className="link">Bags</li>
                     </Link>
-                    <Link className="link-mobile-item" to="/categories/:2">
+                    <Link className="link-mobile-item" to="categories/shoes">
                         <li className="link">Shoes</li>
                     </Link>
-                    <Link className="link-mobile-item" to="/categories/:5">
+                    <Link className="link-mobile-item" to="categories/dresses">
                         <li className="link">Dresses</li>
                     </Link>
                     <Link className="link-mobile-item" to="/sale">
@@ -113,11 +113,11 @@ export function NavbarForBigScreens() {
             </div>
             <ul className="links-container">
                 <li className="link-item"><Link to="/" id="home-page" className="link">Home</Link></li>
-                <li className="link-item"><Link to="/new" id="new-page" className="link">New</Link></li>
-                <li className="link-item"><Link to="/bags" className="link">Bags</Link></li>
-                <li className="link-item"><Link to="/shoes" className="link">Shoes</Link></li>
-                <li className="link-item"><Link to="/dresses" className="link">Dresses</Link></li>
-                <li className="link-item"><Link to="/sale" className="link">Sale</Link></li>
+                <li className="link-item"><Link to="new" id="new-page" className="link">New</Link></li>
+                <li className="link-item"><Link to="categories/bags" className="link">Bags</Link></li>
+                <li className="link-item"><Link to="categories/shoes" className="link">Shoes</Link></li>
+                <li className="link-item"><Link to="categories/dresses" className="link">Dresses</Link></li>
+                <li className="link-item"><Link to="sale" className="link">Sale</Link></li>
             </ul>
 
             {
