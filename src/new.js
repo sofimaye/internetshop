@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 
 export function Product({product}) {
     const showImage = () => {
-        window.open(`products/${product.id}`);
+        window.open(`/products/${product.id}`);
     }
     return (
         <div className="product-card">
@@ -25,10 +25,11 @@ export function Product({product}) {
 
 export function CategorySection({category}) {
     const [products, setProducts] = useState();
+    console.log("products is", products)
 
     useEffect(() => {
         getProductsByCategory({categoryId: category.id}).then(setProducts);
-    }, []);
+    }, [category]);
 
     const scroll = ({direction}) => {
         const containers = document.querySelectorAll(".product-container");
