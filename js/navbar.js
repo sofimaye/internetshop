@@ -5,15 +5,15 @@ const createNav = () => {
     let nav = document.querySelector('.navbar');
     nav.innerHTML = `
     <div class="nav">
-        <img src="./images/logo.png" class="brand-logo" alt="logo">
+        <img src="../images/logo.png" class="brand-logo" alt="logo">
         <div class="nav-items">
             <div class="search">
                 <input type="text" class="search-box" placeholder="search brand, product">
                 <button class="search-btn">search</button>
             </div>
-            <a href="#"><img src="./images/user-90.png" alt="user"></a>
-            <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"></a>
-            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>
+            <a href="#"><img src="../images/user-90.png" alt="user"></a>
+            <a href="wishlist.html"><img src="../images/heart-90.png" alt="wishlist"></a>
+            <a href="cart.html"><img src="../images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>
         </div>
     </div>
     <ul class="links-container">
@@ -48,11 +48,11 @@ const createMobileNav = () => {
     let navForMob = document.querySelector(".navbarForMobiles");
     navForMob.innerHTML =`
         <button class="hamNavButton">
-            <img src="./images/hamburger-menu.svg" alt="">
+            <img src="../images/hamburger-menu.svg" alt="">
         </button>
         <div class="closeNav">
         <button class="close">
-        <img src="./images/close.svg" alt="">
+        <img src="../images/close.svg" alt="">
         </button>
         </div>`;
 
@@ -120,9 +120,9 @@ const createMobileNav = () => {
         navItems.className = "login-wishlist-cart";
 
         navItems.innerHTML = ` 
-            <a href="#"><img src="./images/user-90.png" alt="user"></a>
-            <a href="wishlist.html"><img src="./images/heart-90.png" alt="wishlist"></a>
-            <a href="cart.html"><img src="./images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>`;
+            <a href="#"><img src="../images/user-90.png" alt="user"></a>
+            <a href="wishlist.html"><img src="../images/heart-90.png" alt="wishlist"></a>
+            <a href="cart.html"><img src="../images/shopping-cart-64%20(1).png" alt="cart"><span class="cart-number"></span></a>`;
 
         navBarContainerForHiddenItems.appendChild(navItems);
 

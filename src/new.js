@@ -2,7 +2,7 @@
 import {getProductsByCategory, getAllCategories} from "./data/data.js";
 import {useState, useEffect} from "react";
 
-function Product({product}) {
+export function Product({product}) {
     const showImage = () => {
         window.open(`products/${product.id}`);
     }
@@ -23,7 +23,7 @@ function Product({product}) {
     )
 }
 
-function CategorySection({category}) {
+export function CategorySection({category}) {
     const [products, setProducts] = useState();
 
     useEffect(() => {
@@ -65,7 +65,7 @@ function CategorySection({category}) {
 
 }
 
-export default function NewPage() {
+export function NewPage() {
     const [categories, setCategories] = useState();
     useEffect(() => {
         getAllCategories().then(setCategories);

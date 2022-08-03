@@ -1,20 +1,21 @@
 import {getProductById} from "./data/data";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import 'photoswipe/dist/photoswipe.css';
+import {Gallery, Item} from 'react-photoswipe-gallery';
+import ErrorHandler from "./errorhandler";
 
 export default function ProductPage() {
     const [product, setProduct] = useState();
     const [selectedSize, setSelectedSize] = useState();
     const {id} = useParams();
 
-    console.log("Product id:", id)
-
     useEffect(() => {
         getProductById({id: parseInt(id)}).then(setProduct)
     }, [product]);
 
-    if (!product) return <div>Loading products....</div>;
-    console.log("Product:", product)
+    if (!product) return <ErrorHandler/>;
+
     return (
         <>
             <section className="product-details">
