@@ -211,7 +211,6 @@ const products = [{
 }, {
     id: 10,
     categoryId: 2,
-
     images: [
         {
             url: "/images/burberry.jpg"
@@ -309,8 +308,27 @@ const products = [{
     brand: "gucci",
     shortDescription: "beige shoes",
     actualPrice: 800,
-    sizes: [36, 36.5, 37, 38, 39, 39.5],
-}]
+    sizes: [36, 36.5, 37, 38, 39, 39.5]
+},{
+    id: 17,
+    categoryId: 2,
+    discount: '-30%',
+    images: [
+        {
+            url: "/images/christian_louboutin1.jpg",
+        },
+        {
+            url: "/images/christian_louboutin2.jpg",
+        },
+
+    ],
+    brand: "gucci",
+    shortDescription: "beige shoes",
+    actualPrice: 800,
+    previousPrice: 1200,
+    sizes: [36, 36.5, 37, 38, 39, 39.5]
+}
+]
 
 const getProductsByCategory = ({categoryId}) => {
     return new Promise((resolve) => {

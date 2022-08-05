@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import 'photoswipe/dist/photoswipe.css';
 import {Gallery, Item} from 'react-photoswipe-gallery';
 import ErrorHandler from "./errorhandler";
+import {addProductToWishlist} from "./data/data";
 
 export default function ProductPage() {
     const [product, setProduct] = useState();
@@ -43,7 +44,7 @@ export default function ProductPage() {
                                                            onClick={() => setSelectedSize(size)}>{size}</button>)}
                     </div>
                     <button className="btn card-add-btn">add to cart</button>
-                    <button className="btn wishlist-btn">add to wishlist</button>
+                    <button className="btn wishlist-btn" onClick={() => addProductToWishlist({id: product.id})}>add to wishlist</button>
                 </div>
             </section>
 

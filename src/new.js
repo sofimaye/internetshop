@@ -1,4 +1,4 @@
-// page for all products
+// page for every product
 import {getProductsByCategory, getAllCategories} from "./data/data.js";
 import {useState, useEffect} from "react";
 
@@ -25,7 +25,6 @@ export function Product({product}) {
 
 export function CategorySection({category}) {
     const [products, setProducts] = useState();
-    console.log("products is", products)
 
     useEffect(() => {
         getProductsByCategory({categoryId: category.id}).then(setProducts);

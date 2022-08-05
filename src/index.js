@@ -9,15 +9,15 @@ import {NewPage} from "./new";
 import SalePage from "./sale";
 import ProductPage from "./product";
 import ErrorHandler from "./errorhandler";
+import Category from "./category";
+import WishList from "./wishlist";
 import "./css/home.css";
 import "./css/footer.css";
 import "./css/cart.css";
 import "./css/product.css";
 import "./css/404.css";
 import "./css/search.css";
-import Category from "./category";
 
-//create in folder src all components for pages
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <BrowserRouter>
@@ -30,10 +30,9 @@ root.render(
               <Route path="categories/shoes" element={<Category key={2} id={2}/>}/>
               <Route path="categories/bags" element={<Category key={4} id={4}/>}/>
               <Route path="/products/:id" element={<ProductPage/>}/>
-              <Route path="/categories/products/:id" element={<ProductPage/>}/>
               {/*<Route path="cart" element={<Cart/>}/>*/}
               {/*<Route path="search" element={<Search/>}/>*/}
-              {/*<Route path="wishlist" element={<Wishlist/>}/>*/}
+              <Route path="wishlist" element={<WishList/>}/>
               <Route path="*" element={<ErrorHandler/>}/>
           </Routes>
           <Footer/>

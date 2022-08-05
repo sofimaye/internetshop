@@ -6,16 +6,7 @@ export default function Category({id}){
     const [category, setCategory] = useState();
 
     useEffect(() => {
-        let isMounted = true;
-        getCategoryById({id: id}).then((category) => {
-            if(isMounted){
-                setCategory(category);
-            }
-        }
-    );
-        return () => {
-            isMounted = false;
-        };
+        getCategoryById({id: id}).then(setCategory);
     }, [])
 
     return (
