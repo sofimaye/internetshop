@@ -36,7 +36,20 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
                 }}>
                     <img src="images/plus.svg" alt="plus button image"/>
                 </button>
-                <input className="input-text" type="text" name="name" value={quantity} onChange={({target}) => {setQuantity(target.value)}}/>
+                <input className="input-text" type="text" name="name" value={quantity} onChange={({target}) => {
+                    updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: target.value})
+                        .then(({removed, newQuantity}) => {
+                            if(removed){
+                                toDelete(cartProduct.product.id, cartProduct.size)
+                            }else{
+                                changeQuantity(cartProduct.product.id, cartProduct.size, newQuantity)
+                            }
+                            setQuantity(newQuantity)
+                        })
+
+                    setQuantity(target.value)
+
+                }}/>
                 <button className="minus-btn" type="button" name="button" onClick={() => {
                     updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: quantity - 1})
                         .then(({removed, newQuantity}) => {
