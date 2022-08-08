@@ -386,31 +386,8 @@ const countCartItems = () => {
         resolve(number)
     });
 }
-
-//Коли використовувати setItem, він перезаписує елемент, який був до нього.
-// потрібно використовувати getItem, щоб отримати старий список, додати до нього,
-// а потім зберегти його назад у localStorage
-
-const addProductToCart = ({id, size}) => {
-    return new Promise((resolve) => {
-        let cartBusket = JSON.parse(localStorage.getItem("cart") || "[]");
-        let cartItem = cartBusket.find(prod => prod.productId === id && prod.size === size);
-
-        // треба прописати якщо є ще один такий товар, але розмір інший то додаємо в localstorage, якщо ні
-        if (!cartItem) {
-            cartItem = {productId: id, quantity: 1, size: size};
-            cartBusket.push(cartItem)
-        } else {
-            cartItem.quantity++
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cartBusket));
-        resolve({newQuantity: cartItem.quantity})
-    });
-}
-
 const addProductToWishlist = ({id}) => new Promise((resolve) => {
-
+    
     let wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
     let wishItem = wishlist.find(prod => prod.productId === id);
 
@@ -423,13 +400,19 @@ const addProductToWishlist = ({id}) => new Promise((resolve) => {
     resolve()
 })
 
-const decreaseProductQuantityInCart = ({id, size}) => {
+const updateQuantity = ({id, size, newQuantity}) => {
     return new Promise((resolve) => {
         let cartBusket = JSON.parse(localStorage.getItem("cart"));
         let cartItem = cartBusket.find(prod => prod.productId === id && prod.size === size);
-        --cartItem.quantity;
-        let removed = false
-        if (cartItem.quantity <= 0) {
+
+        if (!cartItem) {
+            cartItem = {productId: id, quantity: newQuantity, size: size};
+            cartBusket.push(cartItem)
+        }
+
+        cartItem.quantity = newQuantity;
+        let removed = false;
+        if(cartItem.quantity <=0){
             let index = cartBusket.indexOf(cartItem);
             cartBusket.splice(index, 1);
             removed = true
@@ -469,9 +452,8 @@ export {
     searchCategoriesByName,
     getProductById,
     countCartItems,
-    addProductToCart,
+    updateQuantity,
     deleteProductFromCart,
-    decreaseProductQuantityInCart,
     getCart,
     getProductsWithDiscount,
     addProductToWishlist,

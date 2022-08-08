@@ -1,13 +1,12 @@
 import {
     getProductById,
-    addProductToCart,
-    deleteProductFromCart,
-    decreaseProductQuantityInCart, getCart
+    deleteProductFromCart, getCart,
+    updateQuantity
 } from './data/data';
 import {useEffect, useState} from "react";
 
 function CartProd({cartProduct, changeQuantity, toDelete}) {
-    const [quantity, setQuantity] = useState(cartProduct.quantity);
+    let [quantity, setQuantity] = useState(cartProduct.quantity);
     const price = cartProduct.product.actualPrice * quantity;
 
     return (
@@ -30,16 +29,16 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
             </div>
             <div className="quantity">
                 <button className="plus-btn" type="button" name="button" onClick={() => {
-                    addProductToCart({id: cartProduct.product.id, size: cartProduct.size}).then(({newQuantity}) => {
+                    updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: quantity + 1}).then(({newQuantity}) => {
                         setQuantity(newQuantity);
                         changeQuantity(cartProduct.product.id, cartProduct.size, newQuantity)
                     })
                 }}>
                     <img src="images/plus.svg" alt="plus button image"/>
                 </button>
-                <input className="input-text" type="text" name="name" value={quantity}/>
+                <input className="input-text" type="text" name="name" value={quantity} onChange={({target}) => {setQuantity(target.value)}}/>
                 <button className="minus-btn" type="button" name="button" onClick={() => {
-                    decreaseProductQuantityInCart({id: cartProduct.product.id, size: cartProduct.size})
+                    updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: quantity - 1})
                         .then(({removed, newQuantity}) => {
                             if (removed) {
                                 toDelete(cartProduct.product.id, cartProduct.size);
@@ -59,7 +58,7 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
     )
 }
 
-
+// to fix total price and update price after adding or deleting from cart
 export default function Cart() {
     const [cartProducts, setCartProducts] = useState();
     let totalPrice = cartProducts?.map(({product, quantity}) => product.actualPrice * quantity)
