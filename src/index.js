@@ -11,6 +11,7 @@ import ProductPage from "./product";
 import ErrorHandler from "./errorhandler";
 import Category from "./category";
 import WishList from "./wishlist";
+import Cart from "./cart";
 import "./css/home.css";
 import "./css/footer.css";
 import "./css/cart.css";
@@ -30,7 +31,7 @@ root.render(
               <Route path="categories/shoes" element={<Category key={2} id={2}/>}/>
               <Route path="categories/bags" element={<Category key={4} id={4}/>}/>
               <Route path="/products/:id" element={<ProductPage/>}/>
-              {/*<Route path="cart" element={<Cart/>}/>*/}
+              <Route path="cart" element={<Cart/>}/>
               {/*<Route path="search" element={<Search/>}/>*/}
               <Route path="wishlist" element={<WishList/>}/>
               <Route path="*" element={<ErrorHandler/>}/>

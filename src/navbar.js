@@ -1,6 +1,7 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
+import {countCartItems} from "./data/data";
 
 //navbar for mobile screens
 function MobileNavBarOpen({onClose}) {
@@ -103,12 +104,12 @@ export function NavbarForBigScreens() {
                     <Searchbox/>
                     <a href="#"><img src="/images/user-90.png" alt="user"/></a>
                     <Link to="/wishlist"><img src="/images/heart-90.png" alt="wishlist"/></Link>
-                    <a href="cart.html">
+                    <Link to="/cart">
                         <img src="/images/shopping-cart-64%20(1).png" alt="cart"/>
                         <span className="cart-number">0
-                            {/*{countCartItems().then((number) => `${number}`)}*/}
+                            {/*{ countCartItems().then((number) => `${number}`)}*/}
                         </span>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <ul className="links-container">
@@ -119,13 +120,6 @@ export function NavbarForBigScreens() {
                 <li className="link-item"><Link to="categories/dresses" className="link">Dresses</Link></li>
                 <li className="link-item"><Link to="sale" className="link">Sale</Link></li>
             </ul>
-
-            {
-                // countCartItems().then((number) => {
-                //     let quantityOfCardInTheNavbar = document.querySelector(".cart-number");
-                //     quantityOfCardInTheNavbar.innerHTML = `${number}`;
-                // })
-            }
         </nav>
     )
 }

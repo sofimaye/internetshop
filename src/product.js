@@ -1,4 +1,4 @@
-import {getProductById} from "./data/data";
+import {addProductToCart, getProductById} from "./data/data";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import 'photoswipe/dist/photoswipe.css';
@@ -43,7 +43,7 @@ export default function ProductPage() {
                                                            className={selectedSize === size ? "size-radio-btn check" : "size-radio-btn"}
                                                            onClick={() => setSelectedSize(size)}>{size}</button>)}
                     </div>
-                    <button className="btn card-add-btn">add to cart</button>
+                    <button className="btn card-add-btn" onClick={() => !selectedSize ? alert('choose size!') : addProductToCart({id: product.id, size: selectedSize})}>add to cart</button>
                     <button className="btn wishlist-btn" onClick={() => addProductToWishlist({id: product.id})}>add to wishlist</button>
                 </div>
             </section>
