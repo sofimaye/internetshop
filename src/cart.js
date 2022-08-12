@@ -8,7 +8,6 @@ import {useEffect, useState} from "react";
 function CartProd({cartProduct, changeQuantity, toDelete}) {
     let [quantity, setQuantity] = useState(cartProduct.quantity);
     const price = cartProduct.product.actualPrice * quantity;
-
     return (
         <div className="item">
             <div className="buttons">
@@ -29,27 +28,18 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
             </div>
             <div className="quantity">
                 <button className="plus-btn" type="button" name="button" onClick={() => {
-                    updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: quantity + 1}).then(({newQuantity}) => {
+                    updateQuantity({
+                        id: cartProduct.product.id,
+                        size: cartProduct.size,
+                        newQuantity: quantity + 1
+                    }).then(({newQuantity}) => {
                         setQuantity(newQuantity);
                         changeQuantity(cartProduct.product.id, cartProduct.size, newQuantity)
                     })
                 }}>
                     <img src="images/plus.svg" alt="plus button image"/>
                 </button>
-                <input className="input-text" type="text" name="name" value={quantity} onChange={({target}) => {
-                    updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: target.value})
-                        .then(({removed, newQuantity}) => {
-                            if(removed){
-                                toDelete(cartProduct.product.id, cartProduct.size)
-                            }else{
-                                changeQuantity(cartProduct.product.id, cartProduct.size, newQuantity)
-                            }
-                            setQuantity(newQuantity)
-                        })
-
-                    setQuantity(target.value)
-
-                }}/>
+                <input className="input-text" type="number" name="name" value={quantity} readOnly/>
                 <button className="minus-btn" type="button" name="button" onClick={() => {
                     updateQuantity({id: cartProduct.product.id, size: cartProduct.size, newQuantity: quantity - 1})
                         .then(({removed, newQuantity}) => {
@@ -65,13 +55,13 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
                 </button>
             </div>
             <div className="total-price">
-                {"$" + price}
+                {"$" + (price ? price : 0)}
+
             </div>
         </div>
     )
 }
 
-// to fix total price and update price after adding or deleting from cart
 export default function Cart() {
     const [cartProducts, setCartProducts] = useState();
     let totalPrice = cartProducts?.map(({product, quantity}) => product.actualPrice * quantity)
@@ -87,7 +77,7 @@ export default function Cart() {
         })
     }, []);
 
-    function removeFromCart(productId, productSize){
+    function removeFromCart(productId, productSize) {
         setCartProducts(cartProducts.filter(p => !(p.product.id === productId && p.size === productSize)));
     }
 
@@ -95,8 +85,7 @@ export default function Cart() {
         setCartProducts(prods => prods.map(item => {
             if (item.product.id === productId && item.size === productSize) {
                 return {...item, quantity: newQuantity}
-            }
-            else return item
+            } else return item
         }));
     }
 
@@ -106,8 +95,8 @@ export default function Cart() {
                 <button className="buy">"buy"</button>
                 <p className="price-of-all">{`Total price $${totalPrice}`}</p>
             </div>
-
-            {cartProducts ? cartProducts.map((prod) => <CartProd key={prod.product.id.toString()+prod.size} cartProduct={prod} changeQuantity={changeQuantity}
+            {cartProducts ? cartProducts.map((prod) => <CartProd key={prod.product.id.toString() + prod.size}
+                                                                 cartProduct={prod} changeQuantity={changeQuantity}
                                                                  toDelete={removeFromCart}/>) : "Cart is empty"}
         </section>
     )
