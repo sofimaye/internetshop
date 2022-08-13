@@ -3,7 +3,6 @@ import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {countCartItems} from "./data/data";
 
-//navbar for mobile screens
 function MobileNavBarOpen({onClose}) {
     return (
         <>
@@ -79,7 +78,7 @@ export function MobileNavBar() {
     )
 }
 
-// search box
+
 export function Searchbox() {
     const [search, setSearch] = useState("");
     return (
@@ -87,14 +86,13 @@ export function Searchbox() {
             <input type="text" className="search-box" onChange={({target}) => setSearch(target.value)}
                    placeholder="search brand, product"
                    value={search}/>
-            <button className="search-btn"
-                    onClick={() => window.location.href = `search.html?search=${search}`}>Search
-            </button>
+            <Link to={`search?search=${search}`} >
+            <button className="search-btn">Search</button>
+            </Link>
         </div>
     )
 }
 
-// main navbar for big screens
 export function NavbarForBigScreens() {
     return (
         <nav className="navbar">

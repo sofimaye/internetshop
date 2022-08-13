@@ -358,9 +358,9 @@ const getProductsWithDiscount = () => {
     })
 }
 
-const searchCategoriesByName = ({name}) => {
+const searchProductsByItsDescription = ({shortDescription}) => {
     return new Promise((resolve) => {
-        resolve(categories.filter(c => c.name.toUpperCase().includes(name.toUpperCase())))
+        resolve(products.filter(p => p.shortDescription.toUpperCase().includes(shortDescription.toUpperCase())))
     })
 }
 
@@ -412,16 +412,17 @@ const updateQuantity = ({id, size, newQuantity}) => {
 
         cartItem.quantity = newQuantity;
         let removed = false;
-        if(cartItem.quantity <=0){
+
+        if(cartItem.quantity <= 0 ){
             let index = cartBusket.indexOf(cartItem);
             cartBusket.splice(index, 1);
             removed = true
         }
+
         localStorage.setItem("cart", JSON.stringify(cartBusket));
         resolve({removed: removed, newQuantity: cartItem.quantity})
     })
 }
-
 
 const deleteProductFromCart = ({id, size}) => {
     return new Promise((resolve) => {
@@ -449,7 +450,6 @@ export {
     getProductsByCategory,
     getAllCategories,
     getCategoryById,
-    searchCategoriesByName,
     getProductById,
     countCartItems,
     updateQuantity,
@@ -458,5 +458,6 @@ export {
     getProductsWithDiscount,
     addProductToWishlist,
     getWishlist,
-    deleteProductFromWishList
+    deleteProductFromWishList,
+    searchProductsByItsDescription
 }

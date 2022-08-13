@@ -12,6 +12,7 @@ import ErrorHandler from "./errorhandler";
 import Category from "./category";
 import WishList from "./wishlist";
 import Cart from "./cart";
+import Search from "./search";
 import "./css/home.css";
 import "./css/footer.css";
 import "./css/cart.css";
@@ -27,12 +28,12 @@ root.render(
               <Route path="/" element={<Homepage/>}/>
               <Route path="new" element={<NewPage/>}/>
               <Route path="sale" element={<SalePage/>}/>
+              <Route path="search" element={<Search/>}/>
               <Route path="categories/dresses" element={<Category key={5} id={5}/>}/>
               <Route path="categories/shoes" element={<Category key={2} id={2}/>}/>
               <Route path="categories/bags" element={<Category key={4} id={4}/>}/>
               <Route path="/products/:id" element={<ProductPage/>}/>
               <Route path="cart" element={<Cart/>}/>
-              {/*<Route path="search" element={<Search/>}/>*/}
               <Route path="wishlist" element={<WishList/>}/>
               <Route path="*" element={<ErrorHandler/>}/>
           </Routes>
