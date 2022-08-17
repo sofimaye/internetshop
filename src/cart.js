@@ -4,6 +4,7 @@ import {
     updateQuantity
 } from './data/data';
 import {useEffect, useState} from "react";
+import {useNavbarNum} from "./navnumber";
 
 function CartProd({cartProduct, changeQuantity, toDelete}) {
     let [quantity, setQuantity] = useState(cartProduct.quantity);
@@ -63,6 +64,7 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
 }
 
 export default function Cart() {
+    const quantityOfCartNumber = useNavbarNum();
     const [cartProducts, setCartProducts] = useState();
     let totalPrice = cartProducts?.map(({product, quantity}) => product.actualPrice * quantity)
         ?.reduce((a, b) => a + b, 0) || 0;
@@ -79,15 +81,18 @@ export default function Cart() {
 
     function removeFromCart(productId, productSize) {
         setCartProducts(cartProducts.filter(p => !(p.product.id === productId && p.size === productSize)));
+        quantityOfCartNumber.updated();
     }
 
     function changeQuantity(productId, productSize, newQuantity) {
+        quantityOfCartNumber.updated();
         setCartProducts(prods => prods.map(item => {
             if (item.product.id === productId && item.size === productSize) {
                 return {...item, quantity: newQuantity}
             } else return item
         }));
     }
+
 
     return (
         <section className="cart">

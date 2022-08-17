@@ -5,8 +5,10 @@ import 'photoswipe/dist/photoswipe.css';
 import {Gallery, Item} from 'react-photoswipe-gallery';
 import ErrorHandler from "./errorhandler";
 import {addProductToWishlist} from "./data/data";
+import {useNavbarNum} from "./navnumber";
 
 export default function ProductPage() {
+    const quantityOfCartNumber = useNavbarNum();
     const [product, setProduct] = useState();
     const [selectedSize, setSelectedSize] = useState();
     const {id} = useParams();
@@ -43,7 +45,13 @@ export default function ProductPage() {
                                                            className={selectedSize === size ? "size-radio-btn check" : "size-radio-btn"}
                                                            onClick={() => setSelectedSize(size)}>{size}</button>)}
                     </div>
-                    <button className="btn card-add-btn" onClick={() => !selectedSize ? alert('choose size!') : updateQuantity({id: product.id, size: selectedSize, newQuantity: 1})}>add to cart</button>
+                    <button className="btn card-add-btn" onClick={() => {
+                        !selectedSize ? alert('choose size!'):
+                            updateQuantity({id: product.id, size: selectedSize, newQuantity: 1})
+                            && quantityOfCartNumber.updated()
+                    }}>
+                        add to cart
+                    </button>
                     <button className="btn wishlist-btn" onClick={() => addProductToWishlist({id: product.id})}>add to wishlist</button>
                 </div>
             </section>

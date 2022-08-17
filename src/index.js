@@ -19,26 +19,29 @@ import "./css/cart.css";
 import "./css/product.css";
 import "./css/404.css";
 import "./css/search.css";
+import {NavNumber} from "./navnumber";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-      <BrowserRouter>
-          <Navbar/>
-          <Routes>
-              <Route path="/" element={<Homepage/>}/>
-              <Route path="new" element={<NewPage/>}/>
-              <Route path="sale" element={<SalePage/>}/>
-              <Route path="search" element={<Search/>}/>
-              <Route path="categories/dresses" element={<Category key={5} id={5}/>}/>
-              <Route path="categories/shoes" element={<Category key={2} id={2}/>}/>
-              <Route path="categories/bags" element={<Category key={4} id={4}/>}/>
-              <Route path="/products/:id" element={<ProductPage/>}/>
-              <Route path="cart" element={<Cart/>}/>
-              <Route path="wishlist" element={<WishList/>}/>
-              <Route path="*" element={<ErrorHandler/>}/>
-          </Routes>
-          <Footer/>
-      </BrowserRouter>
+    <BrowserRouter>
+        <NavNumber>
+            <Navbar/>
+            <Routes>
+                <Route path="/" element={<Homepage/>}/>
+                <Route path="new" element={<NewPage/>}/>
+                <Route path="sale" element={<SalePage/>}/>
+                <Route path="search" element={<Search/>}/>
+                <Route path="categories/dresses" element={<Category key={5} id={5}/>}/>
+                <Route path="categories/shoes" element={<Category key={2} id={2}/>}/>
+                <Route path="categories/bags" element={<Category key={4} id={4}/>}/>
+                <Route path="/products/:id" element={<ProductPage/>}/>
+                <Route path="cart" element={<Cart/>}/>
+                <Route path="wishlist" element={<WishList/>}/>
+                <Route path="*" element={<ErrorHandler/>}/>
+            </Routes>
+            <Footer/>
+        </NavNumber>
+    </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

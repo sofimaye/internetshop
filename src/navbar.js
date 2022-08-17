@@ -2,6 +2,7 @@ import React from "react";
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {countCartItems} from "./data/data";
+import {useNavbarNum} from "./navnumber";
 
 function MobileNavBarOpen({onClose}) {
     return (
@@ -93,20 +94,17 @@ export function Searchbox() {
     )
 }
 
-
-//повідомити про оновлення ціни
-//щоб 2 компонети комунікували не знаючи про існування один одного
-//варіанти про комунікацію між не зв'язними компонентами
 export function NavbarNumberOfProducts(){
+    const quantityOfCartNumber = useNavbarNum();
     const [cartNumber, setCartNumber] = useState();
-    
+
     useEffect(() => {
         countCartItems().then(setCartNumber)
-    }, [])
+    }, [quantityOfCartNumber.cartQuantity])
 
     return(
         <span className="cart-number">
-            {cartNumber ? cartNumber : 0}
+            {cartNumber}
         </span>
     )
 }
