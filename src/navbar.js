@@ -39,13 +39,13 @@ function MobileNavBarOpen({onClose}) {
                     <a href="#">
                         <img src="/images/user-90.png" alt="user profile"/>
                     </a>
-                    <a href="wishlist.html">
+                    <Link to="wishlist">
                         <img src="/images/heart-90.png" alt="wishlist"/>
-                    </a>
-                    <a href="cart.html">
+                    </Link>
+                    <Link to="cart">
                         <img src="/images/shopping-cart-64.png" alt="cart"/>
-                        <span className="cart-number"></span>
-                    </a>
+                       <NavbarNumberOfProducts/>
+                    </Link>
                 </div>
             </div>
         </>
@@ -93,6 +93,24 @@ export function Searchbox() {
     )
 }
 
+
+//повідомити про оновлення ціни
+//щоб 2 компонети комунікували не знаючи про існування один одного
+//варіанти про комунікацію між не зв'язними компонентами
+export function NavbarNumberOfProducts(){
+    const [cartNumber, setCartNumber] = useState();
+    
+    useEffect(() => {
+        countCartItems().then(setCartNumber)
+    }, [])
+
+    return(
+        <span className="cart-number">
+            {cartNumber ? cartNumber : 0}
+        </span>
+    )
+}
+
 export function NavbarForBigScreens() {
     return (
         <nav className="navbar">
@@ -104,9 +122,7 @@ export function NavbarForBigScreens() {
                     <Link to="/wishlist"><img src="/images/heart-90.png" alt="wishlist"/></Link>
                     <Link to="/cart">
                         <img src="/images/shopping-cart-64%20(1).png" alt="cart"/>
-                        <span className="cart-number">0
-                            {/*{ countCartItems().then((number) => `${number}`)}*/}
-                        </span>
+                        <NavbarNumberOfProducts/>
                     </Link>
                 </div>
             </div>

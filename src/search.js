@@ -6,7 +6,6 @@ import {Product} from "./new";
 export default function Search(){
     const [searchParams] = useSearchParams();
     const filter = searchParams.get("search");
-    console.log('Search page, filter:', filter);
     const [products, setProducts] = useState();
 
     useEffect(() => {
