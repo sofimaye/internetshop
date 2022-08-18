@@ -358,9 +358,13 @@ const getProductsWithDiscount = () => {
     })
 }
 
-const searchProductsByItsDescription = ({shortDescription}) => {
+const searchProducts = ({searchItems}) => {
     return new Promise((resolve) => {
-        resolve(products.filter(p => p.shortDescription.toUpperCase().includes(shortDescription.toUpperCase())))
+        const filteredCategories = categories.filter(c => c.name.toUpperCase().includes(searchItems.toUpperCase()));
+        const filteredProducts = (filteredCategories.length > 0)
+            ? filteredCategories.flatMap((category) => products.filter(p => p.categoryId === category.id))
+            : products.filter(p => p.shortDescription.toUpperCase().includes(searchItems.toUpperCase()));
+        resolve(filteredProducts);
     })
 }
 
@@ -459,5 +463,5 @@ export {
     addProductToWishlist,
     getWishlist,
     deleteProductFromWishList,
-    searchProductsByItsDescription
+    searchProducts
 }

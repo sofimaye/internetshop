@@ -1,4 +1,3 @@
-// page for every product
 import {getProductsByCategory, getAllCategories} from "./data/data.js";
 import {useState, useEffect} from "react";
 

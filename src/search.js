@@ -1,4 +1,4 @@
-import {searchProductsByItsDescription} from "./data/data";
+import {searchProducts} from "./data/data";
 import {useEffect, useState} from "react";
 import { useSearchParams } from "react-router-dom";
 import {Product} from "./new";
@@ -9,7 +9,7 @@ export default function Search(){
     const [products, setProducts] = useState();
 
     useEffect(() => {
-        searchProductsByItsDescription({shortDescription: filter}).then(setProducts)
+        searchProducts({searchItems: filter}).then(setProducts);
     }, [filter]);
 
     return(
