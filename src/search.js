@@ -10,14 +10,14 @@ export default function Search(){
 
     useEffect(() => {
         searchProductsByItsDescription({shortDescription: filter}).then(setProducts)
-    }, [filter])
+    }, [filter]);
 
     return(
         <>
             <section className="search-results">
-                <h2 className="heading">Matches for {filter}</h2>
-                <section className="main-sale-container">
-                    {products ? products.map((product) => <Product key={product.id} product={product}/>): `There are no matches for ${filter}`}
+                <h2 className="heading">{(products && products.length > 0) ? `Matches for ${filter}` : `No matches for ${filter}`}</h2>
+                <section className="main-products-container">
+                    {products?.map((product) => <Product key={product.id} product={product}/>)}
                 </section>
             </section>
         </>

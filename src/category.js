@@ -1,17 +1,17 @@
 import {useEffect, useState} from "react";
-import {getCategoryById} from "./data/data";
-import {CategorySection} from "./new";
+import {Product} from "./new";
+import {getProductsByCategory} from "./data/data";
 
 export default function Category({id}){
-    const [category, setCategory] = useState();
+    const [products, setProducts] = useState();
 
     useEffect(() => {
-        getCategoryById({id: id}).then(setCategory);
+        getProductsByCategory({categoryId: id}).then(setProducts);
     }, [])
 
     return (
         <section className="main-products-container">
-            {category ? <CategorySection category={category}/> : 'page downloading...'}
+            {products ? products.map((product) => <Product key={product.id} product={product}/>) : 'page loading...'}
         </section>
     )
 }

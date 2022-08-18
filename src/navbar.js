@@ -125,8 +125,8 @@ export function NavbarForBigScreens() {
                 </div>
             </div>
             <ul className="links-container">
-                <li className="link-item"><Link to="/" id="home-page" className="link">Home</Link></li>
-                <li className="link-item"><Link to="new" id="new-page" className="link">New</Link></li>
+                <li className="link-item"><Link to="/" className="link">Home</Link></li>
+                <li className="link-item"><Link to="new" className="link">New</Link></li>
                 <li className="link-item"><Link to="categories/bags" className="link">Bags</Link></li>
                 <li className="link-item"><Link to="categories/shoes" className="link">Shoes</Link></li>
                 <li className="link-item"><Link to="categories/dresses" className="link">Dresses</Link></li>

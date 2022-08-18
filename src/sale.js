@@ -10,7 +10,7 @@ export default function SalePage(){
     }, [])
 
     return(
-        <section className="main-sale-container">
+        <section className="main-products-container">
             {productsWithSales ? productsWithSales.map((product) => <Product key={product.id} product={product}/>) : "products downloading"}
         </section>
     )

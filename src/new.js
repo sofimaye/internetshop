@@ -74,7 +74,7 @@ export function NewPage() {
     if (!categories) return <div>Loading categories...</div>;
 
     return (
-        <section className="main-products-container">
+        <section className="main-container">
             {categories.map((category) => <CategorySection key={category.id} category={category}/>)}
         </section>
     )
