@@ -19,6 +19,7 @@ import "./css/cart.css";
 import "./css/product.css";
 import "./css/404.css";
 import "./css/search.css";
+import './css/sorting.css';
 import {NavNumber} from "./navnumber";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
