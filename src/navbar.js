@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useCallback} from "react";
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {countCartItems} from "./data/data";
 import {useNavbarNum} from "./navnumber";
 
 function MobileNavBarOpen({onClose}) {
+    console.log("MobileNavBarOpened");
     return (
         <>
             <div className="closeNav">
@@ -14,25 +15,25 @@ function MobileNavBarOpen({onClose}) {
             </div>
             <div className="navBarContainerForHiddenItems">
                 <div className="navMobileSearchBar">
-                    <Searchbox/>
+                    <Searchbox onClose={onClose}/>
                 </div>
                 <ul>
-                    <Link className="link-mobile-item" to="/">
+                    <Link className="link-mobile-item" to="/" onClick={onClose}>
                         <li className="link">Home</li>
                     </Link>
-                    <Link className="link-mobile-item" to="new">
+                    <Link className="link-mobile-item" to="new" onClick={onClose}>
                         <li className="link">New</li>
                     </Link>
-                    <Link className="link-mobile-item" to="categories/bags">
+                    <Link className="link-mobile-item" to="categories/bags" onClick={onClose}>
                         <li className="link">Bags</li>
                     </Link>
-                    <Link className="link-mobile-item" to="categories/shoes">
+                    <Link className="link-mobile-item" to="categories/shoes" onClick={onClose}>
                         <li className="link">Shoes</li>
                     </Link>
-                    <Link className="link-mobile-item" to="categories/dresses">
+                    <Link className="link-mobile-item" to="categories/dresses" onClick={onClose}>
                         <li className="link">Dresses</li>
                     </Link>
-                    <Link className="link-mobile-item" to="/sale">
+                    <Link className="link-mobile-item" to="/sale" onClick={onClose}>
                         <li className="link">Sale</li>
                     </Link>
                 </ul>
@@ -40,10 +41,10 @@ function MobileNavBarOpen({onClose}) {
                     <a href="#">
                         <img src="/images/user-90.png" alt="user profile"/>
                     </a>
-                    <Link to="wishlist">
+                    <Link to="wishlist" onClick={onClose}>
                         <img src="/images/heart-90.png" alt="wishlist"/>
                     </Link>
-                    <Link to="cart">
+                    <Link to="cart" onClick={onClose}>
                         <img src="/images/shopping-cart-64.png" alt="cart"/>
                        <NavbarNumberOfProducts/>
                     </Link>
@@ -65,13 +66,17 @@ export function MobileNavBar() {
         }
     });
 
+    const handleHamButtonClick = useCallback(() => setOpen((prev) => !prev), []);
+
     if (open) {
-        return <MobileNavBarOpen onClose={() => setOpen(!open)}/>
+        return <MobileNavBarOpen onClose={handleHamButtonClick}/>
     }
+
+    console.log("MobileNavBar closed")
     return (
         <>
             <div className="navbarForMobiles">
-                <button className="hamNavButton" onClick={() => setOpen(!open)}>
+                <button className="hamNavButton" onClick={handleHamButtonClick}>
                     <img src="/images/hamburger-menu.svg" alt="hamburger menu button"/>
                 </button>
             </div>
@@ -80,14 +85,16 @@ export function MobileNavBar() {
 }
 
 
-export function Searchbox() {
+export function Searchbox({onClose}) {
     const [search, setSearch] = useState("");
+
+    console.log("Search at search box")
     return (
         <div className="search">
             <input type="text" className="search-box" onChange={({target}) => setSearch(target.value)}
                    placeholder="search brand, product"
                    value={search}/>
-            <Link to={`search?search=${search}`} >
+            <Link to={`search?search=${search}`} onClick={onClose}>
             <button className="search-btn">Search</button>
             </Link>
         </div>
