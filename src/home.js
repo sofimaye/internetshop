@@ -1,6 +1,4 @@
-// component for home page ui
 import React from "react";
-import {Link} from "react-router-dom";
 
 export default function Homepage() {
     return (

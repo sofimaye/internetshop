@@ -5,7 +5,6 @@ import {countCartItems} from "./data/data";
 import {useNavbarNum} from "./navnumber";
 
 function MobileNavBarOpen({onClose}) {
-    console.log("MobileNavBarOpened");
     return (
         <>
             <div className="closeNav">
@@ -72,7 +71,6 @@ export function MobileNavBar() {
         return <MobileNavBarOpen onClose={handleHamButtonClick}/>
     }
 
-    console.log("MobileNavBar closed")
     return (
         <>
             <div className="navbarForMobiles">
@@ -87,8 +85,7 @@ export function MobileNavBar() {
 
 export function Searchbox({onClose}) {
     const [search, setSearch] = useState("");
-
-    console.log("Search at search box")
+    
     return (
         <div className="search">
             <input type="text" className="search-box" onChange={({target}) => setSearch(target.value)}
