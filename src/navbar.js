@@ -4,6 +4,15 @@ import {Link} from "react-router-dom";
 import {countCartItems} from "./data/data";
 import {useNavbarNum} from "./navnumber";
 
+const routes = {
+    home: "/",
+    new: "new",
+    bags: "categories/bags",
+    shoes: "categories/shoes",
+    dresses: "categories/dresses",
+    sale: "/sale"
+}
+
 function MobileNavBarOpen({onClose}) {
     return (
         <>
@@ -17,24 +26,11 @@ function MobileNavBarOpen({onClose}) {
                     <Searchbox onClose={onClose}/>
                 </div>
                 <ul>
-                    <Link className="link-mobile-item" to="/" onClick={onClose}>
-                        <li className="link">Home</li>
-                    </Link>
-                    <Link className="link-mobile-item" to="new" onClick={onClose}>
-                        <li className="link">New</li>
-                    </Link>
-                    <Link className="link-mobile-item" to="categories/bags" onClick={onClose}>
-                        <li className="link">Bags</li>
-                    </Link>
-                    <Link className="link-mobile-item" to="categories/shoes" onClick={onClose}>
-                        <li className="link">Shoes</li>
-                    </Link>
-                    <Link className="link-mobile-item" to="categories/dresses" onClick={onClose}>
-                        <li className="link">Dresses</li>
-                    </Link>
-                    <Link className="link-mobile-item" to="/sale" onClick={onClose}>
-                        <li className="link">Sale</li>
-                    </Link>
+                    {Object.entries(routes).map(([name, url], index) => (
+                        <Link className="link-mobile-item" key={index} to={url} onClick={onClose}>
+                            <li className="link">{name}</li>
+                        </Link>
+                    ))}
                 </ul>
                 <div className="login-wishlist-cart">
                     <a href="#">
@@ -45,7 +41,7 @@ function MobileNavBarOpen({onClose}) {
                     </Link>
                     <Link to="cart" onClick={onClose}>
                         <img src="/images/shopping-cart-64.png" alt="cart"/>
-                       <NavbarNumberOfProducts/>
+                        <NavbarNumberOfProducts/>
                     </Link>
                 </div>
             </div>
@@ -85,20 +81,20 @@ export function MobileNavBar() {
 
 export function Searchbox({onClose}) {
     const [search, setSearch] = useState("");
-    
+
     return (
         <div className="search">
             <input type="text" className="search-box" onChange={({target}) => setSearch(target.value)}
                    placeholder="search brand, product"
                    value={search}/>
             <Link to={`search?search=${search}`} onClick={onClose}>
-            <button className="search-btn">Search</button>
+                <button className="search-btn">Search</button>
             </Link>
         </div>
     )
 }
 
-export function NavbarNumberOfProducts(){
+export function NavbarNumberOfProducts() {
     const quantityOfCartNumber = useNavbarNum();
     const [cartNumber, setCartNumber] = useState();
 
@@ -106,7 +102,7 @@ export function NavbarNumberOfProducts(){
         countCartItems().then(setCartNumber)
     }, [quantityOfCartNumber.cartQuantity])
 
-    return(
+    return (
         <span className="cart-number">
             {cartNumber}
         </span>
@@ -129,12 +125,13 @@ export function NavbarForBigScreens() {
                 </div>
             </div>
             <ul className="links-container">
-                <li className="link-item"><Link to="/" className="link">Home</Link></li>
-                <li className="link-item"><Link to="new" className="link">New</Link></li>
-                <li className="link-item"><Link to="categories/bags" className="link">Bags</Link></li>
-                <li className="link-item"><Link to="categories/shoes" className="link">Shoes</Link></li>
-                <li className="link-item"><Link to="categories/dresses" className="link">Dresses</Link></li>
-                <li className="link-item"><Link to="sale" className="link">Sale</Link></li>
+                {
+                    Object.entries(routes).map(([name, url], index) => (
+                        <li className="link-item" key={index}>
+                            <Link to={url} className="link">{name}</Link>
+                        </li>
+                    ))
+                }
             </ul>
         </nav>
     )

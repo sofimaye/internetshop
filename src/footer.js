@@ -9,19 +9,15 @@ export default function Footer() {
                     <div className="footer-ul-container">
                         <ul className="category">
                             <li className="category-title">women</li>
-                            <li><a href="#" className="footer-link">t-shirts</a></li>
-                            <li><a href="#" className="footer-link">trousers</a></li>
-                            <li><a href="#" className="footer-link">dresses</a></li>
-                            <li><a href="#" className="footer-link">bags</a></li>
-                            <li><a href="#" className="footer-link">shoes</a></li>
+                            {['t-shirts', 'trousers', 'dresses', 'bags', 'shoes'].map((page, index) => (
+                                <li key={index}><a href="#" className="footer-link">{page}</a></li>
+                            ))}
                         </ul>
                         <ul className="category">
                             <li className="category-title">men</li>
-                            <li><a href="#" className="footer-link">t-shirts</a></li>
-                            <li><a href="#" className="footer-link">trousers</a></li>
-                            <li><a href="#" className="footer-link">suits</a></li>
-                            <li><a href="#" className="footer-link">bags</a></li>
-                            <li><a href="#" className="footer-link">shoes</a></li>
+                            {['t-shirts', 'trousers', 'suits', 'bags', 'shoes'].map((page, index) => (
+                                    <li key={index}><a href="#" className="footer-link">{page}</a></li>
+                                ))}
                         </ul>
                     </div>
                 </div>
