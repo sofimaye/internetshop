@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 
 export function Product({product}) {
     const showImage = () => {
-        window.open(`/products/${product.id}`);
+        window.open(`/products/${product.id}`, '_self');
     }
     return (
         <div className="product-card">
