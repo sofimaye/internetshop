@@ -1,0 +1,25 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 5vh;
+}
+.page{
+    margin: 5px;
+    width: auto;
+    font-size: 1.7em;
+    font-weight: bold;
+    list-style: none;
+}
+.page a:hover{
+    color: #5E6977;
+    -moz-box-shadow: 0 0 0 1px #000000;
+}
+
+.page-link {
+    color: #383838;
+}
+.currentPage {
+    color: #CE272D;
+}

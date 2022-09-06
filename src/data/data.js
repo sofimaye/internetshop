@@ -327,7 +327,434 @@ const products = [{
     actualPrice: 800,
     previousPrice: 1200,
     sizes: [36, 36.5, 37, 38, 39, 39.5]
-}
+}, {
+    id: 18,
+    categoryId: 5,
+    images: [
+        {
+            url: '/images/new dresses/BURBERRY.jpg'
+        },
+        {
+            url: '/images/new dresses/BURBERRY2.jpg'
+        }
+    ],
+    brand: 'burberry',
+    shortDescription: "short dress",
+    actualPrice: 500,
+    sizes: ['xs', 's', 'm']
+}, {
+    id: 19,
+    categoryId: 5,
+    images: [
+        {
+            url: '/images/new dresses/CARAVANA dress1.jpg'
+        },
+        {
+            url: '/images/new dresses/CARAVANA2.jpg'
+        }
+    ],
+    brand: 'caravana',
+    shortDescription: "short dress",
+    actualPrice: 900,
+    sizes: ['xs', 's', 'm']
+},
+    {
+        id: 20,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/CARINE GILSON.jpg'
+            },
+            {
+                url: '/images/new dresses/CARINE GILSON2.jpg'
+            },
+            {
+                url: '/images/new dresses/CARINE GILSON3.jpg'
+            }
+        ],
+        brand: 'carine gilson',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    },{
+        id: 21,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/COSTARELLOS.jpg'
+            },
+            {
+                url: '/images/new dresses/COSTARELLOS2.jpg'
+            },
+            {
+                url: '/images/new dresses/COSTARELLOS3.jpg'
+            }
+        ],
+        brand: 'costarellos',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 22,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/DAVID KOMA.jpg'
+            },
+            {
+                url: '/images/new dresses/DAVID KOMA2.jpg'
+            }
+        ],
+        brand: 'DAVID KOMA',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 23,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/david koma sparkling dress1.jpg'
+            },
+            {
+                url: '/images/new dresses/david koma sparkling dress2.jpg'
+            }
+        ],
+        brand: 'david koma',
+        shortDescription: "sparkling dress",
+        actualPrice: 1500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 24,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/dion lee dress.jpg'
+            },
+            {
+                url: '/images/new dresses/dion lee dress2.jpg'
+            },
+            {
+                url: '/images/new dresses/dion lee dress3.jpg'
+            },
+            {
+                url: '/images/new dresses/dion lee dress4.jpg'
+            }
+        ],
+        brand: 'dion lee',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 25,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/FLEUR DU MAL.jpg'
+            },
+            {
+                url: '/images/new dresses/FLEUR DU MAL2.jpg'
+            },
+            {
+                url: '/images/new dresses/FLEUR DU MAL3.jpg'
+            }
+        ],
+        brand: 'fleur du mal',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 26,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/GALVAN LONDON.jpg'
+            },
+            {
+                url: '/images/new dresses/GALVAN LONDON2.jpg'
+            },
+            {
+                url: '/images/new dresses/GALVAN LONDON3.jpg'
+            }
+        ],
+        brand: 'galvan london',
+        shortDescription: "short dress",
+        actualPrice: 700,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 27,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/gucci beige dress1.jpg'
+            },
+            {
+                url: '/images/new dresses/gucci beige dress2.jpg'
+            },
+            {
+                url: '/images/new dresses/gucci beige dress3.jpg'
+            }
+        ],
+        brand: 'gucci',
+        shortDescription: "short dress",
+        actualPrice: 1000,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 28,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/gucci dress black1.jpg'
+            },
+            {
+                url: '/images/new dresses/gucci dress black2.jpg'
+            },
+            {
+                url: '/images/new dresses/gucci black dress3.jpg'
+            }
+        ],
+        brand: 'gucci',
+        shortDescription: "short dress",
+        actualPrice: 1000,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 29,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/HELMUT LANG1.jpg'
+            },
+            {
+                url: '/images/new dresses/HELMUT LANG2.jpg'
+            }
+        ],
+        brand: 'helmut lang',
+        shortDescription: "short dress",
+        actualPrice: 800,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 30,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/I.D.SARRIERI1.jpg'
+            },
+            {
+                url: '/images/new dresses/I.D.SARRIERI2.jpg'
+            },
+            {
+                url: '/images/new dresses/I.D.SARRIERI3.jpg'
+            }
+        ],
+        brand: 'I.D.SARRIERI',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 31,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/la perla dress.jpg'
+            },
+            {
+                url: '/images/new dresses/la perla dress2.jpg'
+            }
+        ],
+        brand: 'la perla',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 32,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/LORO PIANA1.jpg'
+            },
+            {
+                url: '/images/new dresses/LORO PIANA2.jpg'
+            }
+        ],
+        brand: 'loro piana',
+        shortDescription: "long dress",
+        actualPrice: 1500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 33,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/MARYSIA.jpg'
+            },
+            {
+                url: '/images/new dresses/MARYSIA2.jpg'
+            },
+        ],
+        brand: 'MARYSIA',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 34,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/MATTEAU.jpg'
+            },
+            {
+                url: '/images/new dresses/MATTEAU2.jpg'
+            }
+        ],
+        brand: 'MATTEAU',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 35,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/MATTEAU beige.jpg'
+            },
+            {
+                url: '/images/new dresses/MATTEAU beige2.jpg'
+            }
+        ],
+        brand: 'MATTEAU',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 36,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/MISBHV.jpg'
+            },
+            {
+                url: '/images/new dresses/MISBHV2.jpg'
+            }
+        ],
+        brand: 'MISBHV',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 37,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/OSCAR DE LA RENTA.jpg'
+            },
+            {
+                url: '/images/new dresses/OSCAR DE LA RENTA2.jpg'
+            }
+        ],
+        brand: 'oscar de la renta',
+        shortDescription: "short dress",
+        actualPrice: 2500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 38,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/OSCAR DE LA RENTA tweed1.jpg'
+            },
+            {
+                url: '/images/new dresses/OSCAR DE LA RENTA tweed2.jpg'
+            },
+            {
+                url: '/images/new dresses/OSCAR DE LA RENTA tweed3.jpg'
+            }
+        ],
+        brand: 'oscar de la renta',
+        shortDescription: "short dress",
+        actualPrice: 3500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 39,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/parosh pink dress1.jpg'
+            },
+            {
+                url: '/images/new dresses/parosh pink dress2.jpg'
+            },
+            {
+                url: '/images/new dresses/parosh pink dress3.jpg'
+            }
+        ],
+        brand: 'parosh',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 40,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/philip lim black dress1.jpg'
+            },
+            {
+                url: '/images/new dresses/phillip lim black dress2.jpg'
+            }
+        ],
+        brand: 'phillip lim',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 41,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/ROLAND MOURET.jpg'
+            },
+            {
+                url: '/images/new dresses/ROLAND MOURET2.jpg'
+            }
+        ],
+        brand: 'roland mouret',
+        shortDescription: "short dress",
+        actualPrice: 300,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 42,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/self portrait red dress1.jpg'
+            },
+            {
+                url: '/images/new dresses/self portrait red dress2.jpg'
+            }
+        ],
+        brand: 'selfportrait',
+        shortDescription: "short dress",
+        actualPrice: 500,
+        sizes: ['xs', 's', 'm']
+    }, {
+        id: 43,
+        categoryId: 5,
+        images: [
+            {
+                url: '/images/new dresses/the mannei.jpg'
+            },
+            {
+                url: '/images/new dresses/the mannei 2.jpg'
+            },
+            {
+                url: '/images/new dresses/the mannei 3.jpg'
+            }
+        ],
+        brand: 'mannei',
+        shortDescription: "short black dress",
+        actualPrice: 2000,
+        sizes: ['xs', 's', 'm']
+    }
 ]
 
 const getProductsByCategory = ({categoryId}) => {
