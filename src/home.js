@@ -9,7 +9,6 @@ export default function Homepage() {
                     <p className="sub-heading">ukrainian resale shop</p>
                 </div>
             </header>
-            <section className="main-products-container"></section>
             <section className="collection-container">
                 <a href="#" className="collection">
                     <img src="/images/dressandflowers (1).jpg" alt="logo"/>

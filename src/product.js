@@ -24,13 +24,13 @@ export default function ProductPage() {
             <section className="product-details">
                 <div className="image-slider">
                     <Gallery>
-                        {product.images ? product.images.map((image, index) => (
+                        {product.images && product.images.map((image, index) => (
                             <Item width="724" height="1024" original={image.url} thumbSelector={image.url} key={index}>
                                 {({ref, open}) => (
                                     <img alt="image" ref={ref} onClick={open} src={image.url}/>
                                 )}
                             </Item>
-                        )) : ""}
+                        ))}
                     </Gallery>
                 </div>
                 <div className="details">
@@ -45,6 +45,10 @@ export default function ProductPage() {
                                                            className={selectedSize === size ? "size-radio-btn check" : "size-radio-btn"}
                                                            onClick={() => setSelectedSize(size)}>{size}</button>)}
                     </div>
+                    <section className="detail-des">
+                        <h2 className="heading">description</h2>
+                        <p className="des">{product.shortDescription}</p>
+                    </section>
                     <button className="btn card-add-btn" onClick={() => {
                         !selectedSize ? alert('choose size!'):
                             updateQuantity({id: product.id, size: selectedSize, newQuantity: 1})
@@ -54,11 +58,6 @@ export default function ProductPage() {
                     </button>
                     <button className="btn wishlist-btn" onClick={() => addProductToWishlist({id: product.id})}>add to wishlist</button>
                 </div>
-            </section>
-
-            <section className="detail-des">
-                <h2 className="heading">description</h2>
-                <p className="des">{product.shortDescription}</p>
             </section>
         </>
     )

@@ -13,16 +13,18 @@ import Category from "./category";
 import WishList from "./wishlist";
 import Cart from "./cart";
 import Search from "./search";
+import './css/stylesForAllPages.css';
 import "./css/home.css";
 import "./css/footer.css";
 import "./css/cart.css";
 import "./css/product.css";
 import "./css/404.css";
-import "./css/search.css";
 import './css/sorting.css';
 import './css/pagination.css';
+import './css/mainSection.css';
+import './css/navbar.css';
+import './css/mobileNavBar.css';
 import {NavNumber} from "./navnumber";
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
