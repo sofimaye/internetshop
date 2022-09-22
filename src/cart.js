@@ -12,12 +12,12 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
     return (
         <div className="item">
             <div className="buttons">
-                <span className="delete-btn" onClick={() => {
+                <div className="delete-btn" onClick={() => {
                     deleteProductFromCart({id: cartProduct.product.id, size: cartProduct.size}).then(() => {
                         setQuantity(0)
                         toDelete(cartProduct.product.id, cartProduct.size)
                     })
-                }}></span>
+                }}></div>
             </div>
             <div className="image-for-prod-at-cart">
                 <img src={cartProduct.product.images[0].url} alt="cart image"/>
@@ -57,7 +57,6 @@ function CartProd({cartProduct, changeQuantity, toDelete}) {
             </div>
             <div className="total-price">
                 {"$" + (price ? price : 0)}
-
             </div>
         </div>
     )
@@ -96,13 +95,13 @@ export default function Cart() {
 
     return (
         <section className="cart">
-            <div className="total-price-of-all-products">
-                <button className="buy">"buy"</button>
-                <p className="price-of-all">{`Total price $${totalPrice}`}</p>
-            </div>
             {cartProducts ? cartProducts.map((prod) => <CartProd key={prod.product.id.toString() + prod.size}
                                                                  cartProduct={prod} changeQuantity={changeQuantity}
                                                                  toDelete={removeFromCart}/>) : "Cart is empty"}
+            <div className="total-price-of-all-products">
+                <p className="price-of-all">{`Total price $${totalPrice}`}</p>
+                <button className="buy">"buy"</button>
+            </div>
         </section>
     )
 }

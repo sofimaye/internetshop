@@ -5,7 +5,9 @@ export default function Footer() {
         <>
             <footer>
                 <div className="footer-content">
+                    <div className="image-footer-wrapper">
                     <img src="/images/logo2.png" className="logo" alt="footer image"/>
+                    </div>
                     <div className="footer-ul-container">
                         <ul className="category">
                             <li className="category-title">women</li>
@@ -36,7 +38,6 @@ export default function Footer() {
                         <a href="#" className="social-link">facebook</a>
                     </div>
                 </div>
-                <p className="footer-credit">Brands resale store</p>
             </footer>
         </>
     )

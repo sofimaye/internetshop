@@ -16,7 +16,7 @@ import Search from "./search";
 import './css/stylesForAllPages.css';
 import "./css/home.css";
 import "./css/footer.css";
-import "./css/cart.css";
+import "./css/cartAndWishlist.css";
 import "./css/product.css";
 import "./css/404.css";
 import './css/sorting.css';

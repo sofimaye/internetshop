@@ -58,6 +58,10 @@
     color: #a9a9a9;
 }
 
+.search-results .heading{
+    text-align: center;
+}
+
 .nav-items a img {
     width: 30px;
     height: 30px;

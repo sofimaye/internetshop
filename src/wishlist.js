@@ -6,7 +6,7 @@ function WishlistProduct({product, toDelete}) {
         <>
             <div className="item">
                 <div className="buttons">
-                        <span className="delete-btn" onClick={() => deleteProductFromWishList({id: product.id}).then(() => toDelete(product.id))}></span>
+                        <div className="delete-btn" onClick={() => deleteProductFromWishList({id: product.id}).then(() => toDelete(product.id))}></div>
                 </div>
                 <div className="image-for-prod-at-cart">
                     <img src={product.images[0].url} alt="product image"/>
