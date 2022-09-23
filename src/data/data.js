@@ -797,20 +797,21 @@ const searchProducts = ({searchItems}) => {
 
 const getCart = () => {
     return new Promise((resolve) => {
-        resolve(JSON.parse(localStorage.getItem("cart") || "[]"));
+        resolve(JSON.parse(localStorage.getItem("cart")) || []);
     });
 }
 
 const getWishlist = () => {
     return new Promise((resolve) => {
-        resolve(JSON.parse(localStorage.getItem("wishlist") || "[]"))
+        resolve(JSON.parse(localStorage.getItem("wishlist")) || [])
     })
 }
 
 const countCartItems = () => {
     return new Promise((resolve) => {
-        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
         let number = 0;
+
         for (let elem of cart) {
             number += elem.quantity;
         }
@@ -818,8 +819,7 @@ const countCartItems = () => {
     });
 }
 const addProductToWishlist = ({id}) => new Promise((resolve) => {
-    
-    let wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     let wishItem = wishlist.find(prod => prod.productId === id);
 
     if (!wishItem) {
@@ -833,42 +833,42 @@ const addProductToWishlist = ({id}) => new Promise((resolve) => {
 
 const updateQuantity = ({id, size, newQuantity}) => {
     return new Promise((resolve) => {
-        let cartBusket = JSON.parse(localStorage.getItem("cart"));
-        let cartItem = cartBusket.find(prod => prod.productId === id && prod.size === size);
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItem = cart.find(prod => prod.productId === id && prod.size === size);
 
         if (!cartItem) {
             cartItem = {productId: id, quantity: newQuantity, size: size};
-            cartBusket.push(cartItem)
+            cart.push(cartItem)
         }
 
         cartItem.quantity = newQuantity;
         let removed = false;
 
         if(cartItem.quantity <= 0 ){
-            let index = cartBusket.indexOf(cartItem);
-            cartBusket.splice(index, 1);
+            let index = cart.indexOf(cartItem);
+            cart.splice(index, 1);
             removed = true
         }
 
-        localStorage.setItem("cart", JSON.stringify(cartBusket));
+        localStorage.setItem("cart", JSON.stringify(cart));
         resolve({removed: removed, newQuantity: cartItem.quantity})
     })
 }
 
 const deleteProductFromCart = ({id, size}) => {
     return new Promise((resolve) => {
-        let cartBusket = JSON.parse(localStorage.getItem("cart"));
-        let index = cartBusket.findIndex(prod => prod.productId === id && prod.size === size);
-        cartBusket.splice(index, 1);
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let index = cart.findIndex(prod => prod.productId === id && prod.size === size);
+        cart.splice(index, 1);
 
-        localStorage.setItem("cart", JSON.stringify(cartBusket));
+        localStorage.setItem("cart", JSON.stringify(cart));
         resolve()
     })
 }
 
 const deleteProductFromWishList = ({id}) => {
     return new Promise((resolve) => {
-        let wishlist = JSON.parse(localStorage.getItem("wishlist"));
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
         let index = wishlist.findIndex(prod => prod.productId === id);
         wishlist.splice(index, 1);
 

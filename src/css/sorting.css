@@ -1,11 +1,21 @@
-section#select-section{
-   width: 100vw;
+#select-section {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-select#select-sorting {
+
+#select-sorting {
     width: auto;
     height: 5vh;
     margin: 10px 30px 0;
     border: 1px solid white;
     font-size: 1em;
     overflow: hidden;
+}
+
+@media (min-width: 800px) {
+    #select-section{
+        justify-content: flex-start;
+    }
 }

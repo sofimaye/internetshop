@@ -1,6 +1,10 @@
 .four-o-four{
-    display: block;
-    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+}
+.four-o-four img{
+    margin: 5% auto;
+    max-width: 100%;
 }
 
 .four-o-four-msg{

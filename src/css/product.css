@@ -16,7 +16,10 @@
 .image-slider img {
     max-width: 100%;
 }
-
+.product-buttons-container{
+    display: flex;
+    justify-content: center;
+}
 @media (min-width: 1200px) {
     .image-slider, .details {
         width: 50%;
@@ -66,8 +69,7 @@
 
 .size-radio-btn {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 90px;
     text-align: center;
     font-size: 20px;
     border: 1px solid #383838;

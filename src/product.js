@@ -49,6 +49,7 @@ export default function ProductPage() {
                         <h2 className="heading">description</h2>
                         <p className="des">{product.shortDescription}</p>
                     </section>
+                    <div className="product-buttons-container">
                     <button className="btn card-add-btn" onClick={() => {
                         !selectedSize ? alert('choose size!'):
                             updateQuantity({id: product.id, size: selectedSize, newQuantity: 1})
@@ -57,6 +58,7 @@ export default function ProductPage() {
                         add to cart
                     </button>
                     <button className="btn wishlist-btn" onClick={() => addProductToWishlist({id: product.id})}>add to wishlist</button>
+                    </div>
                 </div>
             </section>
         </>

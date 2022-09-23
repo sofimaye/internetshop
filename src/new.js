@@ -1,4 +1,4 @@
-import {getProductsByCategory, getAllCategories} from "./data/data.js";
+import {getProductsByCategory, getAllCategories, addProductToWishlist} from "./data/data.js";
 import {useState, useEffect} from "react";
 
 export function Product({product}) {
@@ -9,7 +9,7 @@ export function Product({product}) {
         <div className="product-card">
             <div className="product-image">
                 <img src={product.images[0].url} onClick={showImage} className="product-thumb" alt="image"/>
-                <button className="wish-btn">add to the wishlist</button>
+                <button className="wish-btn" onClick={() => addProductToWishlist({id: product.id})}>add to the wishlist</button>
                 {product.discount && <span className="discount-tag">{product.discount}</span>}
             </div>
             <div className="product-info">

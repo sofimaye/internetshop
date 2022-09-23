@@ -1,20 +1,17 @@
 .navbar {
-    position: sticky;
-    top: 0;
-    left: 0;
     width: 100%;
     background: #f5f5f5;
-    z-index: 9;
 }
 
 .nav {
-    padding: 10px 10vw;
+    padding: 0 10vw;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
 .brand-logo {
-    height: 100px;
+   max-height: 100px;
 }
 
 .nav-items {
@@ -70,8 +67,8 @@
 .links-container {
     width: 100%;
     display: flex;
-    padding: 10px 10vw;
     justify-content: center;
+    align-items: center;
     list-style: none;
     border-top: 1px solid #d1d1d1;
 }
