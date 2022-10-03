@@ -6,9 +6,8 @@
 }
 
 /*mobile navbar opened*/
-.navBarContainerForHiddenItems {
-    height: 100vh;
-    overflow: hidden;
+.mobileNavbarOpened{
+    height: 100%;
 }
 
 .navBarContainerForHiddenItems ul{

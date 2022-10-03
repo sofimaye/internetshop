@@ -14,12 +14,11 @@
 }
 .page a:hover{
     color: #5E6977;
-    -moz-box-shadow: 0 0 0 1px #000000;
 }
 
 .page-link {
-    color: #383838;
+    color: #000000;
 }
 .currentPage {
-    color: #CE272D;
+    color: #5E6977;
 }

@@ -13,9 +13,9 @@ const routes = {
     sale: "/sale"
 }
 
-function MobileNavBarOpen({onClose}) {
+export function MobileNavBarOpen({onClose}) {
     return (
-        <>
+        <nav className="mobileNavbarOpened">
             <div className="closeNav">
                 <button className="close" onClick={onClose}>
                     <img src="/images/close.svg" alt="close menu button"/>
@@ -45,28 +45,30 @@ function MobileNavBarOpen({onClose}) {
                     </Link>
                 </div>
             </div>
-        </>
+        </nav>
     )
 }
 
 export function MobileNavBar() {
     const [open, setOpen] = useState(false);
 
+    //think about better implementation
     useEffect(() => {
         if (open) {
-            document.querySelector('body').style.overflow = "hidden";
+            Array.from(document.querySelectorAll('#root>*:not(.mobileNavbarOpened)'))
+                .map(item => item.style.visibility = "hidden")
+            document.querySelector('.mobileNavbarOpened').style.display = 'block';
         }
         return () => {
+            Array.from(document.querySelectorAll('#root>*:not(.mobileNavbarOpened)'))
+                .map(item => item.style.visibility = "visible")
             document.querySelector('body').style.overflow = "auto";
         }
     });
-
     const handleHamButtonClick = useCallback(() => setOpen((prev) => !prev), []);
-
     if (open) {
         return <MobileNavBarOpen onClose={handleHamButtonClick}/>
     }
-
     return (
         <>
             <div className="navbarForMobiles">
